@@ -1,21 +1,47 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Net;
 using System.Text;
 using System.Threading;
 
 namespace BiliHP2020.func
 {
-    class CURL
+    class CURL:MainForm
     {
-        public void Curl(string url, string method, Dictionary<string, object> values, Dictionary<string, object> headers, Dictionary<string, string> cookie, string type, string echo, string conn, string route, int delay)
+        public string url;
+        public string method;
+        public JObject values;
+        public JObject headers;
+        public JObject cookie;
+        public string type;
+        public string echo;
+        public string conn;
+        public string route;
+        public int delay;
+
+        public void Curl()
         {
             Thread th = new Thread(SuperCurl);
+            th.Start();
         }
 
-        public void SuperCurl(string url, string method, Dictionary<string, object> values, Dictionary<string, object> headers, Dictionary<string, string> cookie,string type,string echo ,string conn,string route)
+        public void SuperCurl()
         {
+            string url = this.url;
+            string method = this.method;
+            JObject values = this.values;
+            JObject headers = this.headers;
+            JObject cookie = this.cookie;
+            string type = this.type;
+            string echo = this.echo;
+            string conn = this.conn;
+            string route = this.route;
+            int delay = this.delay;
+
+            Thread.Sleep(delay);
+
             //---------req-------
             HttpWebRequest req = (HttpWebRequest)WebRequest.Create(url);
             req.Method = "POST";
@@ -28,12 +54,14 @@ namespace BiliHP2020.func
             cookies.Add(sk);
             req.CookieContainer = cookies;
 
+            if (this.method == "post")
+            {
 
+            }
+            else
+            {
 
-
-
-
-
+            }
 
 
 
@@ -43,7 +71,7 @@ namespace BiliHP2020.func
             //--------------ret----------
             HttpWebResponse resp = (HttpWebResponse)req.GetResponse();
             JObject header = new JObject();
-            Dictionary<string, dynamic> headers = new Dictionary<string, dynamic>();
+            Dictionary<string, dynamic> self_headers = new Dictionary<string, dynamic>();
 
             foreach (string item in resp.Headers)
             {
@@ -52,7 +80,7 @@ namespace BiliHP2020.func
 
             header = JObject.FromObject(headers);
 
-            richTextBox1.Text += header;
+ 
 
             byte[] buffer = new byte[int.Parse(resp.ContentLength.ToString())];
             Stream reStream = resp.GetResponseStream();
@@ -61,8 +89,10 @@ namespace BiliHP2020.func
             {
                 body = sr.ReadToEnd();
             }
-            richTextBox1.Text += body;
+            
         }
+
+  
 
     }
 }
