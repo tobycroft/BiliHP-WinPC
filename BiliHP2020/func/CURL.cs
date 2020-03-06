@@ -92,7 +92,23 @@ namespace BiliHP2020.func
             
         }
 
-  
+        private void InitializeComponent()
+        {
+            this.SuspendLayout();
+            // 
+            // CURL
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Name = "CURL";
+            this.Load += new System.EventHandler(this.CURL_Load);
+            this.ResumeLayout(false);
 
+        }
+
+        private void CURL_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

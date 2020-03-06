@@ -84,6 +84,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="func\CURL.resx">
+      <DependentUpon>CURL.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="login\eula.resx">
       <DependentUpon>eula.cs</DependentUpon>
     </EmbeddedResource>
