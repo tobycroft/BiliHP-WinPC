@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json.Linq;
+using SocketLibrary;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -6,6 +7,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Net;
+using System.Net.Sockets;
 using System.Text;
 using System.Windows.Forms;
 
@@ -15,12 +17,28 @@ namespace BiliHP2020
     {
         public MainForm()
         {
+            CheckForIllegalCrossThreadCalls = false;
             InitializeComponent();
         }
-
+        Socket socket =  new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
         private void MainForm_Load(object sender, EventArgs e)
         {
+            IPHostEntry hostinfo = Dns.GetHostEntry("127.0.0.1");
+            IPAddress[] aryIP = hostinfo.AddressList;
+            IPAddress address = aryIP[0];
+            this.socket.Connect(address.ToString(), 81);
+          
+            JObject job = new JObject();
+            job["type"] = "inits";
 
+            job["code"] = 0;
+            JObject dat = new JObject();
+            dat["username"] = Properties.Settings.Default.username;
+            dat["token"] = Properties.Settings.Default.token;
+            job["data"] = "123";
+            job["echo"] = "init";
+            richTextBox1.Text = job.ToString();
+            this.socket.Send(Encoding.Default.GetBytes(job.ToString()));
         }
 
         private void button1_Click(object sender, EventArgs e)

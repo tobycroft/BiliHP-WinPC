@@ -39,6 +39,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.daily_task = new System.Windows.Forms.CheckBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.checkBox36 = new System.Windows.Forms.CheckBox();
             this.checkBox35 = new System.Windows.Forms.CheckBox();
@@ -80,6 +81,7 @@
             this.app_heart = new System.Windows.Forms.CheckBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.button8 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.pk_today = new System.Windows.Forms.Label();
@@ -113,8 +115,8 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.face = new System.Windows.Forms.PictureBox();
-            this.button8 = new System.Windows.Forms.Button();
-            this.daily_task = new System.Windows.Forms.CheckBox();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -127,12 +129,14 @@
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.face)).BeginInit();
+            this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Location = new System.Drawing.Point(8, 109);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -273,6 +277,16 @@
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "自动控制面板（实时同步）";
+            // 
+            // daily_task
+            // 
+            this.daily_task.AutoSize = true;
+            this.daily_task.Location = new System.Drawing.Point(335, 64);
+            this.daily_task.Name = "daily_task";
+            this.daily_task.Size = new System.Drawing.Size(72, 16);
+            this.daily_task.TabIndex = 39;
+            this.daily_task.Text = "每日任务";
+            this.daily_task.UseVisualStyleBackColor = true;
             // 
             // textBox1
             // 
@@ -723,6 +737,16 @@
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "占位盒子";
             // 
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(201, 21);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(188, 44);
+            this.button8.TabIndex = 1;
+            this.button8.Text = "退出登陆";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
             // button7
             // 
             this.button7.Location = new System.Drawing.Point(7, 21);
@@ -1054,25 +1078,23 @@
             this.face.TabIndex = 4;
             this.face.TabStop = false;
             // 
-            // button8
+            // tabPage3
             // 
-            this.button8.Location = new System.Drawing.Point(201, 21);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(188, 44);
-            this.button8.TabIndex = 1;
-            this.button8.Text = "退出登陆";
-            this.button8.UseVisualStyleBackColor = true;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
+            this.tabPage3.Controls.Add(this.richTextBox1);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(467, 396);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "TB";
+            this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // daily_task
+            // richTextBox1
             // 
-            this.daily_task.AutoSize = true;
-            this.daily_task.Location = new System.Drawing.Point(335, 64);
-            this.daily_task.Name = "daily_task";
-            this.daily_task.Size = new System.Drawing.Size(72, 16);
-            this.daily_task.TabIndex = 39;
-            this.daily_task.Text = "每日任务";
-            this.daily_task.UseVisualStyleBackColor = true;
+            this.richTextBox1.Location = new System.Drawing.Point(13, 20);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(439, 362);
+            this.richTextBox1.TabIndex = 0;
+            this.richTextBox1.Text = "";
             // 
             // MainForm
             // 
@@ -1102,6 +1124,7 @@
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.face)).EndInit();
+            this.tabPage3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1194,6 +1217,8 @@
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.CheckBox daily_task;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.RichTextBox richTextBox1;
     }
 }
 
