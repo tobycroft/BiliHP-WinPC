@@ -67,11 +67,14 @@ namespace BiliHP2020.login
                 send["ret"] = ret2.ToString(Newtonsoft.Json.Formatting.None);
 
                 JObject ret3 = Net.Post("http://go.bilihp.com:180/v1/index/login/ret", "post", send, null, null);
-                if (ret3["body"]["code"].ToObject<int>()==0)
+                if (ret3["body"]["code"].ToObject<int>() == 0)
                 {
                     
-                    
-                    MessageBox.Show("登录成功");
+                    Properties.Settings.Default.username = ret3["body"]["data"]["username"].ToString();
+                    Properties.Settings.Default.password = password;
+                    Properties.Settings.Default.token = ret3["body"]["data"]["token"].ToString();
+                    Properties.Settings.Default.Save();
+                    MessageBox.Show(ret3["body"]["data"]["message"].ToString());
                 }
                 else
                 {
@@ -123,10 +126,11 @@ namespace BiliHP2020.login
 
         private void button5_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            this.Visible = false;
             MainForm ea = new MainForm();
             ea.ShowDialog();
-
+            Application.ExitThread();
         }
+
     }
 }
