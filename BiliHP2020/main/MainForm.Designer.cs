@@ -111,12 +111,13 @@
             this.user_level = new System.Windows.Forms.Label();
             this.silver = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.button9 = new System.Windows.Forms.Button();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.ecam = new System.Windows.Forms.ListBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.face = new System.Windows.Forms.PictureBox();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -126,10 +127,10 @@
             this.groupBox7.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.face)).BeginInit();
-            this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -1035,6 +1036,35 @@
             this.label8.TabIndex = 6;
             this.label8.Text = "用户等级：";
             // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.button9);
+            this.tabPage3.Controls.Add(this.richTextBox1);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(467, 396);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "TB";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // button9
+            // 
+            this.button9.Location = new System.Drawing.Point(13, 348);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(75, 23);
+            this.button9.TabIndex = 1;
+            this.button9.Text = "button9";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Location = new System.Drawing.Point(13, 20);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(439, 321);
+            this.richTextBox1.TabIndex = 0;
+            this.richTextBox1.Text = "";
+            // 
             // ecam
             // 
             this.ecam.BackColor = System.Drawing.SystemColors.WindowText;
@@ -1045,7 +1075,7 @@
             this.ecam.ItemHeight = 12;
             this.ecam.Location = new System.Drawing.Point(6, 20);
             this.ecam.Name = "ecam";
-            this.ecam.Size = new System.Drawing.Size(354, 494);
+            this.ecam.Size = new System.Drawing.Size(729, 494);
             this.ecam.TabIndex = 10;
             // 
             // groupBox1
@@ -1053,7 +1083,7 @@
             this.groupBox1.Controls.Add(this.ecam);
             this.groupBox1.Location = new System.Drawing.Point(489, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(366, 519);
+            this.groupBox1.Size = new System.Drawing.Size(741, 519);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "BiliHP-ECAM数据";
@@ -1078,29 +1108,11 @@
             this.face.TabIndex = 4;
             this.face.TabStop = false;
             // 
-            // tabPage3
-            // 
-            this.tabPage3.Controls.Add(this.richTextBox1);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(467, 396);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "TB";
-            this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // richTextBox1
-            // 
-            this.richTextBox1.Location = new System.Drawing.Point(13, 20);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(439, 362);
-            this.richTextBox1.TabIndex = 0;
-            this.richTextBox1.Text = "";
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(867, 536);
+            this.ClientSize = new System.Drawing.Size(801, 536);
             this.Controls.Add(this.face);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.groupBox1);
@@ -1121,10 +1133,10 @@
             this.groupBox6.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.face)).EndInit();
-            this.tabPage3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1219,6 +1231,7 @@
         private System.Windows.Forms.CheckBox daily_task;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.Button button9;
     }
 }
 

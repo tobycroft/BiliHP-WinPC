@@ -1,5 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
-using SocketLibrary;
+﻿using BiliHP2020.func;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -9,36 +9,37 @@ using System.Drawing;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using System.Threading;
+using System.Web.Caching;
 using System.Windows.Forms;
 
 namespace BiliHP2020
 {
     public partial class MainForm : Form
     {
+       
         public MainForm()
         {
             CheckForIllegalCrossThreadCalls = false;
             InitializeComponent();
         }
-        Socket socket =  new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+        Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+        IPAddress address = Dns.GetHostEntry("127.0.0.1").AddressList[0];
         private void MainForm_Load(object sender, EventArgs e)
         {
-            IPHostEntry hostinfo = Dns.GetHostEntry("127.0.0.1");
-            IPAddress[] aryIP = hostinfo.AddressList;
-            IPAddress address = aryIP[0];
-            this.socket.Connect(address.ToString(), 81);
-          
-            JObject job = new JObject();
-            job["type"] = "inits";
-
-            job["code"] = 0;
-            JObject dat = new JObject();
-            dat["username"] = Properties.Settings.Default.username;
-            dat["token"] = Properties.Settings.Default.token;
-            job["data"] = "123";
-            job["echo"] = "init";
-            richTextBox1.Text = job.ToString();
-            this.socket.Send(Encoding.Default.GetBytes(job.ToString()));
+            this.socket.NoDelay = false;
+            ecam_action(this.socket.ProtocolType.ToString());
+            ecam_action(this.socket.SocketType.ToString());
+            this.socket.Connect(this.address.ToString(), 81);
+            Thread sock = new Thread(recieve);
+            sock.IsBackground = true;
+            sock.Start();
+            JObject aa = new JObject();
+            aa["username"] = Properties.Settings.Default.username;
+            aa["token"] = Properties.Settings.Default.token;
+            aa["type"] = "win";
+            aa["version"] = "0.0.1";
+            this.send("init", aa, "init");
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -316,5 +317,61 @@ namespace BiliHP2020
         {
 
         }
+
+        private JObject check_time()
+        {
+            try
+            {
+                JObject job = JObject.Parse(Properties.Settings.Default.time);
+                return job;
+            }
+            catch
+            {
+                Properties.Settings.Default.time = "{}";
+                Properties.Settings.Default.Save();
+                return this.check_time();
+            }
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+
+            this.send("init", null, "init");
+        }
+
+        private void send(string type, JObject data, string echo)
+        {
+            this.socket.Send(Encoding.UTF8.GetBytes(RET.ws_succ(type, 0, data, echo)));
+        }
+        public void recieve()
+        {
+            byte[] buffer = new byte[4096];
+            while (true)
+            {
+                int length = this.socket.Receive(buffer);
+                if (length==0)
+                {
+                    this.socket.Close();
+                }
+                else
+                {
+                    string data = System.Text.Encoding.UTF8.GetString(buffer, 0, length);
+                    richTextBox1.Text = data.ToString();
+                    ecam_action(data.ToString());
+                }
+                
+            }
+
+        }
+        public void ecam_action(object str)
+        {
+            var date = DateTime.Now.ToString();
+            StringBuilder sb = new StringBuilder();
+            sb.Append(date);
+            sb.Append(":");
+            sb.Append(str.ToString());
+            ecam.Items.Insert(0, sb.ToString());
+        }
+
     }
 }
