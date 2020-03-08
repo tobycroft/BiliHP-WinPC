@@ -24,7 +24,7 @@ namespace BiliHP2020
             InitializeComponent();
         }
         Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-        IPAddress address = Dns.GetHostEntry("127.0.0.1").AddressList[0];
+        IPAddress address = Dns.GetHostEntry("go.bilihp.com").AddressList[0];
         private void MainForm_Load(object sender, EventArgs e)
         {
             this.socket.NoDelay = false;
