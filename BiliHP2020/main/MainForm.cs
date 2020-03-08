@@ -31,7 +31,7 @@ namespace BiliHP2020
             this.socket.NoDelay = false;
             ecam_action(this.socket.ProtocolType.ToString());
             ecam_action(this.socket.SocketType.ToString());
-            this.socket.Connect(this.address.ToString(), 81);
+            this.socket.Connect(this.address.ToString(), 181);
             Thread sock = new Thread(recieve);
             sock.IsBackground = true;
             sock.Start();
@@ -364,11 +364,16 @@ namespace BiliHP2020
                     temp = tp["json"].ToString();
                     foreach (var item in arr)
                     {
-                        ActionRoute.Route(item.ToObject<JObject>(), Properties.Settings.Default.username, this.socket);
-                        richTextBox1.Text = data.ToString();
-                        ecam_action(data.ToString());
+                        ActionRoute act = new ActionRoute();
+                        act.rtb = richTextBox1;
+                        act.socket = this.socket;
+                        act.ecam = ecam;
+                        act.username = Properties.Settings.Default.username;
+                        act.json = item.ToObject<JObject>();
+                        Thread th = new Thread(act.Route);
+                        th.Start();
                     }
-                    
+
                 }
 
             }

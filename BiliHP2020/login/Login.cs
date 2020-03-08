@@ -112,7 +112,7 @@ namespace BiliHP2020.login
 
         private void Login_Load(object sender, EventArgs e)
         {
-
+            version.Text = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
         }
 
         private void textBox3_TextChanged(object sender, EventArgs e)
