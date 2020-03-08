@@ -1,4 +1,5 @@
 ﻿using BiliHP2020.func;
+using BiliHP2020.tuuz;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -17,7 +18,7 @@ namespace BiliHP2020
 {
     public partial class MainForm : Form
     {
-       
+
         public MainForm()
         {
             CheckForIllegalCrossThreadCalls = false;
@@ -335,7 +336,6 @@ namespace BiliHP2020
 
         private void button9_Click(object sender, EventArgs e)
         {
-
             this.send("init", null, "init");
         }
 
@@ -346,20 +346,31 @@ namespace BiliHP2020
         public void recieve()
         {
             byte[] buffer = new byte[4096];
+            string temp = "";
             while (true)
             {
                 int length = this.socket.Receive(buffer);
-                if (length==0)
+                if (length == 0)
                 {
                     this.socket.Close();
+                    return;
                 }
                 else
                 {
                     string data = System.Text.Encoding.UTF8.GetString(buffer, 0, length);
-                    richTextBox1.Text = data.ToString();
-                    ecam_action(data.ToString());
+                    temp += data;
+                    JObject tp = TCPObject.tcpobj(temp);
+                    JArray arr = tp["arr"].ToObject<JArray>();
+                    temp = tp["json"].ToString();
+                    foreach (var item in arr)
+                    {
+                        ActionRoute.Route(item.ToObject<JObject>(), Properties.Settings.Default.username, this.socket);
+                        richTextBox1.Text = data.ToString();
+                        ecam_action(data.ToString());
+                    }
+                    
                 }
-                
+
             }
 
         }
@@ -373,5 +384,9 @@ namespace BiliHP2020
             ecam.Items.Insert(0, sb.ToString());
         }
 
+        private void button10_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

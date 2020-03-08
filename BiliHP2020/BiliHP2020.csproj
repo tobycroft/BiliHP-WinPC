@@ -88,6 +88,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="tuuz\TCPObject.cs" />
     <EmbeddedResource Include="login\eula.resx">
       <DependentUpon>eula.cs</DependentUpon>
     </EmbeddedResource>
