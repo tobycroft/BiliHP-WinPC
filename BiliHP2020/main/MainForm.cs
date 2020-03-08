@@ -35,12 +35,7 @@ namespace BiliHP2020
             Thread sock = new Thread(recieve);
             sock.IsBackground = true;
             sock.Start();
-            JObject aa = new JObject();
-            aa["username"] = Properties.Settings.Default.username;
-            aa["token"] = Properties.Settings.Default.token;
-            aa["type"] = "win";
-            aa["version"] = "0.0.1";
-            this.send("init", aa, "init");
+            init();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -336,12 +331,22 @@ namespace BiliHP2020
 
         private void button9_Click(object sender, EventArgs e)
         {
-            this.send("init", null, "init");
+            this.send("ping", null, "ping");
         }
 
         private void send(string type, JObject data, string echo)
         {
             this.socket.Send(Encoding.UTF8.GetBytes(RET.ws_succ(type, 0, data, echo)));
+        }
+
+        private void init()
+        {
+            JObject aa = new JObject();
+            aa["username"] = Properties.Settings.Default.username;
+            aa["token"] = Properties.Settings.Default.token;
+            aa["type"] = "win";
+            aa["version"] = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            this.send("init", aa, "init");
         }
         public void recieve()
         {
@@ -359,6 +364,7 @@ namespace BiliHP2020
                 {
                     string data = System.Text.Encoding.UTF8.GetString(buffer, 0, length);
                     temp += data;
+                    richTextBox1.Text = data.ToString();
                     JObject tp = TCPObject.tcpobj(temp);
                     JArray arr = tp["arr"].ToObject<JArray>();
                     temp = tp["json"].ToString();
@@ -371,6 +377,7 @@ namespace BiliHP2020
                         act.username = Properties.Settings.Default.username;
                         act.json = item.ToObject<JObject>();
                         Thread th = new Thread(act.Route);
+                        th.IsBackground = true;
                         th.Start();
                     }
 

@@ -20,7 +20,7 @@ namespace BiliHP2020.func
         {
             HttpWebRequest req = (HttpWebRequest)WebRequest.Create(url);
             WebProxy px = new WebProxy(ip,port);
-            req.Proxy = px;
+            req.Proxy = null;
             req.Method = method;
             CookieContainer cookies = new CookieContainer();
             if (cookie != null && cookie.HasValues)

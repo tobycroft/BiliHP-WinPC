@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Net.Sockets;
 using System.Text;
 using System.Windows.Forms;
+using Microsoft.CSharp;
 
 namespace BiliHP2020.func
 {
@@ -23,11 +24,11 @@ namespace BiliHP2020.func
         {
             int code = json["code"].ToObject<int>();
             string type = json["type"].ToString();
-            object ret = json["data"];
+            dynamic ret = json["data"];
             string echo = json["echo"].ToString();
             if (code == -1)
             {
-                ecam_action("[登录信息]：" + "登录信息错误！" + "");
+                ecam_action("[登录信息]：" + "登录信息错误！" + ret);
                 return;
             }
 
@@ -100,13 +101,14 @@ namespace BiliHP2020.func
             ecam.Items.Insert(0, sb.ToString());
         }
 
-        public void ecam2(object msg)
+        public void ecam2(object msg,dynamic ret)
         {
+
             ecam_action(msg);
-            this.send(this.send_obj("send_app", msg.ToString(), ""));
+            this.send(this.send_obj("send_app", msg.ToString(), "",ret));
         }
 
-        private string send_obj(string type, string data, string echo, JToken values = null)
+        private string send_obj(string type, string data, string echo, dynamic values = null)
         {
             JObject obj = new JObject();
             obj["type"] = type;
