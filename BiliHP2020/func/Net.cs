@@ -6,6 +6,7 @@ using System.IO;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Web;
 
 namespace BiliHP2020.func
@@ -16,10 +17,20 @@ namespace BiliHP2020.func
         public static string ip = "127.0.0.1";
         public static bool proxy = true;
         public static int port = 9000;
-        public static JObject Post(string url, string method, JObject values, JObject headers, JObject cookie)
+
+        public static JObject Post(string url, JObject values, JObject headers, JObject cookie)
+        {
+            return Curl(url, "post", values, headers, cookie);
+        }
+
+        public static JObject Get(string url, JObject values, JObject headers, JObject cookie)
+        {
+            return Curl(url, "get", values, headers, cookie);
+        }
+        public static JObject Curl(string url, string method, JObject values, JObject headers, JObject cookie)
         {
             HttpWebRequest req = (HttpWebRequest)WebRequest.Create(url);
-            WebProxy px = new WebProxy(ip,port);
+            WebProxy px = new WebProxy(ip, port);
             req.Proxy = null;
             req.Method = method;
             CookieContainer cookies = new CookieContainer();
@@ -140,6 +151,42 @@ namespace BiliHP2020.func
             return ret;
         }
 
+        public static JObject CookieHandler(JObject resp_header)
+        {
+            string[] cookie = Regex.Split(resp_header["Set-Cookie"].ToString(), ";");
+            JObject cookie_arr = new JObject();
+            foreach (var item in cookie)
+            {
+                string[] split = Regex.Split(item, "=");
+                if (CookieTagChecker(split[0]) == true)
+                {
+                    cookie_arr[split[0]] = split[1];
+                }
+            }
+            return cookie_arr;
+        }
+        private static string cookie_tag = "sid,JSESSIONID,DedeUserID,DedeUserID__ckMd5,SESSDATA,bili_jct,sid";
+
+        private static bool CookieTagChecker(string cookie_key)
+        {
+            if (cookie_tag == "")
+            {
+                return true;
+            }
+            else
+            {
+                string[] arr = Regex.Split(cookie_tag, ",");
+                foreach (var item in arr)
+                {
+                    if (item == cookie_key)
+                    {
+                        return true;
+                    }
+                }
+                return false;
+            }
+        }
+
 
         public static string http_build_query(JObject dict = null)
         {
@@ -148,7 +195,7 @@ namespace BiliHP2020.func
                 return "";
             }
             var builder = new UriBuilder();
-            
+
             var query = HttpUtility.ParseQueryString(builder.Query);
             StringBuilder sb = new StringBuilder();
             foreach (var item in dict)
@@ -159,7 +206,7 @@ namespace BiliHP2020.func
                 sb.Append("&");
                 //query.Add(item.Key,HttpUtility.UrlDecode(UrlEncode(item.Value.ToString())));
             }
-            
+
             return sb.ToString().TrimEnd('&');
         }
         public static string UrlEncode(string str)
@@ -220,9 +267,5 @@ namespace BiliHP2020.func
             }
         }
 
-        public void Get_Full()
-        {
-
-        }
     }
 }

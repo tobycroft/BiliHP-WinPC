@@ -49,7 +49,7 @@ namespace BiliHP2020.login
             value["username"] = username;
             value["password"] = password;
             value["captcha"] = captcha;
-            JObject ret = Net.Post("http://go.bilihp.com:180/v1/index/login/2", "post", value, null, null);
+            JObject ret = Net.Post("http://go.bilihp.com:180/v1/index/login/2", value, null, null);
             if (ret["body"]["code"].ToObject<int>() == 0)
             {
                 JObject data = ret["body"]["data"].ToObject<JObject>();
@@ -58,7 +58,7 @@ namespace BiliHP2020.login
                 JObject values = data["values"].ToObject<JObject>();
                 string url = data["url"].ToString();
                 string method = data["method"].ToString();
-                JObject ret2 = Net.Post(url, method, values, header, cookie);
+                JObject ret2 = Net.Curl(url, method, values, header, cookie);
 
                 JObject send = new JObject();
                 send["username"] = username;
@@ -66,7 +66,7 @@ namespace BiliHP2020.login
                 send["captcha"] = captcha;
                 send["ret"] = ret2.ToString(Newtonsoft.Json.Formatting.None);
 
-                JObject ret3 = Net.Post("http://go.bilihp.com:180/v1/index/login/ret", "post", send, null, null);
+                JObject ret3 = Net.Post("http://go.bilihp.com:180/v1/index/login/ret", send, null, null);
                 if (ret3["body"]["code"].ToObject<int>() == 0)
                 {
                     Properties.Settings.Default.username = ret3["body"]["data"]["username"].ToString();
@@ -134,7 +134,7 @@ namespace BiliHP2020.login
             MainForm ea = new MainForm();
             ea.ecam.Items.Add("首页登录完成……");
             ea.ShowDialog();
-           
+
             Application.ExitThread();
         }
 

@@ -38,9 +38,9 @@ namespace BiliHP2020.func
                 case "app":
                     PCRoute pcr = new PCRoute();
                     pcr.json = json;
-                    pcr.username = this.username;
-                    pcr.ecam = this.ecam;
-                    pcr.rtb = this.rtb;
+                    pcr.username = username;
+                    pcr.ecam = ecam;
+                    pcr.rtb = rtb;
                     pcr.socket = socket;
                     Thread th = new Thread(pcr.Route);
                     th.IsBackground = true;
@@ -176,7 +176,7 @@ namespace BiliHP2020.func
         {
             rtb.Text = msg.ToString()+(string)ret;
             ecam_action(msg+ (string)ret);
-            this.send(this.send_obj("send_app", msg.ToString(), "", ret));
+            send(send_obj("send_app", msg.ToString(), "", ret));
         }
 
         private string send_obj(string type, string data, string echo, dynamic values = null)
@@ -191,7 +191,7 @@ namespace BiliHP2020.func
 
         private void send(string data)
         {
-            this.socket.Send(Encoding.UTF8.GetBytes(data));
+            socket.Send(Encoding.UTF8.GetBytes(data));
         }
     }
 }

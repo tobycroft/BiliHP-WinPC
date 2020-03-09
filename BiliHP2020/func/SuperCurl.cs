@@ -9,27 +9,53 @@ namespace BiliHP2020.func
 {
     class SuperCurl
     {
-        public string url;
-        public string method;
-        public JObject values;
-        public JObject headers;
-        public JObject cookie;
-        public string type;
-        public string echo;
-        public string route;
-        public int delay = 0;
+        private string url;
+        private string method;
+        private JObject values;
+        private JObject headers;
+        private JObject cookie;
+        private string type;
+        private string echo;
+        private string route;
+        private int delay;
+        private Socket socket;
 
-        public Socket socket;
-
-        public void Curl()
+        public static void Curl(Socket socket,string url,string method, JObject values, JObject headers, JObject cookie, string type, string echo, string route, int delay)
         {
-            Thread.Sleep(1000 * delay);
-            SuperCURL();
+            SuperCurl sp = new SuperCurl();
+            sp.url = url;
+            sp.method = method;
+            sp.values = values;
+            sp.headers = headers;
+            sp.cookie = cookie;
+            sp.type = type;
+            sp.echo = echo;
+            sp.route = route;
+            sp.delay = delay;
+            sp.socket = socket;
+            Thread th = new Thread(sp.SuperCURL);
+            th.IsBackground = true;
+            th.Start();
         }
 
         public void SuperCURL()
         {
-            Net.Post();
+            if (delay>0)
+            {
+                Thread.Sleep(1000 * delay);
+            }
+            JObject Curl = Net.Curl(url, method, values, headers, cookie);
+            JObject ret = new JObject();
+            ret["cookie"] = Curl["cookie"];
+            ret["route"] = route;
+            ret["body"] = Curl["body"];
+            ret["header"] = Curl["headers"];
+            ret["statusCode"] = 200;
+            send(ret.ToString(Newtonsoft.Json.Formatting.None));
+        }
+        private void send(string data)
+        {
+            socket.Send(Encoding.UTF8.GetBytes(data));
         }
     }
 }
