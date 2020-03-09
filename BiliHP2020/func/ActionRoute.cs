@@ -153,7 +153,7 @@ namespace BiliHP2020.func
                     route = rets["route"].ToString();
                     typ = rets["type"].ToString();
                     delay = rets["delay"].ToObject<int>();
-
+                    ecam2(type,echo);
                     SuperCurl.Curl(socket, url, method, values, header, cookie, typ, echo, route, delay);
                     break;
 
@@ -169,7 +169,7 @@ namespace BiliHP2020.func
                     route = rets["route"].ToString();
                     typ = rets["type"].ToString();
                     delay = rets["delay"].ToObject<int>();
-
+                    ecam2(type, echo);
                     SuperCurl.Curl(socket, url, method, values, header, cookie, typ, echo, route, delay);
                     break;
 
@@ -185,8 +185,8 @@ namespace BiliHP2020.func
                     route = rets["route"].ToString();
                     typ = rets["type"].ToString();
                     delay = rets["delay"].ToObject<int>();
-
-                    SuperCurl.Curl(socket, url, method, values, header, cookie, typ, echo, route, delay);
+                    ecam2(type, echo);
+                    //SuperCurl.Curl(socket, url, method, values, header, cookie, typ, echo, route, delay);
                     break;
 
                 case "pk":
@@ -201,7 +201,7 @@ namespace BiliHP2020.func
                     route = rets["route"].ToString();
                     typ = rets["type"].ToString();
                     delay = rets["delay"].ToObject<int>();
-
+                    ecam2(type, echo);
                     SuperCurl.Curl(socket, url, method, values, header, cookie, typ, echo, route, delay);
                     break;
 
@@ -217,7 +217,7 @@ namespace BiliHP2020.func
                     route = rets["route"].ToString();
                     typ = rets["type"].ToString();
                     delay = rets["delay"].ToObject<int>();
-
+                    ecam2(type, echo);
                     SuperCurl.Curl(socket, url, method, values, header, cookie, typ, echo, route, delay);
                     break;
 

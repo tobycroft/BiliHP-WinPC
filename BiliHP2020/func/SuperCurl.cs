@@ -42,10 +42,11 @@ namespace BiliHP2020.func
         {
             if (delay>0)
             {
-                Thread.Sleep(1000 * delay);
+                //Thread.Sleep(1000 * delay);
             }
             JObject Curl = Net.Curl(url, method, values, headers, cookie);
             JObject ret = new JObject();
+            ret["type"] = type;
             ret["cookie"] = Curl["cookie"];
             ret["route"] = route;
             ret["body"] = Curl["body"];

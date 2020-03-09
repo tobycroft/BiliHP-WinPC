@@ -21,11 +21,13 @@ namespace BiliHP2020.tuuz
             }
 
             string[] strs = Regex.Split(json, "}{");
-            
-            if (strs.Length > 2)
+
+
+            if (strs.Length > 1)
             {
+
                 string unable = "";
-                var index = 0;
+                int index = 0;
                 foreach (var item in strs)
                 {
                     if (index == 0)
@@ -57,6 +59,7 @@ namespace BiliHP2020.tuuz
                         {
                             JObject temp = JObject.Parse("{"+item+"}");
                             arr.Add(temp);
+
                         }
                         catch 
                         {
@@ -65,42 +68,43 @@ namespace BiliHP2020.tuuz
                     }
                     index++;
                 }
-                json = unable;
-                ret["json"] = json;
+                ret["json"] = unable;
                 ret["arr"] = arr;
                 return ret;
             }
-            else if (strs.Length > 1)
-            {
-                try
-                {
-                    JObject temp = JObject.Parse(strs[0] + "}");
-                    arr.Add(temp);
-                    json = "{" + strs[1];
-                    ret["json"] = json;
-                    ret["arr"] = arr;
-                    return ret;
-                }
-                catch 
-                {
-                    ret["json"] = json;
-                    ret["arr"] = arr;
-                    return ret;
-                }
-            }
+            //else if (strs.Length > 1)
+            //{
+            //    try
+            //    {
+            //        JObject temp = JObject.Parse(strs[0] + "}");
+            //        arr.Add(temp);
+            //        json = "{" + strs[1];
+            //        ret["json"] = json;
+            //        ret["arr"] = arr;
+
+            //        return ret;
+            //    }
+            //    catch
+            //    {
+            //        ret["json"] = json;
+            //        ret["arr"] = arr;
+            //        return ret;
+            //    }
+            //}
             else
             {
+
                 try
                 {
                     JObject temp = JObject.Parse(json);
                     arr.Add(temp);
-                    ret["json"] = json;
+                    ret["json"] = "";
                     ret["arr"] = arr;
                     return ret;
                 }
                 catch 
                 {
-                    ret["json"] = "";
+                    ret["json"] = json;
                     ret["arr"] = arr;
                     return ret;
                 }

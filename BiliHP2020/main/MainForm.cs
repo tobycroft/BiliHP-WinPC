@@ -337,7 +337,7 @@ namespace BiliHP2020
         }
         public void recieve()
         {
-            byte[] buffer = new byte[4096];
+            byte[] buffer = new byte[8192];
             string temp = "";
             while (true)
             {
@@ -352,10 +352,11 @@ namespace BiliHP2020
                 {
                     string data = System.Text.Encoding.UTF8.GetString(buffer, 0, length);
                     temp += data;
-                    richTextBox2.Text = data.ToString();
                     JObject tp = TCPObject.tcpobj(temp);
                     JArray arr = tp["arr"].ToObject<JArray>();
                     temp = tp["json"].ToString();
+                    richTextBox2.Text = temp.ToString();
+
                     foreach (var item in arr)
                     {
                         ActionRoute act = new ActionRoute();
