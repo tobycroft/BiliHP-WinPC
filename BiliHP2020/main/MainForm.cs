@@ -314,20 +314,7 @@ namespace BiliHP2020
 
         }
 
-        private JObject check_time()
-        {
-            try
-            {
-                JObject job = JObject.Parse(Properties.Settings.Default.time);
-                return job;
-            }
-            catch
-            {
-                Properties.Settings.Default.time = "{}";
-                Properties.Settings.Default.Save();
-                return this.check_time();
-            }
-        }
+
 
         private void button9_Click(object sender, EventArgs e)
         {

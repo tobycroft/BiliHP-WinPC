@@ -127,44 +127,152 @@ namespace BiliHP2020.func
 
 
                 case "curl":
+                    JObject rets = ret;
+                    JObject header = rets["header"].ToObject<JObject>();
+                    JObject values = rets["values"].ToObject<JObject>();
+                    JObject cookie = rets["cookie"].ToObject<JObject>();
+
+                    string url = rets["url"].ToString();
+                    string method = rets["method"].ToString();
+                    string route = rets["route"].ToString();
+                    string typ = rets["type"].ToString();
+                    int delay = rets["delay"].ToObject<int>();
+
+                    SuperCurl.Curl(socket, url, method, values, header, cookie, typ, echo, route, delay);
                     break;
 
-
                 case "gift":
+
+                    rets = ret;
+                    header = rets["header"].ToObject<JObject>();
+                    values = rets["values"].ToObject<JObject>();
+                    cookie = rets["cookie"].ToObject<JObject>();
+
+                    url = rets["url"].ToString();
+                    method = rets["method"].ToString();
+                    route = rets["route"].ToString();
+                    typ = rets["type"].ToString();
+                    delay = rets["delay"].ToObject<int>();
+
+                    SuperCurl.Curl(socket, url, method, values, header, cookie, typ, echo, route, delay);
                     break;
 
                 case "guard":
+
+                    rets = ret;
+                    header = rets["header"].ToObject<JObject>();
+                    values = rets["values"].ToObject<JObject>();
+                    cookie = rets["cookie"].ToObject<JObject>();
+
+                    url = rets["url"].ToString();
+                    method = rets["method"].ToString();
+                    route = rets["route"].ToString();
+                    typ = rets["type"].ToString();
+                    delay = rets["delay"].ToObject<int>();
+
+                    SuperCurl.Curl(socket, url, method, values, header, cookie, typ, echo, route, delay);
                     break;
 
                 case "tianxuan":
+
+                    rets = ret;
+                    header = rets["header"].ToObject<JObject>();
+                    values = rets["values"].ToObject<JObject>();
+                    cookie = rets["cookie"].ToObject<JObject>();
+
+                    url = rets["url"].ToString();
+                    method = rets["method"].ToString();
+                    route = rets["route"].ToString();
+                    typ = rets["type"].ToString();
+                    delay = rets["delay"].ToObject<int>();
+
+                    SuperCurl.Curl(socket, url, method, values, header, cookie, typ, echo, route, delay);
                     break;
 
                 case "pk":
+
+                    rets = ret;
+                    header = rets["header"].ToObject<JObject>();
+                    values = rets["values"].ToObject<JObject>();
+                    cookie = rets["cookie"].ToObject<JObject>();
+
+                    url = rets["url"].ToString();
+                    method = rets["method"].ToString();
+                    route = rets["route"].ToString();
+                    typ = rets["type"].ToString();
+                    delay = rets["delay"].ToObject<int>();
+
+                    SuperCurl.Curl(socket, url, method, values, header, cookie, typ, echo, route, delay);
                     break;
 
                 case "storm":
+
+                    rets = ret;
+                    header = rets["header"].ToObject<JObject>();
+                    values = rets["values"].ToObject<JObject>();
+                    cookie = rets["cookie"].ToObject<JObject>();
+
+                    url = rets["url"].ToString();
+                    method = rets["method"].ToString();
+                    route = rets["route"].ToString();
+                    typ = rets["type"].ToString();
+                    delay = rets["delay"].ToObject<int>();
+
+                    SuperCurl.Curl(socket, url, method, values, header, cookie, typ, echo, route, delay);
                     break;
 
                 default:
-                    ecam2("unknow-ecam:",ret);
+                    ecam2("unknow-ecam:", ret);
                     break;
+            }
+        }
+
+        private JObject check_time()
+        {
+            try
+            {
+                JObject job = JObject.Parse(Properties.Settings.Default.time);
+                return job;
+            }
+            catch
+            {
+                Properties.Settings.Default.time = "{}";
+                Properties.Settings.Default.Save();
+                return this.check_time();
             }
         }
 
         public bool Gift_check()
         {
-            return true;
+            JObject time = check_time();
+            string hour = DateTime.Now.Hour.ToString();
+            if (time.Property("t" + hour) != null)
+            {
+                if (time["t" + hour].ToObject<bool>())
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         public bool Gift_ratio()
         {
-            return true;
-
+            Random rand = new Random();
+            int rd = rand.Next(0, 100);
+            if (rd > Properties.Settings.Default.percent)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public void ecam_action(object str)
         {
-            var date = DateTime.Now.ToString();
+            var date = DateTime.Now.ToLongTimeString().ToString();
             StringBuilder sb = new StringBuilder();
             sb.Append(date);
             sb.Append(":");
@@ -174,8 +282,8 @@ namespace BiliHP2020.func
 
         public void ecam2(object msg, dynamic ret)
         {
-            rtb.Text = msg.ToString()+(string)ret;
-            ecam_action(msg+ (string)ret);
+            rtb.Text = msg.ToString() + (string)ret;
+            ecam_action(msg + (string)ret);
             send(send_obj("send_app", msg.ToString(), "", ret));
         }
 

@@ -55,7 +55,7 @@ namespace BiliHP2020.func
 
         public void ecam_action(object str)
         {
-            var date = DateTime.Now.ToString();
+            var date = DateTime.Now.ToLongTimeString().ToString();
             StringBuilder sb = new StringBuilder();
             sb.Append(date);
             sb.Append(":");
