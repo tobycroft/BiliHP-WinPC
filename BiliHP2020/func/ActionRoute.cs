@@ -72,23 +72,92 @@ namespace BiliHP2020.func
                     break;
 
                 case "force_update":
+                    //todo:这里要加入自动下载的方法
                     ecam_action(echo);
 
                     break;
 
                 case "reinit":
+                    //todo:这里加入重新验证的方法
                     ecam2("", ret);
                     break;
 
+                case "debug":
+                    //todo:这里加入debug开关方法
+                    ecam2("[BiliHP-Debug]:", ret);
+                    break;
+
+                case "other":
+                    ecam2("[BiliHP-Other]:", ret);
+                    break;
+
+                case "ecam":
+                    ecam2("[BiliHP-ECAM]:", ret);
+                    break;
+
+                case "alert":
+                    ecam2("[BiliHP-Alert]:", ret);
+                    break;
 
 
+                case "login":
+                    ecam2("[BiliHP-Login]:", ret);
+                    break;
+
+                case "loged":
+                    ecam2("[BiliHP-Loged]:", ret);
+                    break;
+
+                case "clear":
+                    ecam.Items.Clear();
+                    break;
+
+                case "notam":
+                    ecam2("[BiliHP-NOTAM]:", ret);
+                    break;
+
+                case "system":
+                    ecam2("[BiliHP-系统消息]:", ret);
+                    break;
+
+                case "pong":
+                    //todo:这里加入debug开关方法
+                    ecam2("[BiliHP-Ping]:", ret);
+                    break;
 
 
+                case "curl":
+                    break;
 
+
+                case "gift":
+                    break;
+
+                case "guard":
+                    break;
+
+                case "tianxuan":
+                    break;
+
+                case "pk":
+                    break;
+
+                case "storm":
+                    break;
 
                 default:
                     break;
             }
+        }
+
+        public bool Gift_check()
+        {
+
+        }
+
+        public bool Gift_ratio()
+        {
+
         }
 
         public void ecam_action(object str)
@@ -101,11 +170,11 @@ namespace BiliHP2020.func
             ecam.Items.Insert(0, sb.ToString());
         }
 
-        public void ecam2(object msg,dynamic ret)
+        public void ecam2(object msg, dynamic ret)
         {
 
             ecam_action(msg);
-            this.send(this.send_obj("send_app", msg.ToString(), "",ret));
+            this.send(this.send_obj("send_app", msg.ToString(), "", ret));
         }
 
         private string send_obj(string type, string data, string echo, dynamic values = null)
