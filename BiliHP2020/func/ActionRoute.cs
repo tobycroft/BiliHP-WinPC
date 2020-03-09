@@ -5,6 +5,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Windows.Forms;
 using Microsoft.CSharp;
+using System.Threading;
 
 namespace BiliHP2020.func
 {
@@ -15,10 +16,6 @@ namespace BiliHP2020.func
         public string username;
         public Socket socket;
         public JObject json;
-        public static void Route(JObject json, string username, Socket socket)
-        {
-
-        }
 
         public void Route()
         {
@@ -44,7 +41,10 @@ namespace BiliHP2020.func
                     pcr.username = this.username;
                     pcr.ecam = this.ecam;
                     pcr.rtb = this.rtb;
-                    pcr.Route();
+                    pcr.socket = socket;
+                    Thread th = new Thread(pcr.Route);
+                    th.IsBackground = true;
+                    th.Start();
                     break;
 
 
@@ -146,17 +146,19 @@ namespace BiliHP2020.func
                     break;
 
                 default:
+                    ecam2("unknow-ecam:",ret);
                     break;
             }
         }
 
         public bool Gift_check()
         {
-
+            return true;
         }
 
         public bool Gift_ratio()
         {
+            return true;
 
         }
 
@@ -172,8 +174,8 @@ namespace BiliHP2020.func
 
         public void ecam2(object msg, dynamic ret)
         {
-
-            ecam_action(msg);
+            rtb.Text = msg.ToString()+(string)ret;
+            ecam_action(msg+ (string)ret);
             this.send(this.send_obj("send_app", msg.ToString(), "", ret));
         }
 

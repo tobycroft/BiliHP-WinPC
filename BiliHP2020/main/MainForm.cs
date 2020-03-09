@@ -357,6 +357,7 @@ namespace BiliHP2020
                 int length = this.socket.Receive(buffer);
                 if (length == 0)
                 {
+                    ecam_action("已经断开了……");
                     this.socket.Close();
                     return;
                 }
@@ -364,7 +365,7 @@ namespace BiliHP2020
                 {
                     string data = System.Text.Encoding.UTF8.GetString(buffer, 0, length);
                     temp += data;
-                    richTextBox1.Text = data.ToString();
+                    richTextBox2.Text = data.ToString();
                     JObject tp = TCPObject.tcpobj(temp);
                     JArray arr = tp["arr"].ToObject<JArray>();
                     temp = tp["json"].ToString();
