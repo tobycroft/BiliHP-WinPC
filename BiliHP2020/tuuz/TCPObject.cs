@@ -8,8 +8,6 @@ namespace BiliHP2020.tuuz
 {
     class TCPObject
     {
-
-
         public static JObject tcpobj(string json)
         {
             JArray arr = new JArray();
