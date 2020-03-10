@@ -116,12 +116,12 @@
             this.button10 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.debug = new System.Windows.Forms.CheckBox();
             this.ecam = new System.Windows.Forms.ListBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.face = new System.Windows.Forms.PictureBox();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.debug = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -132,10 +132,10 @@
             this.groupBox6.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.tabPage3.SuspendLayout();
+            this.tabPage4.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.face)).BeginInit();
-            this.tabPage4.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -1091,6 +1091,27 @@
             this.richTextBox1.TabIndex = 0;
             this.richTextBox1.Text = "";
             // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.debug);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Size = new System.Drawing.Size(467, 396);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "软件控制";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // debug
+            // 
+            this.debug.AutoSize = true;
+            this.debug.Location = new System.Drawing.Point(18, 13);
+            this.debug.Name = "debug";
+            this.debug.Size = new System.Drawing.Size(54, 16);
+            this.debug.TabIndex = 0;
+            this.debug.Text = "Debug";
+            this.debug.UseVisualStyleBackColor = true;
+            this.debug.CheckedChanged += new System.EventHandler(this.debug_CheckedChanged);
+            // 
             // ecam
             // 
             this.ecam.BackColor = System.Drawing.SystemColors.WindowText;
@@ -1134,27 +1155,6 @@
             this.face.TabIndex = 4;
             this.face.TabStop = false;
             // 
-            // tabPage4
-            // 
-            this.tabPage4.Controls.Add(this.debug);
-            this.tabPage4.Location = new System.Drawing.Point(4, 22);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(467, 396);
-            this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "软件控制";
-            this.tabPage4.UseVisualStyleBackColor = true;
-            // 
-            // debug
-            // 
-            this.debug.AutoSize = true;
-            this.debug.Location = new System.Drawing.Point(18, 13);
-            this.debug.Name = "debug";
-            this.debug.Size = new System.Drawing.Size(54, 16);
-            this.debug.TabIndex = 0;
-            this.debug.Text = "Debug";
-            this.debug.UseVisualStyleBackColor = true;
-            this.debug.CheckedChanged += new System.EventHandler(this.debug_CheckedChanged);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1164,6 +1164,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.tabControl1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.Text = "BiliHP-WinPC桌面版";
             this.Load += new System.EventHandler(this.MainForm_Load);
@@ -1181,11 +1182,11 @@
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             this.tabPage3.ResumeLayout(false);
+            this.tabPage4.ResumeLayout(false);
+            this.tabPage4.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.face)).EndInit();
-            this.tabPage4.ResumeLayout(false);
-            this.tabPage4.PerformLayout();
             this.ResumeLayout(false);
 
         }
