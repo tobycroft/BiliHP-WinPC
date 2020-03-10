@@ -22,9 +22,14 @@ namespace BiliHP2020.login
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string username = textBox1.Text;
-            string password = textBox2.Text;
-            string captcha = textBox3.Text;
+            if (!string.IsNullOrWhiteSpace(Properties.Settings.Default.username)&& !string.IsNullOrWhiteSpace(Properties.Settings.Default.token))
+            {
+                mainframe();
+                return;
+            }
+            string username = this.username.Text;
+            string password = this.password.Text;
+            string captcha = this.captcha.Text;
             if (username.Length < 6)
             {
                 MessageBox.Show("用户名太短啦");
@@ -113,6 +118,7 @@ namespace BiliHP2020.login
         private void Login_Load(object sender, EventArgs e)
         {
             version.Text = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            
         }
 
         private void textBox3_TextChanged(object sender, EventArgs e)
@@ -124,17 +130,21 @@ namespace BiliHP2020.login
         {
             WebClient wb = new WebClient();
             //string ret = wb.DownloadString("http://go.bilihp.com:180/v1/index/login/bili_captcha?username=" + textBox1.Text);
-            pictureBox2.ImageLocation = "http://go.bilihp.com:180/v1/index/login/bili_captcha?username=" + textBox1.Text;
+            pictureBox2.ImageLocation = "http://go.bilihp.com:180/v1/index/login/bili_captcha?username=" + username.Text;
 
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
+            mainframe();
+        }
+
+        private void mainframe()
+        {
             this.Visible = false;
             MainForm ea = new MainForm();
             ea.ecam.Items.Add("首页登录完成……");
             ea.ShowDialog();
-
             Application.ExitThread();
         }
 

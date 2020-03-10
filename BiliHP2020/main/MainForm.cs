@@ -30,9 +30,7 @@ namespace BiliHP2020
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            Thread ui = new Thread(update_user_info);
-            ui.IsBackground = true;
-            ui.Start();
+            update_user_info();
             connect();
 
             ecam_action(this.socket.ProtocolType.ToString());
@@ -134,7 +132,7 @@ namespace BiliHP2020
 
         private void button7_Click(object sender, EventArgs e)
         {
-            this.update_user_info();
+            update_user_info();
 
         }
 

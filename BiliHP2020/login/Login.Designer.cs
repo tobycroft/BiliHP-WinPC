@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.username = new System.Windows.Forms.TextBox();
+            this.password = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -38,7 +38,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.captcha = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
@@ -51,20 +51,20 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // textBox1
+            // username
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 317);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(290, 21);
-            this.textBox1.TabIndex = 1;
+            this.username.Location = new System.Drawing.Point(12, 317);
+            this.username.Name = "username";
+            this.username.Size = new System.Drawing.Size(290, 21);
+            this.username.TabIndex = 1;
             // 
-            // textBox2
+            // password
             // 
-            this.textBox2.Location = new System.Drawing.Point(12, 361);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.PasswordChar = '*';
-            this.textBox2.Size = new System.Drawing.Size(290, 21);
-            this.textBox2.TabIndex = 2;
+            this.password.Location = new System.Drawing.Point(12, 361);
+            this.password.Name = "password";
+            this.password.PasswordChar = '*';
+            this.password.Size = new System.Drawing.Size(290, 21);
+            this.password.TabIndex = 2;
             // 
             // button1
             // 
@@ -80,7 +80,7 @@
             // 
             this.button2.Location = new System.Drawing.Point(93, 464);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.Size = new System.Drawing.Size(62, 23);
             this.button2.TabIndex = 12;
             this.button2.Text = "扫码登陆";
             this.button2.UseVisualStyleBackColor = true;
@@ -136,13 +136,13 @@
             this.pictureBox2.TabIndex = 9;
             this.pictureBox2.TabStop = false;
             // 
-            // textBox3
+            // captcha
             // 
-            this.textBox3.Location = new System.Drawing.Point(241, 407);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(61, 21);
-            this.textBox3.TabIndex = 3;
-            this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
+            this.captcha.Location = new System.Drawing.Point(241, 407);
+            this.captcha.Name = "captcha";
+            this.captcha.Size = new System.Drawing.Size(61, 21);
+            this.captcha.TabIndex = 3;
+            this.captcha.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
             // label3
             // 
@@ -184,9 +184,9 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(174, 464);
+            this.button5.Location = new System.Drawing.Point(161, 464);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(47, 23);
+            this.button5.Size = new System.Drawing.Size(60, 23);
             this.button5.TabIndex = 15;
             this.button5.Text = "T1";
             this.button5.UseVisualStyleBackColor = true;
@@ -233,7 +233,7 @@
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.captcha);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -241,8 +241,8 @@
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.password);
+            this.Controls.Add(this.username);
             this.Controls.Add(this.pictureBox1);
             this.Name = "Login";
             this.Text = "Login";
@@ -255,8 +255,8 @@
         }
 
         #endregion
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox username;
+        private System.Windows.Forms.TextBox password;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
@@ -264,7 +264,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox captcha;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.RichTextBox richTextBox1;
