@@ -79,6 +79,12 @@ namespace BiliHP2020.func
 
                 case "reinit":
                     //todo:这里加入重新验证的方法
+                    JObject aa = new JObject();
+                    aa["username"] = Properties.Settings.Default.username;
+                    aa["token"] = Properties.Settings.Default.token;
+                    aa["type"] = "win";
+                    aa["version"] = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
+                    send(send_obj("init", "{}", "init"));
                     ecam2("", ret);
                     break;
 
@@ -101,7 +107,6 @@ namespace BiliHP2020.func
                 case "alert":
                     ecam2("[BiliHP-Alert]:", ret);
                     break;
-
 
                 case "login":
                     ecam2("[BiliHP-Login]:", ret);
@@ -145,7 +150,21 @@ namespace BiliHP2020.func
                     break;
 
                 case "gift":
-
+                    if (!Properties.Settings.Default.raffle)
+                    {
+                        ecam2("[BiliHP-Net]电视类型的领奖被关闭，请在面板中开启", echo);
+                        break;
+                    }
+                    if (!Time_check())
+                    {
+                        ecam2("[BiliHP-Net]不再领取时间段中", echo);
+                        break;
+                    }
+                    if (!Gift_ratio())
+                    {
+                        ecam2("[BiliHP-Net]自动跳过本礼物，如需增加领取率，请提高概率设定", echo);
+                        break;
+                    }
                     rets = ret;
                     header = rets["header"].ToObject<JObject>();
                     values = rets["values"].ToObject<JObject>();
@@ -161,7 +180,21 @@ namespace BiliHP2020.func
                     break;
 
                 case "guard":
-
+                    if (!Properties.Settings.Default.guard)
+                    {
+                        ecam2("[BiliHP-Net]电视类型的领奖被关闭，请在面板中开启", echo);
+                        break;
+                    }
+                    if (!Time_check())
+                    {
+                        ecam2("[BiliHP-Net]不再领取时间段中", echo);
+                        break;
+                    }
+                    if (!Gift_ratio())
+                    {
+                        ecam2("[BiliHP-Net]自动跳过本礼物，如需增加领取率，请提高概率设定", echo);
+                        break;
+                    }
                     rets = ret;
                     header = rets["header"].ToObject<JObject>();
                     values = rets["values"].ToObject<JObject>();
@@ -177,7 +210,21 @@ namespace BiliHP2020.func
                     break;
 
                 case "tianxuan":
-
+                    if (!Properties.Settings.Default.tianxuan)
+                    {
+                        ecam2("[BiliHP-Net]电视类型的领奖被关闭，请在面板中开启", echo);
+                        break;
+                    }
+                    if (!Time_check())
+                    {
+                        ecam2("[BiliHP-Net]不再领取时间段中", echo);
+                        break;
+                    }
+                    if (!Gift_ratio())
+                    {
+                        ecam2("[BiliHP-Net]自动跳过本礼物，如需增加领取率，请提高概率设定", echo);
+                        break;
+                    }
                     rets = ret;
                     header = rets["header"].ToObject<JObject>();
                     values = rets["values"].ToObject<JObject>();
@@ -193,7 +240,21 @@ namespace BiliHP2020.func
                     break;
 
                 case "pk":
-
+                    if (!Properties.Settings.Default.pk)
+                    {
+                        ecam2("[BiliHP-Net]电视类型的领奖被关闭，请在面板中开启", echo);
+                        break;
+                    }
+                    if (!Time_check())
+                    {
+                        ecam2("[BiliHP-Net]不再领取时间段中", echo);
+                        break;
+                    }
+                    if (!Gift_ratio())
+                    {
+                        ecam2("[BiliHP-Net]自动跳过本礼物，如需增加领取率，请提高概率设定", echo);
+                        break;
+                    }
                     rets = ret;
                     header = rets["header"].ToObject<JObject>();
                     values = rets["values"].ToObject<JObject>();
@@ -209,7 +270,21 @@ namespace BiliHP2020.func
                     break;
 
                 case "storm":
-
+                    if (!Properties.Settings.Default.storm)
+                    {
+                        ecam2("[BiliHP-Net]电视类型的领奖被关闭，请在面板中开启", echo);
+                        break;
+                    }
+                    if (!Time_check())
+                    {
+                        ecam2("[BiliHP-Net]不再领取时间段中", echo);
+                        break;
+                    }
+                    if (!Gift_ratio())
+                    {
+                        ecam2("[BiliHP-Net]自动跳过本礼物，如需增加领取率，请提高概率设定", echo);
+                        break;
+                    }
                     rets = ret;
                     header = rets["header"].ToObject<JObject>();
                     values = rets["values"].ToObject<JObject>();
@@ -230,7 +305,7 @@ namespace BiliHP2020.func
             }
         }
 
-        private JObject check_time()
+        private JObject get_time()
         {
             try
             {
@@ -241,13 +316,13 @@ namespace BiliHP2020.func
             {
                 Properties.Settings.Default.time = "{}";
                 Properties.Settings.Default.Save();
-                return this.check_time();
+                return this.get_time();
             }
         }
 
-        public bool Gift_check()
+        public bool Time_check()
         {
-            JObject time = check_time();
+            JObject time = get_time();
             string hour = DateTime.Now.Hour.ToString();
             if (time.Property("t" + hour) != null)
             {
