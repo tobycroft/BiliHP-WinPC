@@ -274,5 +274,17 @@ namespace BiliHP2020.Properties {
                 this["setting_lock"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool debug {
+            get {
+                return ((bool)(this["debug"]));
+            }
+            set {
+                this["debug"] = value;
+            }
+        }
     }
 }

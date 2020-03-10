@@ -84,7 +84,10 @@ namespace BiliHP2020.func
 
                 case "debug":
                     //todo:这里加入debug开关方法
-                    ecam2("[BiliHP-Debug]:", ret);
+                    if (Properties.Settings.Default.debug)
+                    {
+                        ecam2("[BiliHP-Debug]:", ret);
+                    }
                     break;
 
                 case "other":

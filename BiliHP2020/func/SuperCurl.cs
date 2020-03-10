@@ -42,21 +42,29 @@ namespace BiliHP2020.func
         {
             if (delay>0)
             {
-                //Thread.Sleep(1000 * delay);
+                Thread.Sleep(1000 * delay);
             }
             JObject Curl = Net.Curl(url, method, values, headers, cookie);
+            Curl["route"] = route;
+            Curl["echo"] = echo;
             JObject ret = new JObject();
             ret["type"] = type;
-            ret["cookie"] = Curl["cookie"];
-            ret["route"] = route;
-            ret["body"] = Curl["body"];
-            ret["header"] = Curl["headers"];
+            ret["data"] = Curl;
+            ret["echo"] = echo;
             ret["statusCode"] = 200;
             send(ret.ToString(Newtonsoft.Json.Formatting.None));
         }
         private void send(string data)
         {
-            socket.Send(Encoding.UTF8.GetBytes(data));
+            try
+            {
+                socket.Send(Encoding.UTF8.GetBytes(data));
+
+            }
+            catch (Exception)
+            {
+
+            }
         }
     }
 }

@@ -24,18 +24,40 @@ namespace BiliHP2020
             CheckForIllegalCrossThreadCalls = false;
             InitializeComponent();
         }
-        Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+        Socket socket;
         IPAddress address = Dns.GetHostEntry("go.bilihp.com").AddressList[0];
+        //IPAddress address = Dns.GetHostEntry("127.0.0.1").AddressList[0];
+
         private void MainForm_Load(object sender, EventArgs e)
         {
-            this.socket.NoDelay = false;
+            Thread ui = new Thread(update_user_info);
+            ui.IsBackground = true;
+            ui.Start();
+            connect();
+
             ecam_action(this.socket.ProtocolType.ToString());
             ecam_action(this.socket.SocketType.ToString());
-            this.socket.Connect(this.address.ToString(), 181);
             Thread sock = new Thread(recieve);
             sock.IsBackground = true;
             sock.Start();
             init();
+        }
+
+        private void connect()
+        {
+            try
+            {
+                socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                socket.NoDelay = false;
+
+                socket.Connect(address.ToString(), 181);
+            }
+            catch (Exception e)
+            {
+                ecam_action(e);
+                Thread.Sleep(1000);
+                connect();
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -65,7 +87,7 @@ namespace BiliHP2020
 
         private void button6_Click(object sender, EventArgs e)
         {
-
+            send("func", new JObject(), "refresh_token");
         }
 
         private void button7_Click(object sender, EventArgs e)
@@ -323,7 +345,7 @@ namespace BiliHP2020
 
         private void send(string type, JObject data, string echo)
         {
-            this.socket.Send(Encoding.UTF8.GetBytes(RET.ws_succ(type, 0, data, echo)));
+            socket.Send(Encoding.UTF8.GetBytes(RET.ws_succ(type, 0, data, echo)));
         }
 
         private void init()
@@ -339,40 +361,54 @@ namespace BiliHP2020
         {
             byte[] buffer = new byte[8192];
             string temp = "";
-            while (true)
+            try
             {
-                int length = this.socket.Receive(buffer);
-                if (length == 0)
+                while (true)
                 {
-                    ecam_action("已经断开了……");
-                    this.socket.Close();
-                    return;
-                }
-                else
-                {
-                    string data = System.Text.Encoding.UTF8.GetString(buffer, 0, length);
-                    temp += data;
-                    JObject tp = TCPObject.tcpobj(temp);
-                    JArray arr = tp["arr"].ToObject<JArray>();
-                    temp = tp["json"].ToString();
-                    richTextBox2.Text = temp.ToString();
+                    int length = this.socket.Receive(buffer);
 
-                    foreach (var item in arr)
+                    if (length == 0)
                     {
-                        ActionRoute act = new ActionRoute();
-                        act.rtb = richTextBox1;
-                        act.socket = this.socket;
-                        act.ecam = ecam;
-                        act.username = Properties.Settings.Default.username;
-                        act.json = item.ToObject<JObject>();
-                        Thread th = new Thread(act.Route);
-                        th.IsBackground = true;
-                        th.Start();
+                        ecam_action("已经断开了……");
+                        this.socket.Close();
+                        return;
+                    }
+                    else
+                    {
+                        string data = System.Text.Encoding.UTF8.GetString(buffer, 0, length);
+                        richTextBox2.Text = data.ToString();
+                        temp += data;
+                        JObject tp = TCPObject.tcpobj(temp);
+                        JArray arr = tp["arr"].ToObject<JArray>();
+                        temp = tp["json"].ToString();
+
+                        foreach (var item in arr)
+                        {
+                            ActionRoute act = new ActionRoute();
+                            act.rtb = richTextBox1;
+                            act.socket = this.socket;
+                            act.ecam = ecam;
+                            act.username = Properties.Settings.Default.username;
+                            act.json = item.ToObject<JObject>();
+                            Thread th = new Thread(act.Route);
+                            th.IsBackground = true;
+                            th.Start();
+                        }
+
                     }
 
                 }
-
             }
+            catch (Exception e)
+            {
+                Thread.Sleep(1000);
+                connect();
+                init();
+                ecam_action(e);
+                recieve();
+                throw e;
+            }
+           
 
         }
         public void ecam_action(object str)
@@ -388,6 +424,12 @@ namespace BiliHP2020
         private void button10_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void debug_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.debug = debug.Checked;
+            Properties.Settings.Default.Save();
         }
     }
 }

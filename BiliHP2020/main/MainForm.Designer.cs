@@ -112,6 +112,7 @@
             this.silver = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
             this.button10 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
@@ -119,7 +120,8 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.face = new System.Windows.Forms.PictureBox();
-            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.debug = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -133,6 +135,7 @@
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.face)).BeginInit();
+            this.tabPage4.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -140,6 +143,7 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Location = new System.Drawing.Point(8, 109);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -1051,6 +1055,14 @@
             this.tabPage3.Text = "TB";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // richTextBox2
+            // 
+            this.richTextBox2.Location = new System.Drawing.Point(13, 235);
+            this.richTextBox2.Name = "richTextBox2";
+            this.richTextBox2.Size = new System.Drawing.Size(439, 107);
+            this.richTextBox2.TabIndex = 3;
+            this.richTextBox2.Text = "";
+            // 
             // button10
             // 
             this.button10.Location = new System.Drawing.Point(104, 348);
@@ -1122,19 +1134,32 @@
             this.face.TabIndex = 4;
             this.face.TabStop = false;
             // 
-            // richTextBox2
+            // tabPage4
             // 
-            this.richTextBox2.Location = new System.Drawing.Point(13, 235);
-            this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(439, 107);
-            this.richTextBox2.TabIndex = 3;
-            this.richTextBox2.Text = "";
+            this.tabPage4.Controls.Add(this.debug);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Size = new System.Drawing.Size(467, 396);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "软件控制";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // debug
+            // 
+            this.debug.AutoSize = true;
+            this.debug.Location = new System.Drawing.Point(18, 13);
+            this.debug.Name = "debug";
+            this.debug.Size = new System.Drawing.Size(54, 16);
+            this.debug.TabIndex = 0;
+            this.debug.Text = "Debug";
+            this.debug.UseVisualStyleBackColor = true;
+            this.debug.CheckedChanged += new System.EventHandler(this.debug_CheckedChanged);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(801, 536);
+            this.ClientSize = new System.Drawing.Size(838, 536);
             this.Controls.Add(this.face);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.groupBox1);
@@ -1159,6 +1184,8 @@
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.face)).EndInit();
+            this.tabPage4.ResumeLayout(false);
+            this.tabPage4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1256,6 +1283,8 @@
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.RichTextBox richTextBox2;
+        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.CheckBox debug;
     }
 }
 
