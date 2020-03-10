@@ -68,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="func\ActionRoute.cs" />
+    <Compile Include="func\Function.cs" />
     <Compile Include="func\Net.cs" />
     <Compile Include="func\PCRoute.cs" />
     <Compile Include="func\RET.cs" />

@@ -32,7 +32,7 @@ namespace BiliHP2020.func
             switch (type)
             {
                 case "orign":
-                    ecam_action(ret);
+                    ecam2(echo, ret);
                     break;
 
                 case "app":
@@ -49,23 +49,23 @@ namespace BiliHP2020.func
 
 
                 case "supercurl":
-                    ecam2("", ret);
+                    ecam2(echo, ret);
                     break;
 
                 case "info":
-                    ecam2("", ret);
+                    ecam2(echo, ret);
                     break;
 
                 case "warning":
-                    ecam2("", ret);
+                    ecam2(echo, ret);
                     break;
 
                 case "error":
-                    ecam2("", ret);
+                    ecam2(echo, ret);
                     break;
 
                 case "update":
-                    ecam2("", ret);
+                    ecam2(echo, ret);
                     break;
 
                 case "c2c":
@@ -135,6 +135,7 @@ namespace BiliHP2020.func
 
 
                 case "curl":
+                    ecam_action(echo);
                     JObject rets = ret;
                     JObject header = rets["header"].ToObject<JObject>();
                     JObject values = rets["values"].ToObject<JObject>();
@@ -150,19 +151,20 @@ namespace BiliHP2020.func
                     break;
 
                 case "gift":
+                    ecam_action(echo);
                     if (!Properties.Settings.Default.raffle)
                     {
-                        ecam2("[BiliHP-Net]电视类型的领奖被关闭，请在面板中开启", echo);
+                        ecam2("[BiliHP-Net]", "电视类型的领奖被关闭，请在面板中开启");
                         break;
                     }
                     if (!Time_check())
                     {
-                        ecam2("[BiliHP-Net]不再领取时间段中", echo);
+                        ecam2("[BiliHP-Net]", "不在领取时间段中");
                         break;
                     }
                     if (!Gift_ratio())
                     {
-                        ecam2("[BiliHP-Net]自动跳过本礼物，如需增加领取率，请提高概率设定", echo);
+                        ecam2("[BiliHP-Net]", "自动跳过本礼物，如需增加领取率，请提高概率设定");
                         break;
                     }
                     rets = ret;
@@ -175,24 +177,25 @@ namespace BiliHP2020.func
                     route = rets["route"].ToString();
                     typ = rets["type"].ToString();
                     delay = rets["delay"].ToObject<int>();
-                    ecam2(type,echo);
+                    ecam2(type, echo);
                     SuperCurl.Curl(socket, url, method, values, header, cookie, typ, echo, route, delay);
                     break;
 
                 case "guard":
+                    ecam_action(echo);
                     if (!Properties.Settings.Default.guard)
                     {
-                        ecam2("[BiliHP-Net]电视类型的领奖被关闭，请在面板中开启", echo);
+                        ecam2("[BiliHP-Net]", "舰长类型的领奖被关闭，请在面板中开启");
                         break;
                     }
                     if (!Time_check())
                     {
-                        ecam2("[BiliHP-Net]不再领取时间段中", echo);
+                        ecam2("[BiliHP-Net]", "不在领取时间段中");
                         break;
                     }
                     if (!Gift_ratio())
                     {
-                        ecam2("[BiliHP-Net]自动跳过本礼物，如需增加领取率，请提高概率设定", echo);
+                        ecam2("[BiliHP-Net]", "自动跳过本礼物，如需增加领取率，请提高概率设定");
                         break;
                     }
                     rets = ret;
@@ -210,19 +213,20 @@ namespace BiliHP2020.func
                     break;
 
                 case "tianxuan":
+                    ecam_action(echo);
                     if (!Properties.Settings.Default.tianxuan)
                     {
-                        ecam2("[BiliHP-Net]电视类型的领奖被关闭，请在面板中开启", echo);
+                        ecam2("[BiliHP-Net]", "天选类型的领奖被关闭，请在面板中开启");
                         break;
                     }
                     if (!Time_check())
                     {
-                        ecam2("[BiliHP-Net]不再领取时间段中", echo);
+                        ecam2("[BiliHP-Net]", "不在领取时间段中");
                         break;
                     }
                     if (!Gift_ratio())
                     {
-                        ecam2("[BiliHP-Net]自动跳过本礼物，如需增加领取率，请提高概率设定", echo);
+                        ecam2("[BiliHP-Net]", "自动跳过本礼物，如需增加领取率，请提高概率设定");
                         break;
                     }
                     rets = ret;
@@ -240,19 +244,20 @@ namespace BiliHP2020.func
                     break;
 
                 case "pk":
+                    ecam_action(echo);
                     if (!Properties.Settings.Default.pk)
                     {
-                        ecam2("[BiliHP-Net]电视类型的领奖被关闭，请在面板中开启", echo);
+                        ecam2("[BiliHP-Net]", "PK类型的领奖被关闭，请在面板中开启");
                         break;
                     }
                     if (!Time_check())
                     {
-                        ecam2("[BiliHP-Net]不再领取时间段中", echo);
+                        ecam2("[BiliHP-Net]", "不在领取时间段中");
                         break;
                     }
                     if (!Gift_ratio())
                     {
-                        ecam2("[BiliHP-Net]自动跳过本礼物，如需增加领取率，请提高概率设定", echo);
+                        ecam2("[BiliHP-Net]", "自动跳过本礼物，如需增加领取率，请提高概率设定");
                         break;
                     }
                     rets = ret;
@@ -270,19 +275,20 @@ namespace BiliHP2020.func
                     break;
 
                 case "storm":
+                    ecam_action(echo);
                     if (!Properties.Settings.Default.storm)
                     {
-                        ecam2("[BiliHP-Net]电视类型的领奖被关闭，请在面板中开启", echo);
+                        ecam2("[BiliHP-Net]", "风暴类型的领奖被关闭，请在面板中开启");
                         break;
                     }
                     if (!Time_check())
                     {
-                        ecam2("[BiliHP-Net]不再领取时间段中", echo);
+                        ecam2("[BiliHP-Net]", "不在领取时间段中");
                         break;
                     }
                     if (!Gift_ratio())
                     {
-                        ecam2("[BiliHP-Net]自动跳过本礼物，如需增加领取率，请提高概率设定", echo);
+                        ecam2("[BiliHP-Net]", "自动跳过本礼物，如需增加领取率，请提高概率设定");
                         break;
                     }
                     rets = ret;

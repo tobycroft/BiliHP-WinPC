@@ -41,7 +41,49 @@ namespace BiliHP2020
             sock.IsBackground = true;
             sock.Start();
             init();
+            fn.socket = socket;
+            t1 = new Thread(fn.yingyuan_sign);
+            t1.IsBackground = true;
+            //t1.Start();
+
+            t2 = new Thread(fn.daily_task);
+            t2.IsBackground = true;
+            t2.Start();
+
+            t3 = new Thread(fn.silver_task);
+            t3.IsBackground = true;
+            t3.Start();
+
+            t4 = new Thread(fn.online_silver);
+            t4.IsBackground = true;
+            t4.Start();
+
+            t5 = new Thread(fn.daily_bag);
+            t5.IsBackground = true;
+            t5.Start();
+
+            t6 = new Thread(fn.app_heart);
+            t6.IsBackground = true;
+            t6.Start();
+
+            t7 = new Thread(fn.pc_heart);
+            t7.IsBackground = true;
+            t7.Start();
+
+            t8 = new Thread(fn.Ping);
+            t8.IsBackground = true;
+            t8.Start();
+
         }
+
+        Function fn = new Function();
+        Thread t1, t2;
+        Thread t3;
+        Thread t4;
+        Thread t5;
+        Thread t6;
+        Thread t7;
+        Thread t8;
 
         private void connect()
         {
@@ -355,7 +397,7 @@ namespace BiliHP2020
             aa["token"] = Properties.Settings.Default.token;
             aa["type"] = "win";
             aa["version"] = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
-            this.send("init", aa, "init");
+            send("init", aa, "init");
         }
         public void recieve()
         {
@@ -408,7 +450,7 @@ namespace BiliHP2020
                 recieve();
                 throw e;
             }
-           
+
 
         }
         public void ecam_action(object str)

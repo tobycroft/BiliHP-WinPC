@@ -29,10 +29,19 @@ namespace BiliHP2020.func
         }
         public static JObject Curl(string url, string method, JObject values, JObject headers, JObject cookie)
         {
+            JObject dict = new JObject();
+            foreach (var item in values)
+            {
+                dict.Add(item.Key, item.Value);
+            }
+            if (method.ToUpper() == "GET")
+            {
+                url = url + "?" + http_build_query(dict);
+            }
             HttpWebRequest req = (HttpWebRequest)WebRequest.Create(url);
             WebProxy px = new WebProxy(ip, port);
             req.Proxy = px;
-            req.Method = method;
+            req.Method = method.ToUpper();
             CookieContainer cookies = new CookieContainer();
             if (cookie != null && cookie.HasValues)
             {
@@ -115,15 +124,15 @@ namespace BiliHP2020.func
             }
 
             req.CookieContainer = cookies;
-            req.ContentType = "application/x-www-form-urlencoded";
-            StreamWriter sw = new StreamWriter(req.GetRequestStream());
-            JObject dict = new JObject();
-            foreach (var item in values)
+            //req.ContentType = "application/x-www-form-urlencoded";
+
+            if (method.ToUpper() == "POST")
             {
-                dict.Add(item.Key, item.Value);
+                StreamWriter sw = new StreamWriter(req.GetRequestStream());
+                sw.Write(http_build_query(dict));
+                sw.Close();
             }
-            sw.Write(http_build_query(dict));
-            sw.Close();
+
             HttpWebResponse resp = (HttpWebResponse)req.GetResponse();
 
             JObject ret_header = new JObject();
