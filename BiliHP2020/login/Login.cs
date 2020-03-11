@@ -22,6 +22,10 @@ namespace BiliHP2020.login
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if(!eula.Checked){
+                MessageBox.Show("如果不信任我们，就不要用了吧？");
+                return;
+            }
             if (!string.IsNullOrWhiteSpace(Properties.Settings.Default.username)&& !string.IsNullOrWhiteSpace(Properties.Settings.Default.token))
             {
                 mainframe();
@@ -43,7 +47,7 @@ namespace BiliHP2020.login
                 MessageBox.Show("记得要输入验证码哦~");
                 return;
             }
-            if (!checkBox1.Checked)
+            if (!eula.Checked)
             {
                 MessageBox.Show("呵呵");
                 return;
@@ -118,6 +122,11 @@ namespace BiliHP2020.login
             version.Text = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
             username.Text = Properties.Settings.Default.username;
             password.Text = Properties.Settings.Default.password;
+            if (!string.IsNullOrWhiteSpace(Properties.Settings.Default.token))
+            {
+                captcha.Enabled = false;
+                button4.Enabled = false;
+            }
         }
 
         private void textBox3_TextChanged(object sender, EventArgs e)
@@ -135,7 +144,12 @@ namespace BiliHP2020.login
 
         private void button5_Click(object sender, EventArgs e)
         {
-            mainframe();
+            Properties.Settings.Default.username = "";
+            Properties.Settings.Default.password = "";
+            Properties.Settings.Default.token = "";
+            captcha.Enabled = true;
+            button4.Enabled = true;
+            Properties.Settings.Default.Save();
         }
 
         private void mainframe()
