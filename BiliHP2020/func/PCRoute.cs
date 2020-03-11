@@ -42,6 +42,8 @@ namespace BiliHP2020.func
                     Properties.Settings.Default.update_time = data["pk"].ToObject<string>();
                     Properties.Settings.Default.date = data["date"].ToObject<string>();
                     Properties.Settings.Default.Save();
+
+                    
                     ecam2("[ECAM-设置同步]", "收到设置同步消息");
                     break;
 

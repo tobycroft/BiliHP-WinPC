@@ -127,10 +127,10 @@ namespace BiliHP2020.func
             }
 
             req.CookieContainer = cookies;
-            //req.ContentType = "application/x-www-form-urlencoded";
 
             if (method.ToUpper() == "POST")
             {
+                req.ContentType = "application/x-www-form-urlencoded";
                 StreamWriter sw = new StreamWriter(req.GetRequestStream());
                 sw.Write(http_build_query(dict));
                 sw.Close();

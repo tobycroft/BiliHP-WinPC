@@ -32,7 +32,6 @@ namespace BiliHP2020
         {
             update_user_info();
             connect();
-
             ecam_action(this.socket.ProtocolType.ToString());
             ecam_action(this.socket.SocketType.ToString());
             Thread sock = new Thread(recieve);
@@ -82,6 +81,30 @@ namespace BiliHP2020
         Thread t6;
         Thread t7;
         Thread t8;
+
+        private void setting_load()
+        {
+            Properties.Settings.Default.setting_lock = true;
+            Properties.Settings.Default.Save();
+            app_heart.Checked = Properties.Settings.Default.app_heart;
+            pc_heart.Checked = Properties.Settings.Default.pc_heart;
+            daily_bag.Checked = Properties.Settings.Default.daily_bag;
+            online_silver.Checked = Properties.Settings.Default.online_silver;
+            silver_task.Checked = Properties.Settings.Default.silver_task;
+            daily_task.Checked = Properties.Settings.Default.daily_task;
+            silver_to_coin.Checked = Properties.Settings.Default.silver_to_coin;
+            yingyuan_sign.Checked = Properties.Settings.Default.yingyuan_sign;
+            raffle.Checked = Properties.Settings.Default.raffle;
+            guard.Checked = Properties.Settings.Default.guard;
+            tianxuan.Checked = Properties.Settings.Default.tianxuan;
+            pk.Checked = Properties.Settings.Default.pk;
+            storm.Checked = Properties.Settings.Default.storm;
+            percent.Text = Properties.Settings.Default.percent.ToString();
+
+            debug.Checked = Properties.Settings.Default.debug;
+            Properties.Settings.Default.setting_lock = false;
+            Properties.Settings.Default.Save();
+        }
 
         private void connect()
         {
@@ -181,185 +204,7 @@ namespace BiliHP2020
             }
         }
 
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
 
-        }
-
-        private void checkBox2_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox5_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox4_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox7_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox6_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox3_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox8_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox9_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox10_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox11_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox12_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox13_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox14_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox15_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox16_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox17_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox18_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox19_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox20_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox21_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox22_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox23_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox24_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox25_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox26_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox27_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox28_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox29_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox30_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox31_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox32_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox33_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox34_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox35_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox36_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void button8_Click(object sender, EventArgs e)
         {
@@ -371,12 +216,6 @@ namespace BiliHP2020
             Environment.Exit(0);
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-
 
         private void button9_Click(object sender, EventArgs e)
         {
@@ -385,7 +224,18 @@ namespace BiliHP2020
 
         private void send(string type, JObject data, string echo)
         {
-            socket.Send(Encoding.UTF8.GetBytes(RET.ws_succ(type, 0, data, echo)));
+            send_raw(RET.ws_succ(type, 0, data, echo));
+        }
+
+        private void send_setting(string route, JObject data, string echo)
+        {
+            send_raw(RET.ws_succ2("app", route, data, echo));
+        }
+
+        private void send_raw(string raw)
+        {
+            socket.Send(Encoding.UTF8.GetBytes(raw));
+
         }
 
         private void init()
@@ -434,9 +284,7 @@ namespace BiliHP2020
                             th.IsBackground = true;
                             th.Start();
                         }
-
                     }
-
                 }
             }
             catch (Exception e)
@@ -461,7 +309,192 @@ namespace BiliHP2020
             ecam.Items.Insert(0, sb.ToString());
         }
 
-        private void button10_Click(object sender, EventArgs e)
+        private void app_heart_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void online_silver_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void silver_to_coin_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pc_heart_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void yingyuan_sign_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void daily_bag_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void silver_task_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void daily_task_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void raffle_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void guard_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tianxuan_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pk_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void storm_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void time0_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void time1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void time2_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void time3_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void time4_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void time5_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void time6_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void time7_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void time8_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void time9_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void time10_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void time11_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void time12_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void time13_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void time14_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void time15_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void time16_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void time17_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void time18_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void time19_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void time20_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void time21_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void time22_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void time23_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void percent_TextChanged(object sender, EventArgs e)
         {
 
         }

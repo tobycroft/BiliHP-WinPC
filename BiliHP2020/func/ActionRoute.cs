@@ -113,6 +113,7 @@ namespace BiliHP2020.func
                     break;
 
                 case "loged":
+                    send(RET.ws_succ2("app", "get_config", new JObject(), "get_config"));
                     ecam2("[BiliHP-Loged]:", ret);
                     break;
 
