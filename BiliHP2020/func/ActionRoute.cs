@@ -114,6 +114,8 @@ namespace BiliHP2020.func
 
                 case "loged":
                     send(RET.ws_succ2("app", "get_config", new JObject(), "get_config"));
+                    send(RET.ws_succ2("func", "", new JObject(), "user_info"));
+                    send(RET.ws_succ2("func", "", new JObject(), "refresh_token"));
                     ecam2("[BiliHP-Loged]:", ret);
                     break;
 
