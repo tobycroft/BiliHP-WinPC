@@ -312,7 +312,7 @@ namespace BiliHP2020.func
             }
         }
 
-        private JObject get_time()
+        public static JObject get_time()
         {
             try
             {
@@ -323,11 +323,11 @@ namespace BiliHP2020.func
             {
                 Properties.Settings.Default.time = "{}";
                 Properties.Settings.Default.Save();
-                return this.get_time();
+                return get_time();
             }
         }
 
-        public bool Time_check()
+        private static bool Time_check()
         {
             JObject time = get_time();
             string hour = DateTime.Now.Hour.ToString();

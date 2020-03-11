@@ -17,13 +17,14 @@ namespace BiliHP2020.func
         public JObject json;
         public void Route()
         {
+            //MessageBox.Show(json["route"].ToString());
             string route = json["route"].ToString();
-            JObject data = json["data"].ToObject<JObject>();
             string echo = json["echo"].ToString();
             switch (route)
             {
 
                 case "update_config":
+                    JObject data = json["data"].ToObject<JObject>();
                     Properties.Settings.Default.app_heart = data["app_heart"].ToObject<bool>();
                     Properties.Settings.Default.pc_heart = data["pc_heart"].ToObject<bool>();
                     Properties.Settings.Default.daily_bag = data["daily_bag"].ToObject<bool>();
@@ -41,13 +42,16 @@ namespace BiliHP2020.func
                     Properties.Settings.Default.percent = data["pk"].ToObject<int>();
                     Properties.Settings.Default.update_time = data["pk"].ToObject<string>();
                     Properties.Settings.Default.date = data["date"].ToObject<string>();
+                    Properties.Settings.Default.setting_read = true;
                     Properties.Settings.Default.Save();
 
-                    
                     ecam2("[ECAM-设置同步]", "收到设置同步消息");
                     break;
 
-                
+                case "app_ecam":
+                    ecam2(echo, json["data"]);
+                    break;
+
 
                 default:
 

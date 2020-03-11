@@ -286,5 +286,17 @@ namespace BiliHP2020.Properties {
                 this["debug"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool setting_read {
+            get {
+                return ((bool)(this["setting_read"]));
+            }
+            set {
+                this["setting_read"] = value;
+            }
+        }
     }
 }

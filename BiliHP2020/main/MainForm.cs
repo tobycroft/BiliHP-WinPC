@@ -30,6 +30,7 @@ namespace BiliHP2020
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+
             update_user_info();
             connect();
             ecam_action(this.socket.ProtocolType.ToString());
@@ -71,6 +72,9 @@ namespace BiliHP2020
             t8.IsBackground = true;
             t8.Start();
 
+            Thread sett = new Thread(setting_load);
+            sett.IsBackground = true;
+            sett.Start();
         }
 
         Function fn = new Function();
@@ -84,26 +88,139 @@ namespace BiliHP2020
 
         private void setting_load()
         {
-            Properties.Settings.Default.setting_lock = true;
-            Properties.Settings.Default.Save();
-            app_heart.Checked = Properties.Settings.Default.app_heart;
-            pc_heart.Checked = Properties.Settings.Default.pc_heart;
-            daily_bag.Checked = Properties.Settings.Default.daily_bag;
-            online_silver.Checked = Properties.Settings.Default.online_silver;
-            silver_task.Checked = Properties.Settings.Default.silver_task;
-            daily_task.Checked = Properties.Settings.Default.daily_task;
-            silver_to_coin.Checked = Properties.Settings.Default.silver_to_coin;
-            yingyuan_sign.Checked = Properties.Settings.Default.yingyuan_sign;
-            raffle.Checked = Properties.Settings.Default.raffle;
-            guard.Checked = Properties.Settings.Default.guard;
-            tianxuan.Checked = Properties.Settings.Default.tianxuan;
-            pk.Checked = Properties.Settings.Default.pk;
-            storm.Checked = Properties.Settings.Default.storm;
-            percent.Text = Properties.Settings.Default.percent.ToString();
+            while (true)
+            {
+                Thread.Sleep(100);
+                if (Properties.Settings.Default.setting_read)
+                {
+                    Properties.Settings.Default.setting_lock = true;
+                    Properties.Settings.Default.Save();
+                    app_heart.Checked = Properties.Settings.Default.app_heart;
+                    pc_heart.Checked = Properties.Settings.Default.pc_heart;
+                    daily_bag.Checked = Properties.Settings.Default.daily_bag;
+                    online_silver.Checked = Properties.Settings.Default.online_silver;
+                    silver_task.Checked = Properties.Settings.Default.silver_task;
+                    daily_task.Checked = Properties.Settings.Default.daily_task;
+                    silver_to_coin.Checked = Properties.Settings.Default.silver_to_coin;
+                    yingyuan_sign.Checked = Properties.Settings.Default.yingyuan_sign;
+                    raffle.Checked = Properties.Settings.Default.raffle;
+                    guard.Checked = Properties.Settings.Default.guard;
+                    tianxuan.Checked = Properties.Settings.Default.tianxuan;
+                    pk.Checked = Properties.Settings.Default.pk;
+                    storm.Checked = Properties.Settings.Default.storm;
+                    percent.Text = Properties.Settings.Default.percent.ToString();
 
-            debug.Checked = Properties.Settings.Default.debug;
-            Properties.Settings.Default.setting_lock = false;
-            Properties.Settings.Default.Save();
+                    foreach (var item in ActionRoute.get_time())
+                    {
+                        switch (item.Key)
+                        {
+
+                            case "t0":
+                                time0.Checked = item.Value.ToObject<bool>();
+                                break;
+
+                            case "t1":
+                                time1.Checked = item.Value.ToObject<bool>();
+                                break;
+
+                            case "t2":
+                                time2.Checked = item.Value.ToObject<bool>();
+                                break;
+
+                            case "t3":
+                                time3.Checked = item.Value.ToObject<bool>();
+                                break;
+
+                            case "t4":
+                                time4.Checked = item.Value.ToObject<bool>();
+                                break;
+
+                            case "t5":
+                                time5.Checked = item.Value.ToObject<bool>();
+                                break;
+
+                            case "t6":
+                                time6.Checked = item.Value.ToObject<bool>();
+                                break;
+
+                            case "t7":
+                                time7.Checked = item.Value.ToObject<bool>();
+                                break;
+
+                            case "t8":
+                                time8.Checked = item.Value.ToObject<bool>();
+                                break;
+
+                            case "t9":
+                                time9.Checked = item.Value.ToObject<bool>();
+                                break;
+
+                            case "t10":
+                                time10.Checked = item.Value.ToObject<bool>();
+                                break;
+
+                            case "t11":
+                                time11.Checked = item.Value.ToObject<bool>();
+                                break;
+
+                            case "t12":
+                                time12.Checked = item.Value.ToObject<bool>();
+                                break;
+
+                            case "t13":
+                                time13.Checked = item.Value.ToObject<bool>();
+                                break;
+
+                            case "t14":
+                                time14.Checked = item.Value.ToObject<bool>();
+                                break;
+
+                            case "t15":
+                                time15.Checked = item.Value.ToObject<bool>();
+                                break;
+
+                            case "t16":
+                                time16.Checked = item.Value.ToObject<bool>();
+                                break;
+
+                            case "t17":
+                                time17.Checked = item.Value.ToObject<bool>();
+                                break;
+
+                            case "t18":
+                                time18.Checked = item.Value.ToObject<bool>();
+                                break;
+
+                            case "t19":
+                                time19.Checked = item.Value.ToObject<bool>();
+                                break;
+
+                            case "t20":
+                                time20.Checked = item.Value.ToObject<bool>();
+                                break;
+
+                            case "t21":
+                                time21.Checked = item.Value.ToObject<bool>();
+                                break;
+
+                            case "t22":
+                                time22.Checked = item.Value.ToObject<bool>();
+                                break;
+
+                            case "t23":
+                                time23.Checked = item.Value.ToObject<bool>();
+                                break;
+
+                            default:
+                                break;
+                        }
+                    }
+
+                    debug.Checked = Properties.Settings.Default.debug;
+                    Properties.Settings.Default.setting_lock = false;
+                    Properties.Settings.Default.Save();
+                }
+            }
         }
 
         private void connect()
@@ -311,192 +428,542 @@ namespace BiliHP2020
 
         private void app_heart_CheckedChanged(object sender, EventArgs e)
         {
-
+            Properties.Settings.Default.app_heart = app_heart.Checked;
+            Properties.Settings.Default.Save();
+            if (!Properties.Settings.Default.setting_lock)
+            {
+                JObject setting = new JObject();
+                setting["key"] = "app_heart";
+                setting["value"] = app_heart.Checked;
+                send_setting("pc_set_setting", setting, "pc_set_setting");
+            }
         }
 
         private void online_silver_CheckedChanged(object sender, EventArgs e)
         {
-
+            Properties.Settings.Default.app_heart = app_heart.Checked;
+            Properties.Settings.Default.Save();
+            if (!Properties.Settings.Default.setting_lock)
+            {
+                JObject setting = new JObject();
+                setting["key"] = "online_silver";
+                setting["value"] = online_silver.Checked;
+                send_setting("pc_set_setting", setting, "pc_set_setting");
+            }
         }
 
         private void silver_to_coin_CheckedChanged(object sender, EventArgs e)
         {
-
+            Properties.Settings.Default.app_heart = app_heart.Checked;
+            Properties.Settings.Default.Save();
+            if (!Properties.Settings.Default.setting_lock)
+            {
+                JObject setting = new JObject();
+                setting["key"] = "silver_to_coin";
+                setting["value"] = silver_to_coin.Checked;
+                send_setting("pc_set_setting", setting, "pc_set_setting");
+            }
         }
 
         private void pc_heart_CheckedChanged(object sender, EventArgs e)
         {
-
+            Properties.Settings.Default.pc_heart = pc_heart.Checked;
+            Properties.Settings.Default.Save();
+            if (!Properties.Settings.Default.setting_lock)
+            {
+                JObject setting = new JObject();
+                setting["key"] = "pc_heart";
+                setting["value"] = pc_heart.Checked;
+                send_setting("pc_set_setting", setting, "pc_set_setting");
+            }
         }
 
         private void yingyuan_sign_CheckedChanged(object sender, EventArgs e)
         {
-
+            Properties.Settings.Default.yingyuan_sign = yingyuan_sign.Checked;
+            Properties.Settings.Default.Save();
+            if (!Properties.Settings.Default.setting_lock)
+            {
+                JObject setting = new JObject();
+                setting["key"] = "yingyuan_sign";
+                setting["value"] = yingyuan_sign.Checked;
+                send_setting("pc_set_setting", setting, "pc_set_setting");
+            }
         }
 
         private void daily_bag_CheckedChanged(object sender, EventArgs e)
         {
-
+            Properties.Settings.Default.daily_bag = daily_bag.Checked;
+            Properties.Settings.Default.Save();
+            if (!Properties.Settings.Default.setting_lock)
+            {
+                JObject setting = new JObject();
+                setting["key"] = "daily_bag";
+                setting["value"] = daily_bag.Checked;
+                send_setting("pc_set_setting", setting, "pc_set_setting");
+            }
         }
 
         private void silver_task_CheckedChanged(object sender, EventArgs e)
         {
-
+            Properties.Settings.Default.silver_task = silver_task.Checked;
+            Properties.Settings.Default.Save();
+            if (!Properties.Settings.Default.setting_lock)
+            {
+                JObject setting = new JObject();
+                setting["key"] = "silver_task";
+                setting["value"] = silver_task.Checked;
+                send_setting("pc_set_setting", setting, "pc_set_setting");
+            }
         }
 
         private void daily_task_CheckedChanged(object sender, EventArgs e)
         {
-
+            Properties.Settings.Default.daily_task = daily_task.Checked;
+            Properties.Settings.Default.Save();
+            if (!Properties.Settings.Default.setting_lock)
+            {
+                JObject setting = new JObject();
+                setting["key"] = "daily_task";
+                setting["value"] = daily_task.Checked;
+                send_setting("pc_set_setting", setting, "pc_set_setting");
+            }
         }
 
         private void raffle_CheckedChanged(object sender, EventArgs e)
         {
-
+            Properties.Settings.Default.raffle = raffle.Checked;
+            Properties.Settings.Default.Save();
+            if (!Properties.Settings.Default.setting_lock)
+            {
+                JObject setting = new JObject();
+                setting["key"] = "raffle";
+                setting["value"] = raffle.Checked;
+                send_setting("pc_set_setting", setting, "pc_set_setting");
+            }
         }
 
         private void guard_CheckedChanged(object sender, EventArgs e)
         {
-
+            Properties.Settings.Default.guard = guard.Checked;
+            Properties.Settings.Default.Save();
+            if (!Properties.Settings.Default.setting_lock)
+            {
+                JObject setting = new JObject();
+                setting["key"] = "guard";
+                setting["value"] = guard.Checked;
+                send_setting("pc_set_setting", setting, "pc_set_setting");
+            }
         }
 
         private void tianxuan_CheckedChanged(object sender, EventArgs e)
         {
-
+            Properties.Settings.Default.tianxuan = tianxuan.Checked;
+            Properties.Settings.Default.Save();
+            if (!Properties.Settings.Default.setting_lock)
+            {
+                JObject setting = new JObject();
+                setting["key"] = "tianxuan";
+                setting["value"] = tianxuan.Checked;
+                send_setting("pc_set_setting", setting, "pc_set_setting");
+            }
         }
 
         private void pk_CheckedChanged(object sender, EventArgs e)
         {
-
+            Properties.Settings.Default.pk = pk.Checked;
+            Properties.Settings.Default.Save();
+            if (!Properties.Settings.Default.setting_lock)
+            {
+                JObject setting = new JObject();
+                setting["key"] = "pk";
+                setting["value"] = pk.Checked;
+                send_setting("pc_set_setting", setting, "pc_set_setting");
+            }
         }
 
         private void storm_CheckedChanged(object sender, EventArgs e)
         {
-
+            Properties.Settings.Default.storm = storm.Checked;
+            Properties.Settings.Default.Save();
+            if (!Properties.Settings.Default.setting_lock)
+            {
+                JObject setting = new JObject();
+                setting["key"] = "storm";
+                setting["value"] = storm.Checked;
+                send_setting("pc_set_setting", setting, "pc_set_setting");
+            }
         }
 
         private void time0_CheckedChanged(object sender, EventArgs e)
         {
-
+            JObject tm = ActionRoute.get_time();
+            tm["t0"] = time0.Checked;
+            Properties.Settings.Default.time = tm.ToString(Newtonsoft.Json.Formatting.None);
+            Properties.Settings.Default.Save();
+            if (!Properties.Settings.Default.setting_lock)
+            {
+                JObject setting = new JObject();
+                setting["key"] = "time";
+                setting["value"] = ActionRoute.get_time().ToString(Newtonsoft.Json.Formatting.None);
+                send_setting("pc_set_setting", setting, "pc_set_setting");
+            }
         }
 
         private void time1_CheckedChanged(object sender, EventArgs e)
         {
-
+            JObject tm = ActionRoute.get_time();
+            tm["t1"] = time1.Checked;
+            Properties.Settings.Default.time = tm.ToString(Newtonsoft.Json.Formatting.None);
+            Properties.Settings.Default.Save();
+            if (!Properties.Settings.Default.setting_lock)
+            {
+                JObject setting = new JObject();
+                setting["key"] = "time";
+                setting["value"] = ActionRoute.get_time().ToString(Newtonsoft.Json.Formatting.None);
+                send_setting("pc_set_setting", setting, "pc_set_setting");
+            }
         }
 
         private void time2_CheckedChanged(object sender, EventArgs e)
         {
-
+            JObject tm = ActionRoute.get_time();
+            tm["t2"] = time2.Checked;
+            Properties.Settings.Default.time = tm.ToString(Newtonsoft.Json.Formatting.None);
+            Properties.Settings.Default.Save();
+            if (!Properties.Settings.Default.setting_lock)
+            {
+                JObject setting = new JObject();
+                setting["key"] = "time";
+                setting["value"] = ActionRoute.get_time().ToString(Newtonsoft.Json.Formatting.None);
+                send_setting("pc_set_setting", setting, "pc_set_setting");
+            }
         }
 
         private void time3_CheckedChanged(object sender, EventArgs e)
         {
-
+            JObject tm = ActionRoute.get_time();
+            tm["t3"] = time3.Checked;
+            Properties.Settings.Default.time = tm.ToString(Newtonsoft.Json.Formatting.None);
+            Properties.Settings.Default.Save();
+            if (!Properties.Settings.Default.setting_lock)
+            {
+                JObject setting = new JObject();
+                setting["key"] = "time";
+                setting["value"] = ActionRoute.get_time().ToString(Newtonsoft.Json.Formatting.None);
+                send_setting("pc_set_setting", setting, "pc_set_setting");
+            }
         }
 
         private void time4_CheckedChanged(object sender, EventArgs e)
         {
-
+            JObject tm = ActionRoute.get_time();
+            tm["t4"] = time4.Checked;
+            Properties.Settings.Default.time = tm.ToString(Newtonsoft.Json.Formatting.None);
+            Properties.Settings.Default.Save();
+            if (!Properties.Settings.Default.setting_lock)
+            {
+                JObject setting = new JObject();
+                setting["key"] = "time";
+                setting["value"] = ActionRoute.get_time().ToString(Newtonsoft.Json.Formatting.None);
+                send_setting("pc_set_setting", setting, "pc_set_setting");
+            }
         }
 
         private void time5_CheckedChanged(object sender, EventArgs e)
         {
-
+            JObject tm = ActionRoute.get_time();
+            tm["t5"] = time5.Checked;
+            Properties.Settings.Default.time = tm.ToString(Newtonsoft.Json.Formatting.None);
+            Properties.Settings.Default.Save();
+            if (!Properties.Settings.Default.setting_lock)
+            {
+                JObject setting = new JObject();
+                setting["key"] = "time";
+                setting["value"] = ActionRoute.get_time().ToString(Newtonsoft.Json.Formatting.None);
+                send_setting("pc_set_setting", setting, "pc_set_setting");
+            }
         }
 
         private void time6_CheckedChanged(object sender, EventArgs e)
         {
-
+            JObject tm = ActionRoute.get_time();
+            tm["t6"] = time6.Checked;
+            Properties.Settings.Default.time = tm.ToString(Newtonsoft.Json.Formatting.None);
+            Properties.Settings.Default.Save();
+            if (!Properties.Settings.Default.setting_lock)
+            {
+                JObject setting = new JObject();
+                setting["key"] = "time";
+                setting["value"] = ActionRoute.get_time().ToString(Newtonsoft.Json.Formatting.None);
+                send_setting("pc_set_setting", setting, "pc_set_setting");
+            }
         }
 
         private void time7_CheckedChanged(object sender, EventArgs e)
         {
-
+            JObject tm = ActionRoute.get_time();
+            tm["t7"] = time7.Checked;
+            Properties.Settings.Default.time = tm.ToString(Newtonsoft.Json.Formatting.None);
+            Properties.Settings.Default.Save();
+            if (!Properties.Settings.Default.setting_lock)
+            {
+                JObject setting = new JObject();
+                setting["key"] = "time";
+                setting["value"] = ActionRoute.get_time().ToString(Newtonsoft.Json.Formatting.None);
+                send_setting("pc_set_setting", setting, "pc_set_setting");
+            }
         }
 
         private void time8_CheckedChanged(object sender, EventArgs e)
         {
-
+            JObject tm = ActionRoute.get_time();
+            tm["t8"] = time8.Checked;
+            Properties.Settings.Default.time = tm.ToString(Newtonsoft.Json.Formatting.None);
+            Properties.Settings.Default.Save();
+            if (!Properties.Settings.Default.setting_lock)
+            {
+                JObject setting = new JObject();
+                setting["key"] = "time";
+                setting["value"] = ActionRoute.get_time().ToString(Newtonsoft.Json.Formatting.None);
+                send_setting("pc_set_setting", setting, "pc_set_setting");
+            }
         }
 
         private void time9_CheckedChanged(object sender, EventArgs e)
         {
-
+            JObject tm = ActionRoute.get_time();
+            tm["t9"] = time9.Checked;
+            Properties.Settings.Default.time = tm.ToString(Newtonsoft.Json.Formatting.None);
+            Properties.Settings.Default.Save();
+            if (!Properties.Settings.Default.setting_lock)
+            {
+                JObject setting = new JObject();
+                setting["key"] = "time";
+                setting["value"] = ActionRoute.get_time().ToString(Newtonsoft.Json.Formatting.None);
+                send_setting("pc_set_setting", setting, "pc_set_setting");
+            }
         }
 
         private void time10_CheckedChanged(object sender, EventArgs e)
         {
-
+            JObject tm = ActionRoute.get_time();
+            tm["t10"] = time10.Checked;
+            Properties.Settings.Default.time = tm.ToString(Newtonsoft.Json.Formatting.None);
+            Properties.Settings.Default.Save();
+            if (!Properties.Settings.Default.setting_lock)
+            {
+                JObject setting = new JObject();
+                setting["key"] = "time";
+                setting["value"] = ActionRoute.get_time().ToString(Newtonsoft.Json.Formatting.None);
+                send_setting("pc_set_setting", setting, "pc_set_setting");
+            }
         }
 
         private void time11_CheckedChanged(object sender, EventArgs e)
         {
-
+            JObject tm = ActionRoute.get_time();
+            tm["t11"] = time11.Checked;
+            Properties.Settings.Default.time = tm.ToString(Newtonsoft.Json.Formatting.None);
+            Properties.Settings.Default.Save();
+            if (!Properties.Settings.Default.setting_lock)
+            {
+                JObject setting = new JObject();
+                setting["key"] = "time";
+                setting["value"] = ActionRoute.get_time().ToString(Newtonsoft.Json.Formatting.None);
+                send_setting("pc_set_setting", setting, "pc_set_setting");
+            }
         }
 
         private void time12_CheckedChanged(object sender, EventArgs e)
         {
-
+            JObject tm = ActionRoute.get_time();
+            tm["t12"] = time12.Checked;
+            Properties.Settings.Default.time = tm.ToString(Newtonsoft.Json.Formatting.None);
+            Properties.Settings.Default.Save();
+            if (!Properties.Settings.Default.setting_lock)
+            {
+                JObject setting = new JObject();
+                setting["key"] = "time";
+                setting["value"] = ActionRoute.get_time().ToString(Newtonsoft.Json.Formatting.None);
+                send_setting("pc_set_setting", setting, "pc_set_setting");
+            }
         }
 
         private void time13_CheckedChanged(object sender, EventArgs e)
         {
-
+            JObject tm = ActionRoute.get_time();
+            tm["t13"] = time13.Checked;
+            Properties.Settings.Default.time = tm.ToString(Newtonsoft.Json.Formatting.None);
+            Properties.Settings.Default.Save();
+            if (!Properties.Settings.Default.setting_lock)
+            {
+                JObject setting = new JObject();
+                setting["key"] = "time";
+                setting["value"] = ActionRoute.get_time().ToString(Newtonsoft.Json.Formatting.None);
+                send_setting("pc_set_setting", setting, "pc_set_setting");
+            }
         }
 
         private void time14_CheckedChanged(object sender, EventArgs e)
         {
-
+            JObject tm = ActionRoute.get_time();
+            tm["t14"] = time14.Checked;
+            Properties.Settings.Default.time = tm.ToString(Newtonsoft.Json.Formatting.None);
+            Properties.Settings.Default.Save();
+            if (!Properties.Settings.Default.setting_lock)
+            {
+                JObject setting = new JObject();
+                setting["key"] = "time";
+                setting["value"] = ActionRoute.get_time().ToString(Newtonsoft.Json.Formatting.None);
+                send_setting("pc_set_setting", setting, "pc_set_setting");
+            }
         }
 
         private void time15_CheckedChanged(object sender, EventArgs e)
         {
-
+            JObject tm = ActionRoute.get_time();
+            tm["t15"] = time15.Checked;
+            Properties.Settings.Default.time = tm.ToString(Newtonsoft.Json.Formatting.None);
+            Properties.Settings.Default.Save();
+            if (!Properties.Settings.Default.setting_lock)
+            {
+                JObject setting = new JObject();
+                setting["key"] = "time";
+                setting["value"] = ActionRoute.get_time().ToString(Newtonsoft.Json.Formatting.None);
+                send_setting("pc_set_setting", setting, "pc_set_setting");
+            }
         }
 
         private void time16_CheckedChanged(object sender, EventArgs e)
         {
-
+            JObject tm = ActionRoute.get_time();
+            tm["t16"] = time16.Checked;
+            Properties.Settings.Default.time = tm.ToString(Newtonsoft.Json.Formatting.None);
+            Properties.Settings.Default.Save();
+            if (!Properties.Settings.Default.setting_lock)
+            {
+                JObject setting = new JObject();
+                setting["key"] = "time";
+                setting["value"] = ActionRoute.get_time().ToString(Newtonsoft.Json.Formatting.None);
+                send_setting("pc_set_setting", setting, "pc_set_setting");
+            }
         }
 
         private void time17_CheckedChanged(object sender, EventArgs e)
         {
-
+            JObject tm = ActionRoute.get_time();
+            tm["t17"] = time17.Checked;
+            Properties.Settings.Default.time = tm.ToString(Newtonsoft.Json.Formatting.None);
+            Properties.Settings.Default.Save();
+            if (!Properties.Settings.Default.setting_lock)
+            {
+                JObject setting = new JObject();
+                setting["key"] = "time";
+                setting["value"] = ActionRoute.get_time().ToString(Newtonsoft.Json.Formatting.None);
+                send_setting("pc_set_setting", setting, "pc_set_setting");
+            }
         }
 
         private void time18_CheckedChanged(object sender, EventArgs e)
         {
-
+            JObject tm = ActionRoute.get_time();
+            tm["t18"] = time18.Checked;
+            Properties.Settings.Default.time = tm.ToString(Newtonsoft.Json.Formatting.None);
+            Properties.Settings.Default.Save();
+            if (!Properties.Settings.Default.setting_lock)
+            {
+                JObject setting = new JObject();
+                setting["key"] = "time";
+                setting["value"] = ActionRoute.get_time().ToString(Newtonsoft.Json.Formatting.None);
+                send_setting("pc_set_setting", setting, "pc_set_setting");
+            }
         }
 
         private void time19_CheckedChanged(object sender, EventArgs e)
         {
-
+            JObject tm = ActionRoute.get_time();
+            tm["t19"] = time19.Checked;
+            Properties.Settings.Default.time = tm.ToString(Newtonsoft.Json.Formatting.None);
+            Properties.Settings.Default.Save();
+            if (!Properties.Settings.Default.setting_lock)
+            {
+                JObject setting = new JObject();
+                setting["key"] = "time";
+                setting["value"] = ActionRoute.get_time().ToString(Newtonsoft.Json.Formatting.None);
+                send_setting("pc_set_setting", setting, "pc_set_setting");
+            }
         }
 
         private void time20_CheckedChanged(object sender, EventArgs e)
         {
-
+            JObject tm = ActionRoute.get_time();
+            tm["t20"] = time20.Checked;
+            Properties.Settings.Default.time = tm.ToString(Newtonsoft.Json.Formatting.None);
+            Properties.Settings.Default.Save();
+            if (!Properties.Settings.Default.setting_lock)
+            {
+                JObject setting = new JObject();
+                setting["key"] = "time";
+                setting["value"] = ActionRoute.get_time().ToString(Newtonsoft.Json.Formatting.None);
+                send_setting("pc_set_setting", setting, "pc_set_setting");
+            }
         }
 
         private void time21_CheckedChanged(object sender, EventArgs e)
         {
-
+            JObject tm = ActionRoute.get_time();
+            tm["t21"] = time21.Checked;
+            Properties.Settings.Default.time = tm.ToString(Newtonsoft.Json.Formatting.None);
+            Properties.Settings.Default.Save();
+            if (!Properties.Settings.Default.setting_lock)
+            {
+                JObject setting = new JObject();
+                setting["key"] = "time";
+                setting["value"] = ActionRoute.get_time().ToString(Newtonsoft.Json.Formatting.None);
+                send_setting("pc_set_setting", setting, "pc_set_setting");
+            }
         }
 
         private void time22_CheckedChanged(object sender, EventArgs e)
         {
-
+            JObject tm = ActionRoute.get_time();
+            tm["t22"] = time22.Checked;
+            Properties.Settings.Default.time = tm.ToString(Newtonsoft.Json.Formatting.None);
+            Properties.Settings.Default.Save();
+            if (!Properties.Settings.Default.setting_lock)
+            {
+                JObject setting = new JObject();
+                setting["key"] = "time";
+                setting["value"] = ActionRoute.get_time().ToString(Newtonsoft.Json.Formatting.None);
+                send_setting("pc_set_setting", setting, "pc_set_setting");
+            }
         }
 
         private void time23_CheckedChanged(object sender, EventArgs e)
         {
-
+            JObject tm = ActionRoute.get_time();
+            tm["t23"] = time23.Checked;
+            Properties.Settings.Default.time = tm.ToString(Newtonsoft.Json.Formatting.None);
+            Properties.Settings.Default.Save();
+            if (!Properties.Settings.Default.setting_lock)
+            {
+                JObject setting = new JObject();
+                setting["key"] = "time";
+                setting["value"] = ActionRoute.get_time().ToString(Newtonsoft.Json.Formatting.None);
+                send_setting("pc_set_setting", setting, "pc_set_setting");
+            }
         }
 
         private void percent_TextChanged(object sender, EventArgs e)
         {
-
+            if (!Properties.Settings.Default.setting_lock)
+            {
+                JObject setting = new JObject();
+                setting["key"] = "percent";
+                setting["value"] = int.Parse(percent.Text);
+                send_setting("pc_set_setting", setting, "pc_set_setting");
+            }
         }
 
         private void debug_CheckedChanged(object sender, EventArgs e)
