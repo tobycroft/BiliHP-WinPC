@@ -220,6 +220,7 @@
             this.version.Size = new System.Drawing.Size(47, 12);
             this.version.TabIndex = 17;
             this.version.Text = "version";
+            this.version.Click += new System.EventHandler(this.version_Click);
             // 
             // Login
             // 

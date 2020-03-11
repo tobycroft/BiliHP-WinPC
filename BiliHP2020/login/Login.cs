@@ -8,6 +8,7 @@ using System.Drawing;
 using System.IO;
 using System.Net;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace BiliHP2020.login
@@ -22,11 +23,12 @@ namespace BiliHP2020.login
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if(!eula.Checked){
+            if (!eula.Checked)
+            {
                 MessageBox.Show("如果不信任我们，就不要用了吧？");
                 return;
             }
-            if (!string.IsNullOrWhiteSpace(Properties.Settings.Default.username)&& !string.IsNullOrWhiteSpace(Properties.Settings.Default.token))
+            if (!string.IsNullOrWhiteSpace(Properties.Settings.Default.username) && !string.IsNullOrWhiteSpace(Properties.Settings.Default.token))
             {
                 mainframe();
                 return;
@@ -81,11 +83,7 @@ namespace BiliHP2020.login
                     Properties.Settings.Default.token = ret3["body"]["data"]["token"].ToString();
                     Properties.Settings.Default.Save();
                     MessageBox.Show(ret3["body"]["data"]["message"].ToString());
-                    this.Visible = false;
-                    MainForm ea = new MainForm();
-                    ea.ecam.Items.Add("首页登录完成……");
-                    ea.ShowDialog();
-                    Application.ExitThread();
+                    mainframe();
                 }
                 else
                 {
@@ -154,12 +152,17 @@ namespace BiliHP2020.login
 
         private void mainframe()
         {
-            this.Visible = false;
+            
             MainForm ea = new MainForm();
-            ea.ecam.Items.Add("首页登录完成……");
-            ea.ShowDialog();
-            Application.ExitThread();
+            //ea.ecam.Items.Add("首页登录完成……");
+            //ea.ShowDialog();
+            ea.Show();
+            this.Visible = false;
         }
 
+        private void version_Click(object sender, EventArgs e)
+        {
+            this.Visible = false;
+        }
     }
 }

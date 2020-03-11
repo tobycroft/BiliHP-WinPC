@@ -27,6 +27,10 @@ namespace BiliHP2020
         Socket socket;
         IPAddress address = Dns.GetHostEntry("go.bilihp.com").AddressList[0];
         //IPAddress address = Dns.GetHostEntry("127.0.0.1").AddressList[0];
+        private void MainForm_Close(object sender, EventArgs e)
+        {
+            Environment.Exit(0);
+        }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
@@ -957,6 +961,8 @@ namespace BiliHP2020
 
         private void percent_TextChanged(object sender, EventArgs e)
         {
+            Properties.Settings.Default.percent = int.Parse(percent.Text);
+            Properties.Settings.Default.Save();
             if (!Properties.Settings.Default.setting_lock)
             {
                 JObject setting = new JObject();
@@ -964,6 +970,33 @@ namespace BiliHP2020
                 setting["value"] = int.Parse(percent.Text);
                 send_setting("pc_set_setting", setting, "pc_set_setting");
             }
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+
+            //隐藏任务栏区图标
+            this.ShowInTaskbar = true;
+            this.Visible = false;
+            //图标显示在托盘区
+
+        }
+
+        private void notifyIcon1_MouseClick(object sender, MouseEventArgs e)
+        {
+            this.ShowInTaskbar = true;
+
+            this.Visible = false;
+        }
+
+        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            this.Visible = true;
+        }
+
+        private void 退出ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Environment.Exit(0);
         }
 
         private void debug_CheckedChanged(object sender, EventArgs e)
