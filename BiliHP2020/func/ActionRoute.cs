@@ -66,6 +66,7 @@ namespace BiliHP2020.func
 
                 case "update":
                     ecam2(echo, ret);
+                    Net.DownLoad(ret);
                     break;
 
                 case "c2c":
@@ -74,7 +75,11 @@ namespace BiliHP2020.func
                 case "force_update":
                     //todo:这里要加入自动下载的方法
                     ecam_action(echo);
+                    Net.DownLoad(ret);
+                    break;
 
+                case "close":
+                    Environment.Exit(0);
                     break;
 
                 case "reinit":

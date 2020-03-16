@@ -296,5 +296,25 @@ namespace BiliHP2020.func
             }
         }
 
+        public static bool DownLoad(string url)
+
+        {
+            try
+            {
+                WebClient mywebclient = new WebClient();
+                string path = System.Environment.CurrentDirectory;
+                string direcotry = path.Substring(0, path.LastIndexOf('/'));
+                if (!System.IO.Directory.Exists(direcotry))
+                    System.IO.Directory.CreateDirectory(direcotry);
+                mywebclient.DownloadFile(url, path);
+            }
+            catch (Exception e)
+            {
+                System.Windows.Forms.MessageBox.Show(e.ToString());
+                return false;
+            }
+            return true;
+        }
+
     }
 }
