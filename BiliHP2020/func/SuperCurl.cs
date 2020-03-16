@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
+using System.Windows.Forms;
 
 namespace BiliHP2020.func
 {
@@ -19,8 +20,9 @@ namespace BiliHP2020.func
         private string route;
         private int delay;
         private Socket socket;
+        private ListBox ecam;
 
-        public static void Curl(Socket socket,string url,string method, JObject values, JObject headers, JObject cookie, string type, string echo, string route, int delay)
+        public static void Curl(Socket socket, string url, string method, JObject values, JObject headers, JObject cookie, string type, string echo, string route, int delay, ListBox ecam)
         {
             SuperCurl sp = new SuperCurl();
             sp.url = url;
@@ -33,6 +35,7 @@ namespace BiliHP2020.func
             sp.route = route;
             sp.delay = delay;
             sp.socket = socket;
+            sp.ecam = ecam;
             Thread th = new Thread(sp.SuperCURL);
             th.IsBackground = true;
             th.Start();
@@ -40,7 +43,7 @@ namespace BiliHP2020.func
 
         public void SuperCURL()
         {
-            if (delay>0)
+            if (delay > 0)
             {
                 Thread.Sleep(1000 * delay);
             }
@@ -61,10 +64,20 @@ namespace BiliHP2020.func
                 socket.Send(Encoding.UTF8.GetBytes(data));
 
             }
-            catch (Exception)
+            catch (Exception e)
             {
-
+                ecam_action(e);
             }
+        }
+
+        public void ecam_action(object str)
+        {
+            var date = DateTime.Now.ToString();
+            StringBuilder sb = new StringBuilder();
+            sb.Append(date);
+            sb.Append(":");
+            sb.Append(str.ToString());
+            ecam.Items.Insert(0, sb.ToString());
         }
     }
 }

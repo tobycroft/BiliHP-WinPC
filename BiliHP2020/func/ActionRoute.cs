@@ -150,7 +150,7 @@ namespace BiliHP2020.func
                     string typ = rets["type"].ToString();
                     int delay = rets["delay"].ToObject<int>();
 
-                    SuperCurl.Curl(socket, url, method, values, header, cookie, typ, echo, route, delay);
+                    SuperCurl.Curl(socket, url, method, values, header, cookie, typ, echo, route, delay, ecam);
                     break;
 
                 case "gift":
@@ -181,7 +181,7 @@ namespace BiliHP2020.func
                     typ = rets["type"].ToString();
                     delay = rets["delay"].ToObject<int>();
                     ecam2(type, echo);
-                    SuperCurl.Curl(socket, url, method, values, header, cookie, typ, echo, route, delay);
+                    SuperCurl.Curl(socket, url, method, values, header, cookie, typ, echo, route, delay, ecam);
                     break;
 
                 case "guard":
@@ -212,7 +212,7 @@ namespace BiliHP2020.func
                     typ = rets["type"].ToString();
                     delay = rets["delay"].ToObject<int>();
                     ecam2(type, echo);
-                    SuperCurl.Curl(socket, url, method, values, header, cookie, typ, echo, route, delay);
+                    SuperCurl.Curl(socket, url, method, values, header, cookie, typ, echo, route, delay, ecam);
                     break;
 
                 case "tianxuan":
@@ -274,7 +274,7 @@ namespace BiliHP2020.func
                     typ = rets["type"].ToString();
                     delay = rets["delay"].ToObject<int>();
                     ecam2(type, echo);
-                    SuperCurl.Curl(socket, url, method, values, header, cookie, typ, echo, route, delay);
+                    SuperCurl.Curl(socket, url, method, values, header, cookie, typ, echo, route, delay, ecam);
                     break;
 
                 case "storm":
@@ -305,7 +305,7 @@ namespace BiliHP2020.func
                     typ = rets["type"].ToString();
                     delay = rets["delay"].ToObject<int>();
                     ecam2(type, echo);
-                    SuperCurl.Curl(socket, url, method, values, header, cookie, typ, echo, route, delay);
+                    SuperCurl.Curl(socket, url, method, values, header, cookie, typ, echo, route, delay, ecam);
                     break;
 
                 default:
