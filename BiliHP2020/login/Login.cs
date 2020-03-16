@@ -162,7 +162,7 @@ namespace BiliHP2020.login
 
         private void version_Click(object sender, EventArgs e)
         {
-            this.Visible = false;
+            Net.DownLoad();
         }
     }
 }

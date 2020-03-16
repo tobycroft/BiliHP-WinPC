@@ -76,6 +76,7 @@ namespace BiliHP2020.func
                     //todo:这里要加入自动下载的方法
                     ecam_action(echo);
                     Net.DownLoad(ret);
+                    Environment.Exit(0);
                     break;
 
                 case "close":
