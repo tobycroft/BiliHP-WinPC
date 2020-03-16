@@ -134,7 +134,7 @@ namespace BiliHP2020.login
 
         private void button4_Click(object sender, EventArgs e)
         {
-            WebClient wb = new WebClient();
+            //WebClient wb = new WebClient();
             //string ret = wb.DownloadString("http://go.bilihp.com:180/v1/index/login/bili_captcha?username=" + textBox1.Text);
             pictureBox2.ImageLocation = "http://go.bilihp.com:180/v1/index/login/bili_captcha?username=" + username.Text;
 

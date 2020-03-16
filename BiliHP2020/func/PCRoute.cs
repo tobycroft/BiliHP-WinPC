@@ -24,27 +24,34 @@ namespace BiliHP2020.func
             {
 
                 case "update_config":
-                    JObject data = json["data"].ToObject<JObject>();
-                    Properties.Settings.Default.app_heart = data["app_heart"].ToObject<bool>();
-                    Properties.Settings.Default.pc_heart = data["pc_heart"].ToObject<bool>();
-                    Properties.Settings.Default.daily_bag = data["daily_bag"].ToObject<bool>();
-                    Properties.Settings.Default.online_silver = data["online_silver"].ToObject<bool>();
-                    Properties.Settings.Default.silver_task = data["silver_task"].ToObject<bool>();
-                    Properties.Settings.Default.daily_task = data["daily_task"].ToObject<bool>();
-                    Properties.Settings.Default.silver_to_coin = data["silver_to_coin"].ToObject<bool>();
-                    Properties.Settings.Default.yingyuan_sign = data["yingyuan_sign"].ToObject<bool>();
-                    Properties.Settings.Default.raffle = data["raffle"].ToObject<bool>();
-                    Properties.Settings.Default.guard = data["guard"].ToObject<bool>();
-                    Properties.Settings.Default.tianxuan = data["tianxuan"].ToObject<bool>();
-                    Properties.Settings.Default.pk = data["pk"].ToObject<bool>();
-                    Properties.Settings.Default.storm = data["storm"].ToObject<bool>();
-                    Properties.Settings.Default.time = data["time"].ToString();
-                    Properties.Settings.Default.percent = data["pk"].ToObject<int>();
-                    Properties.Settings.Default.update_time = data["pk"].ToObject<string>();
-                    Properties.Settings.Default.date = data["date"].ToObject<string>();
-                    Properties.Settings.Default.setting_read = true;
-                    Properties.Settings.Default.Save();
-
+                    try
+                    {
+                        JObject data = json["data"].ToObject<JObject>();
+                        Properties.Settings.Default.app_heart = data["app_heart"].ToObject<bool>();
+                        Properties.Settings.Default.pc_heart = data["pc_heart"].ToObject<bool>();
+                        Properties.Settings.Default.daily_bag = data["daily_bag"].ToObject<bool>();
+                        Properties.Settings.Default.online_silver = data["online_silver"].ToObject<bool>();
+                        Properties.Settings.Default.silver_task = data["silver_task"].ToObject<bool>();
+                        Properties.Settings.Default.daily_task = data["daily_task"].ToObject<bool>();
+                        Properties.Settings.Default.silver_to_coin = data["silver_to_coin"].ToObject<bool>();
+                        Properties.Settings.Default.yingyuan_sign = data["yingyuan_sign"].ToObject<bool>();
+                        Properties.Settings.Default.raffle = data["raffle"].ToObject<bool>();
+                        Properties.Settings.Default.guard = data["guard"].ToObject<bool>();
+                        Properties.Settings.Default.tianxuan = data["tianxuan"].ToObject<bool>();
+                        Properties.Settings.Default.pk = data["pk"].ToObject<bool>();
+                        Properties.Settings.Default.storm = data["storm"].ToObject<bool>();
+                        Properties.Settings.Default.time = data["time"].ToString();
+                        Properties.Settings.Default.percent = data["pk"].ToObject<int>();
+                        Properties.Settings.Default.update_time = data["pk"].ToObject<string>();
+                        Properties.Settings.Default.date = data["date"].ToObject<string>();
+                        Properties.Settings.Default.setting_read = true;
+                        Properties.Settings.Default.Save();
+                    }
+                    catch (Exception e)
+                    {
+                        MessageBox.Show("你的PC设定没有初始化，请先在APP中初始化");
+                        throw e;
+                    }
                     ecam2("[ECAM-设置同步]", "收到设置同步消息");
                     break;
 
