@@ -296,24 +296,34 @@ namespace BiliHP2020.func
             }
         }
 
-        public static bool DownLoad(string url)
+        public static void DownLoad(string url)
 
         {
-            try
-            {
+
                 WebClient mywebclient = new WebClient();
-                string path = System.Environment.CurrentDirectory;
-                string direcotry = path.Substring(0, path.LastIndexOf('/'));
-                if (!System.IO.Directory.Exists(direcotry))
-                    System.IO.Directory.CreateDirectory(direcotry);
-                mywebclient.DownloadFile(url, path);
-            }
-            catch (Exception e)
+            string direcotry = url.Substring(url.LastIndexOf('/')+1, url.Length- url.LastIndexOf(".exe"));
+            if (!System.IO.Directory.Exists(direcotry))
+                System.IO.Directory.CreateDirectory(direcotry);
+
+            HttpWebRequest request = WebRequest.Create(url) as HttpWebRequest;
+            //发送请求并获取相应回应数据
+            HttpWebResponse response = request.GetResponse() as HttpWebResponse;
+            //直到request.GetResponse()程序才开始向目标网页发送Post请求
+            Stream responseStream = response.GetResponseStream();
+
+            //创建本地文件写入流
+            Stream stream = new FileStream(System.Environment.CurrentDirectory + "\\"+direcotry+".exe", FileMode.Create);
+
+            byte[] bArr = new byte[1024];
+            int size = responseStream.Read(bArr, 0, (int)bArr.Length);
+            while (size > 0)
             {
-                System.Windows.Forms.MessageBox.Show(e.ToString());
-                return false;
+                stream.Write(bArr, 0, size);
+                size = responseStream.Read(bArr, 0, (int)bArr.Length);
             }
-            return true;
+            stream.Close();
+            responseStream.Close();
+
         }
 
     }

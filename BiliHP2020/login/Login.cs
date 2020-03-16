@@ -162,7 +162,7 @@ namespace BiliHP2020.login
 
         private void version_Click(object sender, EventArgs e)
         {
-            Net.DownLoad();
+            //Net.DownLoad("https://file1.updrv.com/soft/dtl8/8.0.6.14/dtl8_2095_8.0.6.14.exe");
         }
     }
 }
