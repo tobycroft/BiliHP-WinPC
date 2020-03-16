@@ -50,11 +50,11 @@ namespace BiliHP2020.func
             {
                 foreach (var item in cookie)
                 {
-                        Cookie sk = new Cookie();
-                        sk.Name = item.Key;
-                        sk.Value = item.Value.ToString();
-                        sk.Domain = req.RequestUri.Host;
-                        cookies.Add(sk);
+                    Cookie sk = new Cookie();
+                    sk.Name = item.Key;
+                    sk.Value = UrlEncode(UrlDecode(item.Value.ToString()));
+                    sk.Domain = req.RequestUri.Host;
+                    cookies.Add(sk);
                 }
             }
             if (headers != null && headers.HasValues)
@@ -229,6 +229,23 @@ namespace BiliHP2020.func
                 if (HttpUtility.UrlEncode(c.ToString()).Length > 1)
                 {
                     builder.Append(HttpUtility.UrlEncode(c.ToString()).ToUpper());
+                }
+                else
+                {
+                    builder.Append(c);
+                }
+            }
+            return builder.ToString();
+        }
+
+        public static string UrlDecode(string str)
+        {
+            StringBuilder builder = new StringBuilder();
+            foreach (char c in str)
+            {
+                if (HttpUtility.UrlEncode(c.ToString()).Length > 1)
+                {
+                    builder.Append(HttpUtility.UrlDecode(c.ToString()));
                 }
                 else
                 {
