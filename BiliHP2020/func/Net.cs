@@ -50,11 +50,11 @@ namespace BiliHP2020.func
             {
                 foreach (var item in cookie)
                 {
-                    Cookie sk = new Cookie();
-                    sk.Name = item.Key;
-                    sk.Value = item.Value.ToString();
-                    sk.Domain = req.RequestUri.Host;
-                    cookies.Add(sk);
+                        Cookie sk = new Cookie();
+                        sk.Name = item.Key;
+                        sk.Value = item.Value.ToString();
+                        sk.Domain = req.RequestUri.Host;
+                        cookies.Add(sk);
                 }
             }
             if (headers != null && headers.HasValues)
