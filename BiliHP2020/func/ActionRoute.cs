@@ -347,7 +347,7 @@ namespace BiliHP2020.func
         {
             Random rand = new Random();
             int rd = rand.Next(0, 100);
-            if (rd > Properties.Settings.Default.percent)
+            if (rd < Properties.Settings.Default.percent)
             {
                 return true;
             }
