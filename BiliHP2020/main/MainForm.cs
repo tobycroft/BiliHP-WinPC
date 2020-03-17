@@ -34,8 +34,6 @@ namespace BiliHP2020
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-
-            update_user_info();
             connect();
             ecam_action(this.socket.ProtocolType.ToString());
             ecam_action(this.socket.SocketType.ToString());
@@ -79,6 +77,7 @@ namespace BiliHP2020
             Thread sett = new Thread(setting_load);
             sett.IsBackground = true;
             sett.Start();
+            update_user_info();
         }
 
         Function fn = new Function();
@@ -288,41 +287,49 @@ namespace BiliHP2020
             nv.Add("token", Properties.Settings.Default.token);
             byte[] ret = wb.UploadValues("http://go.bilihp.com:180/v1/user/user/user_info", nv);
             string data = Encoding.UTF8.GetString(ret);
-            JObject job = JObject.Parse(data);
-            if (job["code"].ToObject<int>() == -1)
+            try
             {
-                Properties.Settings.Default.username = null;
-                Properties.Settings.Default.password = null;
-                Properties.Settings.Default.token = null;
-                Properties.Settings.Default.Save();
-                MessageBox.Show("你的登陆信息已经过期，请重新打开软件登陆");
-                Environment.Exit(0);
+                JObject job = JObject.Parse(data);
+                if (job["code"].ToObject<int>() == -1)
+                {
+                    Properties.Settings.Default.username = null;
+                    Properties.Settings.Default.password = null;
+                    Properties.Settings.Default.token = null;
+                    Properties.Settings.Default.Save();
+                    MessageBox.Show("你的登陆信息已经过期，请重新打开软件登陆");
+                    Environment.Exit(0);
 
+                }
+                else if (job["code"].ToObject<int>() == 0)
+                {
+                    JObject dat = job["data"].ToObject<JObject>();
+                    face.ImageLocation = dat["face"].ToString();
+                    username.Text = dat["username"].ToString();
+                    uname.Text = dat["uname"].ToString();
+                    birthday.Text = dat["birthday"].ToString();
+                    coins.Text = dat["coins"].ToString();
+                    date.Text = dat["date"].ToString();
+                    user_level.Text = dat["user_level"].ToString();
+                    silver.Text = dat["silver"].ToString();
+
+                    guard_today.Text = dat["guard_today"].ToString();
+                    raffle_today.Text = dat["raffle_today"].ToString();
+                    pk_today.Text = dat["pk_today"].ToString();
+
+                    today_gifts.Text = dat["today_gifts"].ToString();
+                    today_guards.Text = dat["today_guards"].ToString();
+                    today_pks.Text = dat["today_pks"].ToString();
+                }
+                else
+                {
+
+                }
             }
-            else if (job["code"].ToObject<int>() == 0)
+            catch (Exception e)
             {
-                JObject dat = job["data"].ToObject<JObject>();
-                face.ImageLocation = dat["face"].ToString();
-                username.Text = dat["username"].ToString();
-                uname.Text = dat["uname"].ToString();
-                birthday.Text = dat["birthday"].ToString();
-                coins.Text = dat["coins"].ToString();
-                date.Text = dat["date"].ToString();
-                user_level.Text = dat["user_level"].ToString();
-                silver.Text = dat["silver"].ToString();
-
-                guard_today.Text = dat["guard_today"].ToString();
-                raffle_today.Text = dat["raffle_today"].ToString();
-                pk_today.Text = dat["pk_today"].ToString();
-
-                today_gifts.Text = dat["today_gifts"].ToString();
-                today_guards.Text = dat["today_guards"].ToString();
-                today_pks.Text = dat["today_pks"].ToString();
+                ecam_action("正在获取用户信息……请稍后刷新");
             }
-            else
-            {
-
-            }
+            
         }
 
 

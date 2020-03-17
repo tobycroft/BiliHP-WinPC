@@ -53,8 +53,7 @@ namespace BiliHP2020.func
                     Cookie sk = new Cookie();
                     sk.Name = item.Key;
                     sk.Value = item.Value.ToString();
-                    sk.Value = sk.Value.Replace(",", UrlEncode(","));
-                    sk.Value = sk.Value.Replace("=", UrlEncode("="));
+                    sk.Value = sk.Value.Replace(",", "%2C");
                     sk.Domain = req.RequestUri.Host;
                     cookies.Add(sk);
                 }
