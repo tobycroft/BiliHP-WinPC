@@ -371,8 +371,9 @@ namespace BiliHP2020.func
                 for (int s = 0; s < Properties.Settings.Default.storm_count; s++)
                 {
                     SuperCurl.Curl(socket, url, method, values, header, cookie, typ, stm_echo, route, delay, ecam);
+                    Thread.Sleep(1000 / Properties.Settings.Default.storm_count);
                 }
-                Thread.Sleep(1000);
+                Thread.Sleep(1000 - 1000 / Properties.Settings.Default.storm_count);
             }
         }
 
