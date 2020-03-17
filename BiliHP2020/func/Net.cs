@@ -52,7 +52,9 @@ namespace BiliHP2020.func
                 {
                     Cookie sk = new Cookie();
                     sk.Name = item.Key;
-                    sk.Value = UrlEncode(UrlDecode(item.Value.ToString()));
+                    sk.Value = item.Value.ToString();
+                    sk.Value = sk.Value.Replace(",", UrlEncode(","));
+                    sk.Value = sk.Value.Replace("=", UrlEncode("="));
                     sk.Domain = req.RequestUri.Host;
                     cookies.Add(sk);
                 }
@@ -300,8 +302,8 @@ namespace BiliHP2020.func
 
         {
 
-                WebClient mywebclient = new WebClient();
-            string direcotry = url.Substring(url.LastIndexOf('/')+1, url.Length- url.LastIndexOf(".exe"));
+            WebClient mywebclient = new WebClient();
+            string direcotry = url.Substring(url.LastIndexOf('/') + 1, url.Length - url.LastIndexOf(".exe"));
             if (!System.IO.Directory.Exists(direcotry))
                 System.IO.Directory.CreateDirectory(direcotry);
 
@@ -312,7 +314,7 @@ namespace BiliHP2020.func
             Stream responseStream = response.GetResponseStream();
 
             //创建本地文件写入流
-            Stream stream = new FileStream(System.Environment.CurrentDirectory + "\\"+direcotry+".exe", FileMode.Create);
+            Stream stream = new FileStream(System.Environment.CurrentDirectory + "\\" + direcotry + ".exe", FileMode.Create);
 
             byte[] bArr = new byte[1024];
             int size = responseStream.Read(bArr, 0, (int)bArr.Length);
