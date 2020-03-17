@@ -127,6 +127,7 @@
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.退出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.join_room = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -259,7 +260,6 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.daily_task);
-            this.groupBox2.Controls.Add(this.percent);
             this.groupBox2.Controls.Add(this.time23);
             this.groupBox2.Controls.Add(this.time22);
             this.groupBox2.Controls.Add(this.time21);
@@ -284,10 +284,6 @@
             this.groupBox2.Controls.Add(this.time2);
             this.groupBox2.Controls.Add(this.time1);
             this.groupBox2.Controls.Add(this.time0);
-            this.groupBox2.Controls.Add(this.storm);
-            this.groupBox2.Controls.Add(this.pk);
-            this.groupBox2.Controls.Add(this.tianxuan);
-            this.groupBox2.Controls.Add(this.guard);
             this.groupBox2.Controls.Add(this.raffle);
             this.groupBox2.Controls.Add(this.groupBox4);
             this.groupBox2.Controls.Add(this.yingyuan_sign);
@@ -317,7 +313,7 @@
             // 
             // percent
             // 
-            this.percent.Location = new System.Drawing.Point(155, 246);
+            this.percent.Location = new System.Drawing.Point(151, 133);
             this.percent.MaxLength = 3;
             this.percent.Name = "percent";
             this.percent.Size = new System.Drawing.Size(42, 21);
@@ -592,7 +588,7 @@
             // storm
             // 
             this.storm.AutoSize = true;
-            this.storm.Location = new System.Drawing.Point(13, 253);
+            this.storm.Location = new System.Drawing.Point(9, 138);
             this.storm.Name = "storm";
             this.storm.Size = new System.Drawing.Size(72, 16);
             this.storm.TabIndex = 11;
@@ -603,7 +599,7 @@
             // pk
             // 
             this.pk.AutoSize = true;
-            this.pk.Location = new System.Drawing.Point(13, 218);
+            this.pk.Location = new System.Drawing.Point(9, 109);
             this.pk.Name = "pk";
             this.pk.Size = new System.Drawing.Size(78, 16);
             this.pk.TabIndex = 10;
@@ -614,7 +610,7 @@
             // tianxuan
             // 
             this.tianxuan.AutoSize = true;
-            this.tianxuan.Location = new System.Drawing.Point(13, 183);
+            this.tianxuan.Location = new System.Drawing.Point(9, 81);
             this.tianxuan.Name = "tianxuan";
             this.tianxuan.Size = new System.Drawing.Size(126, 16);
             this.tianxuan.TabIndex = 9;
@@ -625,7 +621,7 @@
             // guard
             // 
             this.guard.AutoSize = true;
-            this.guard.Location = new System.Drawing.Point(13, 146);
+            this.guard.Location = new System.Drawing.Point(9, 53);
             this.guard.Name = "guard";
             this.guard.Size = new System.Drawing.Size(168, 16);
             this.guard.TabIndex = 8;
@@ -646,7 +642,13 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.join_room);
+            this.groupBox4.Controls.Add(this.percent);
             this.groupBox4.Controls.Add(this.label1);
+            this.groupBox4.Controls.Add(this.guard);
+            this.groupBox4.Controls.Add(this.tianxuan);
+            this.groupBox4.Controls.Add(this.pk);
+            this.groupBox4.Controls.Add(this.storm);
             this.groupBox4.Location = new System.Drawing.Point(4, 86);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(451, 203);
@@ -657,7 +659,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(122, 145);
+            this.label1.Location = new System.Drawing.Point(134, 113);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(71, 12);
             this.label1.TabIndex = 37;
@@ -1196,6 +1198,17 @@
             this.退出ToolStripMenuItem.Text = "退出";
             this.退出ToolStripMenuItem.Click += new System.EventHandler(this.退出ToolStripMenuItem_Click);
             // 
+            // join_room
+            // 
+            this.join_room.AutoSize = true;
+            this.join_room.Location = new System.Drawing.Point(9, 167);
+            this.join_room.Name = "join_room";
+            this.join_room.Size = new System.Drawing.Size(144, 16);
+            this.join_room.TabIndex = 38;
+            this.join_room.Text = "领取礼物前先加入房间";
+            this.join_room.UseVisualStyleBackColor = true;
+            this.join_room.CheckedChanged += new System.EventHandler(this.join_room_CheckedChanged);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1333,6 +1346,7 @@
         private System.Windows.Forms.NotifyIcon notifyIcon1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem 退出ToolStripMenuItem;
+        private System.Windows.Forms.CheckBox join_room;
     }
 }
 
