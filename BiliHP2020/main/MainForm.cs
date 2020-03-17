@@ -281,14 +281,15 @@ namespace BiliHP2020
 
         private void update_user_info()
         {
-            WebClient wb = new WebClient();
-            NameValueCollection nv = new NameValueCollection();
-            nv.Add("username", Properties.Settings.Default.username);
-            nv.Add("token", Properties.Settings.Default.token);
-            byte[] ret = wb.UploadValues("http://go.bilihp.com:180/v1/user/user/user_info", nv);
-            string data = Encoding.UTF8.GetString(ret);
             try
             {
+                WebClient wb = new WebClient();
+                NameValueCollection nv = new NameValueCollection();
+                nv.Add("username", Properties.Settings.Default.username);
+                nv.Add("token", Properties.Settings.Default.token);
+                byte[] ret = wb.UploadValues("http://go.bilihp.com:180/v1/user/user/user_info", nv);
+                string data = Encoding.UTF8.GetString(ret);
+
                 JObject job = JObject.Parse(data);
                 if (job["code"].ToObject<int>() == -1)
                 {
@@ -327,9 +328,11 @@ namespace BiliHP2020
             }
             catch (Exception e)
             {
+                ecam_action(e);
+
                 ecam_action("正在获取用户信息……请稍后刷新");
             }
-            
+
         }
 
 
