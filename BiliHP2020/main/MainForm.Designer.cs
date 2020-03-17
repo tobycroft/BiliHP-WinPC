@@ -42,7 +42,6 @@
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.daily_task = new System.Windows.Forms.CheckBox();
-            this.percent = new System.Windows.Forms.TextBox();
             this.time23 = new System.Windows.Forms.CheckBox();
             this.time22 = new System.Windows.Forms.CheckBox();
             this.time21 = new System.Windows.Forms.CheckBox();
@@ -67,13 +66,20 @@
             this.time2 = new System.Windows.Forms.CheckBox();
             this.time1 = new System.Windows.Forms.CheckBox();
             this.time0 = new System.Windows.Forms.CheckBox();
-            this.storm = new System.Windows.Forms.CheckBox();
-            this.pk = new System.Windows.Forms.CheckBox();
-            this.tianxuan = new System.Windows.Forms.CheckBox();
-            this.guard = new System.Windows.Forms.CheckBox();
             this.raffle = new System.Windows.Forms.CheckBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.lab1 = new System.Windows.Forms.Label();
+            this.storm_time = new System.Windows.Forms.TextBox();
+            this.storm_count = new System.Windows.Forms.TextBox();
+            this.storm_catch = new System.Windows.Forms.CheckBox();
+            this.join_room = new System.Windows.Forms.CheckBox();
+            this.percent = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.guard = new System.Windows.Forms.CheckBox();
+            this.tianxuan = new System.Windows.Forms.CheckBox();
+            this.pk = new System.Windows.Forms.CheckBox();
+            this.storm = new System.Windows.Forms.CheckBox();
             this.yingyuan_sign = new System.Windows.Forms.CheckBox();
             this.silver_to_coin = new System.Windows.Forms.CheckBox();
             this.silver_task = new System.Windows.Forms.CheckBox();
@@ -127,7 +133,6 @@
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.退出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.join_room = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -310,16 +315,6 @@
             this.daily_task.Text = "每日任务";
             this.daily_task.UseVisualStyleBackColor = true;
             this.daily_task.CheckedChanged += new System.EventHandler(this.daily_task_CheckedChanged);
-            // 
-            // percent
-            // 
-            this.percent.Location = new System.Drawing.Point(151, 133);
-            this.percent.MaxLength = 3;
-            this.percent.Name = "percent";
-            this.percent.Size = new System.Drawing.Size(42, 21);
-            this.percent.TabIndex = 36;
-            this.percent.Text = "100";
-            this.percent.TextChanged += new System.EventHandler(this.percent_TextChanged);
             // 
             // time23
             // 
@@ -585,50 +580,6 @@
             this.time0.UseVisualStyleBackColor = true;
             this.time0.CheckedChanged += new System.EventHandler(this.time0_CheckedChanged);
             // 
-            // storm
-            // 
-            this.storm.AutoSize = true;
-            this.storm.Location = new System.Drawing.Point(9, 138);
-            this.storm.Name = "storm";
-            this.storm.Size = new System.Drawing.Size(72, 16);
-            this.storm.TabIndex = 11;
-            this.storm.Text = "节奏风暴";
-            this.storm.UseVisualStyleBackColor = true;
-            this.storm.CheckedChanged += new System.EventHandler(this.storm_CheckedChanged);
-            // 
-            // pk
-            // 
-            this.pk.AutoSize = true;
-            this.pk.Location = new System.Drawing.Point(9, 109);
-            this.pk.Name = "pk";
-            this.pk.Size = new System.Drawing.Size(78, 16);
-            this.pk.TabIndex = 10;
-            this.pk.Text = "PK/大乐斗";
-            this.pk.UseVisualStyleBackColor = true;
-            this.pk.CheckedChanged += new System.EventHandler(this.pk_CheckedChanged);
-            // 
-            // tianxuan
-            // 
-            this.tianxuan.AutoSize = true;
-            this.tianxuan.Location = new System.Drawing.Point(9, 81);
-            this.tianxuan.Name = "tianxuan";
-            this.tianxuan.Size = new System.Drawing.Size(126, 16);
-            this.tianxuan.TabIndex = 9;
-            this.tianxuan.Text = "活动抽奖/天选时刻";
-            this.tianxuan.UseVisualStyleBackColor = true;
-            this.tianxuan.CheckedChanged += new System.EventHandler(this.tianxuan_CheckedChanged);
-            // 
-            // guard
-            // 
-            this.guard.AutoSize = true;
-            this.guard.Location = new System.Drawing.Point(9, 53);
-            this.guard.Name = "guard";
-            this.guard.Size = new System.Drawing.Size(168, 16);
-            this.guard.TabIndex = 8;
-            this.guard.Text = "总督/拿督/提督/舰长/船等";
-            this.guard.UseVisualStyleBackColor = true;
-            this.guard.CheckedChanged += new System.EventHandler(this.guard_CheckedChanged);
-            // 
             // raffle
             // 
             this.raffle.AutoSize = true;
@@ -642,6 +593,11 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.label11);
+            this.groupBox4.Controls.Add(this.lab1);
+            this.groupBox4.Controls.Add(this.storm_time);
+            this.groupBox4.Controls.Add(this.storm_count);
+            this.groupBox4.Controls.Add(this.storm_catch);
             this.groupBox4.Controls.Add(this.join_room);
             this.groupBox4.Controls.Add(this.percent);
             this.groupBox4.Controls.Add(this.label1);
@@ -656,6 +612,77 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "礼物/风险控制";
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(74, 141);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(41, 12);
+            this.label11.TabIndex = 43;
+            this.label11.Text = "抢几秒";
+            // 
+            // lab1
+            // 
+            this.lab1.AutoSize = true;
+            this.lab1.Location = new System.Drawing.Point(2, 141);
+            this.lab1.Name = "lab1";
+            this.lab1.Size = new System.Drawing.Size(59, 12);
+            this.lab1.TabIndex = 42;
+            this.lab1.Text = "1秒抢几次";
+            // 
+            // storm_time
+            // 
+            this.storm_time.Location = new System.Drawing.Point(76, 156);
+            this.storm_time.MaxLength = 3;
+            this.storm_time.Name = "storm_time";
+            this.storm_time.Size = new System.Drawing.Size(42, 21);
+            this.storm_time.TabIndex = 41;
+            this.storm_time.Text = "2";
+            this.storm_time.TextChanged += new System.EventHandler(this.storm_time_TextChanged);
+            // 
+            // storm_count
+            // 
+            this.storm_count.Location = new System.Drawing.Point(9, 156);
+            this.storm_count.MaxLength = 3;
+            this.storm_count.Name = "storm_count";
+            this.storm_count.Size = new System.Drawing.Size(42, 21);
+            this.storm_count.TabIndex = 40;
+            this.storm_count.Text = "10";
+            this.storm_count.TextChanged += new System.EventHandler(this.storm_count_TextChanged);
+            // 
+            // storm_catch
+            // 
+            this.storm_catch.AutoSize = true;
+            this.storm_catch.ForeColor = System.Drawing.Color.Red;
+            this.storm_catch.Location = new System.Drawing.Point(9, 122);
+            this.storm_catch.Name = "storm_catch";
+            this.storm_catch.Size = new System.Drawing.Size(72, 16);
+            this.storm_catch.TabIndex = 39;
+            this.storm_catch.Text = "劫持风暴";
+            this.storm_catch.UseVisualStyleBackColor = true;
+            this.storm_catch.CheckedChanged += new System.EventHandler(this.storm_catch_CheckedChanged);
+            // 
+            // join_room
+            // 
+            this.join_room.AutoSize = true;
+            this.join_room.Location = new System.Drawing.Point(9, 181);
+            this.join_room.Name = "join_room";
+            this.join_room.Size = new System.Drawing.Size(144, 16);
+            this.join_room.TabIndex = 38;
+            this.join_room.Text = "领取礼物前先加入房间";
+            this.join_room.UseVisualStyleBackColor = true;
+            this.join_room.CheckedChanged += new System.EventHandler(this.join_room_CheckedChanged);
+            // 
+            // percent
+            // 
+            this.percent.Location = new System.Drawing.Point(151, 133);
+            this.percent.MaxLength = 3;
+            this.percent.Name = "percent";
+            this.percent.Size = new System.Drawing.Size(42, 21);
+            this.percent.TabIndex = 36;
+            this.percent.Text = "100";
+            this.percent.TextChanged += new System.EventHandler(this.percent_TextChanged);
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -664,6 +691,50 @@
             this.label1.Size = new System.Drawing.Size(71, 12);
             this.label1.TabIndex = 37;
             this.label1.Text = "领取概率%：";
+            // 
+            // guard
+            // 
+            this.guard.AutoSize = true;
+            this.guard.Location = new System.Drawing.Point(9, 45);
+            this.guard.Name = "guard";
+            this.guard.Size = new System.Drawing.Size(168, 16);
+            this.guard.TabIndex = 8;
+            this.guard.Text = "总督/拿督/提督/舰长/船等";
+            this.guard.UseVisualStyleBackColor = true;
+            this.guard.CheckedChanged += new System.EventHandler(this.guard_CheckedChanged);
+            // 
+            // tianxuan
+            // 
+            this.tianxuan.AutoSize = true;
+            this.tianxuan.Location = new System.Drawing.Point(9, 65);
+            this.tianxuan.Name = "tianxuan";
+            this.tianxuan.Size = new System.Drawing.Size(126, 16);
+            this.tianxuan.TabIndex = 9;
+            this.tianxuan.Text = "活动抽奖/天选时刻";
+            this.tianxuan.UseVisualStyleBackColor = true;
+            this.tianxuan.CheckedChanged += new System.EventHandler(this.tianxuan_CheckedChanged);
+            // 
+            // pk
+            // 
+            this.pk.AutoSize = true;
+            this.pk.Location = new System.Drawing.Point(9, 87);
+            this.pk.Name = "pk";
+            this.pk.Size = new System.Drawing.Size(78, 16);
+            this.pk.TabIndex = 10;
+            this.pk.Text = "PK/大乐斗";
+            this.pk.UseVisualStyleBackColor = true;
+            this.pk.CheckedChanged += new System.EventHandler(this.pk_CheckedChanged);
+            // 
+            // storm
+            // 
+            this.storm.AutoSize = true;
+            this.storm.Location = new System.Drawing.Point(9, 108);
+            this.storm.Name = "storm";
+            this.storm.Size = new System.Drawing.Size(72, 16);
+            this.storm.TabIndex = 11;
+            this.storm.Text = "节奏风暴";
+            this.storm.UseVisualStyleBackColor = true;
+            this.storm.CheckedChanged += new System.EventHandler(this.storm_CheckedChanged);
             // 
             // yingyuan_sign
             // 
@@ -1198,17 +1269,6 @@
             this.退出ToolStripMenuItem.Text = "退出";
             this.退出ToolStripMenuItem.Click += new System.EventHandler(this.退出ToolStripMenuItem_Click);
             // 
-            // join_room
-            // 
-            this.join_room.AutoSize = true;
-            this.join_room.Location = new System.Drawing.Point(9, 167);
-            this.join_room.Name = "join_room";
-            this.join_room.Size = new System.Drawing.Size(144, 16);
-            this.join_room.TabIndex = 38;
-            this.join_room.Text = "领取礼物前先加入房间";
-            this.join_room.UseVisualStyleBackColor = true;
-            this.join_room.CheckedChanged += new System.EventHandler(this.join_room_CheckedChanged);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1347,6 +1407,11 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem 退出ToolStripMenuItem;
         private System.Windows.Forms.CheckBox join_room;
+        private System.Windows.Forms.CheckBox storm_catch;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label lab1;
+        private System.Windows.Forms.TextBox storm_time;
+        private System.Windows.Forms.TextBox storm_count;
     }
 }
 

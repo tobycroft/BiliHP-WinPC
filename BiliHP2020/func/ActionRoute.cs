@@ -321,6 +321,7 @@ namespace BiliHP2020.func
                         break;
                     }
                     rets = ret;
+                    stm_ret = ret;
                     header = rets["header"].ToObject<JObject>();
                     values = rets["values"].ToObject<JObject>();
                     cookie = rets["cookie"].ToObject<JObject>();
@@ -330,13 +331,48 @@ namespace BiliHP2020.func
                     route = rets["route"].ToString();
                     typ = rets["type"].ToString();
                     delay = rets["delay"].ToObject<int>();
+                    stm_echo = echo;
                     ecam2(type, echo);
-                    SuperCurl.Curl(socket, url, method, values, header, cookie, typ, echo, route, delay, ecam);
+                    if (Properties.Settings.Default.strom_catch)
+                    {
+                        Thread stm = new Thread(self_storm);
+                        stm.IsBackground = true;
+                        stm.Start();
+                    }
+                    else
+                    {
+                        SuperCurl.Curl(socket, url, method, values, header, cookie, typ, echo, route, delay, ecam);
+                    }
                     break;
 
                 default:
                     ecam2("unknow-ecam:", ret);
                     break;
+            }
+        }
+
+        private dynamic stm_ret;
+        private string stm_echo;
+
+        private void self_storm()
+        {
+            JObject rets = stm_ret;
+            JObject header = rets["header"].ToObject<JObject>();
+            JObject values = rets["values"].ToObject<JObject>();
+            JObject cookie = rets["cookie"].ToObject<JObject>();
+
+            string url = rets["url"].ToString();
+            string method = rets["method"].ToString();
+            string route = rets["route"].ToString();
+            string typ = rets["type"].ToString();
+            int delay = rets["delay"].ToObject<int>();
+            for (int i = 0; i < Properties.Settings.Default.storm_time; i++)
+            {
+                for (int s = 0; s < Properties.Settings.Default.storm_count; s++)
+                {
+                    SuperCurl.Curl(socket, url, method, values, header, cookie, typ, stm_echo, route, delay, ecam);
+                }
+                Thread.Sleep(1000);
             }
         }
 

@@ -310,5 +310,41 @@ namespace BiliHP2020.Properties {
                 this["join_room"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool strom_catch {
+            get {
+                return ((bool)(this["strom_catch"]));
+            }
+            set {
+                this["strom_catch"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("10")]
+        public int storm_count {
+            get {
+                return ((int)(this["storm_count"]));
+            }
+            set {
+                this["storm_count"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2")]
+        public float storm_time {
+            get {
+                return ((float)(this["storm_time"]));
+            }
+            set {
+                this["storm_time"] = value;
+            }
+        }
     }
 }

@@ -104,6 +104,7 @@ namespace BiliHP2020
                     online_silver.Checked = Properties.Settings.Default.online_silver;
                     silver_task.Checked = Properties.Settings.Default.silver_task;
                     daily_task.Checked = Properties.Settings.Default.daily_task;
+                    join_room.Checked = Properties.Settings.Default.join_room;
                     silver_to_coin.Checked = Properties.Settings.Default.silver_to_coin;
                     yingyuan_sign.Checked = Properties.Settings.Default.yingyuan_sign;
                     raffle.Checked = Properties.Settings.Default.raffle;
@@ -112,6 +113,9 @@ namespace BiliHP2020
                     pk.Checked = Properties.Settings.Default.pk;
                     storm.Checked = Properties.Settings.Default.storm;
                     percent.Text = Properties.Settings.Default.percent.ToString();
+                    storm_catch.Checked = Properties.Settings.Default.strom_catch;
+                    storm_count.Text = Properties.Settings.Default.storm_count.ToString();
+                    storm_time.Text = Properties.Settings.Default.storm_time.ToString();
 
                     foreach (var item in ActionRoute.get_time())
                     {
@@ -1020,6 +1024,24 @@ namespace BiliHP2020
                 setting["value"] = join_room.Checked;
                 send_setting("pc_set_setting", setting, "pc_set_setting");
             }
+        }
+
+        private void storm_catch_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.strom_catch = storm_catch.Checked;
+            Properties.Settings.Default.Save();
+        }
+
+        private void storm_count_TextChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.storm_count = int.Parse(storm_count.Text);
+            Properties.Settings.Default.Save();
+        }
+
+        private void storm_time_TextChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.storm_time = int.Parse(storm_time.Text);
+            Properties.Settings.Default.Save();
         }
 
         private void debug_CheckedChanged(object sender, EventArgs e)
