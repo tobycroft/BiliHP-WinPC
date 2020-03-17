@@ -159,8 +159,28 @@ namespace BiliHP2020.func
                     SuperCurl.Curl(socket, url, method, values, header, cookie, typ, echo, route, delay, ecam);
                     break;
 
+                case "join_room":
+                    //ecam_action(echo);
+                    if (!Properties.Settings.Default.join_room)
+                    {
+                        break;
+                    }
+                    rets = ret;
+                    header = rets["header"].ToObject<JObject>();
+                    values = rets["values"].ToObject<JObject>();
+                    cookie = rets["cookie"].ToObject<JObject>();
+
+                    url = rets["url"].ToString();
+                    method = rets["method"].ToString();
+                    route = rets["route"].ToString();
+                    typ = rets["type"].ToString();
+                    delay = rets["delay"].ToObject<int>();
+                    ecam2(type, echo);
+                    SuperCurl.Curl(socket, url, method, values, header, cookie, typ, echo, route, delay, ecam);
+                    break;
+
                 case "gift":
-                    ecam_action(echo);
+                    //ecam_action(echo);
                     if (!Properties.Settings.Default.raffle)
                     {
                         ecam2("[BiliHP-Net]", "电视类型的领奖被关闭，请在面板中开启");
@@ -191,7 +211,7 @@ namespace BiliHP2020.func
                     break;
 
                 case "guard":
-                    ecam_action(echo);
+                    //ecam_action(echo);
                     if (!Properties.Settings.Default.guard)
                     {
                         ecam2("[BiliHP-Net]", "舰长类型的领奖被关闭，请在面板中开启");
@@ -222,7 +242,7 @@ namespace BiliHP2020.func
                     break;
 
                 case "tianxuan":
-                    ecam_action(echo);
+                    //ecam_action(echo);
                     if (!Properties.Settings.Default.tianxuan)
                     {
                         ecam2("[BiliHP-Net]", "天选类型的领奖被关闭，请在面板中开启");
@@ -253,7 +273,7 @@ namespace BiliHP2020.func
                     break;
 
                 case "pk":
-                    ecam_action(echo);
+                    //ecam_action(echo);
                     if (!Properties.Settings.Default.pk)
                     {
                         ecam2("[BiliHP-Net]", "PK类型的领奖被关闭，请在面板中开启");
@@ -284,7 +304,7 @@ namespace BiliHP2020.func
                     break;
 
                 case "storm":
-                    ecam_action(echo);
+                    //ecam_action(echo);
                     if (!Properties.Settings.Default.storm)
                     {
                         ecam2("[BiliHP-Net]", "风暴类型的领奖被关闭，请在面板中开启");

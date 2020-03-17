@@ -298,5 +298,17 @@ namespace BiliHP2020.Properties {
                 this["setting_read"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool join_room {
+            get {
+                return ((bool)(this["join_room"]));
+            }
+            set {
+                this["join_room"] = value;
+            }
+        }
     }
 }
