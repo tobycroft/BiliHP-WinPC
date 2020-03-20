@@ -229,7 +229,7 @@ namespace BiliHP2020.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        [global::System.Configuration.DefaultSettingValueAttribute("99")]
         public int percent {
             get {
                 return ((int)(this["percent"]));

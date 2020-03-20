@@ -226,6 +226,7 @@ namespace BiliHP2020
 
                     debug.Checked = Properties.Settings.Default.debug;
                     Properties.Settings.Default.setting_lock = false;
+                    Properties.Settings.Default.setting_read = false;
                     Properties.Settings.Default.Save();
                 }
             }
@@ -981,6 +982,7 @@ namespace BiliHP2020
         private void percent_TextChanged(object sender, EventArgs e)
         {
             Properties.Settings.Default.percent = int.Parse(percent.Text);
+
             Properties.Settings.Default.Save();
             if (!Properties.Settings.Default.setting_lock)
             {
@@ -1049,7 +1051,11 @@ namespace BiliHP2020
             Properties.Settings.Default.Save();
         }
 
+        private void button13_Click(object sender, EventArgs e)
+        {
+            //MessageBox.Show(Properties.Settings.Default.percent.ToString());
 
+        }
 
         private void debug_CheckedChanged(object sender, EventArgs e)
         {

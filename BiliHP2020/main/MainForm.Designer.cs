@@ -89,6 +89,7 @@
             this.app_heart = new System.Windows.Forms.CheckBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.button12 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
@@ -133,7 +134,7 @@
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.退出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.button12 = new System.Windows.Forms.Button();
+            this.button13 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -839,6 +840,16 @@
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "占位盒子";
             // 
+            // button12
+            // 
+            this.button12.Location = new System.Drawing.Point(7, 71);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(188, 44);
+            this.button12.TabIndex = 2;
+            this.button12.Text = "强制解除黑屋保护";
+            this.button12.UseVisualStyleBackColor = true;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
+            // 
             // button8
             // 
             this.button8.Location = new System.Drawing.Point(201, 21);
@@ -1187,6 +1198,7 @@
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.button13);
             this.tabPage4.Controls.Add(this.debug);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
@@ -1271,15 +1283,15 @@
             this.退出ToolStripMenuItem.Text = "退出";
             this.退出ToolStripMenuItem.Click += new System.EventHandler(this.退出ToolStripMenuItem_Click);
             // 
-            // button12
+            // button13
             // 
-            this.button12.Location = new System.Drawing.Point(7, 71);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(188, 44);
-            this.button12.TabIndex = 2;
-            this.button12.Text = "强制解除黑屋保护";
-            this.button12.UseVisualStyleBackColor = true;
-            this.button12.Click += new System.EventHandler(this.button12_Click);
+            this.button13.Location = new System.Drawing.Point(18, 36);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(75, 23);
+            this.button13.TabIndex = 1;
+            this.button13.Text = "button13";
+            this.button13.UseVisualStyleBackColor = true;
+            this.button13.Click += new System.EventHandler(this.button13_Click);
             // 
             // MainForm
             // 
@@ -1425,6 +1437,7 @@
         private System.Windows.Forms.TextBox storm_time;
         private System.Windows.Forms.TextBox storm_count;
         private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.Button button13;
     }
 }
 

@@ -41,7 +41,7 @@ namespace BiliHP2020.func
                         Properties.Settings.Default.pk = data["pk"].ToObject<bool>();
                         Properties.Settings.Default.storm = data["storm"].ToObject<bool>();
                         Properties.Settings.Default.time = data["time"].ToString();
-                        Properties.Settings.Default.percent = data["pk"].ToObject<int>();
+                        Properties.Settings.Default.percent = data["percent"].ToObject<int>();
                         Properties.Settings.Default.update_time = data["pk"].ToObject<string>();
                         Properties.Settings.Default.date = data["date"].ToObject<string>();
                         Properties.Settings.Default.setting_read = true;
