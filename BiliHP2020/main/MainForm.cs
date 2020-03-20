@@ -42,6 +42,7 @@ namespace BiliHP2020
             sock.Start();
             init();
             fn.socket = socket;
+            fn.ecam = ecam;
             t1 = new Thread(fn.yingyuan_sign);
             t1.IsBackground = true;
             //t1.Start();

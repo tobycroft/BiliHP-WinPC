@@ -449,7 +449,15 @@ namespace BiliHP2020.func
 
         private void send(string data)
         {
-            socket.Send(Encoding.UTF8.GetBytes(data));
+            try
+            {
+                socket.Send(Encoding.UTF8.GetBytes(data));
+
+            }
+            catch (Exception e)
+            {
+                ecam_action("ActionRoute:" + e.Message);
+            }
         }
     }
 }

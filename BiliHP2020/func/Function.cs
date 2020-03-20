@@ -5,12 +5,14 @@ using System.Linq;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
+using System.Windows.Forms;
 
 namespace BiliHP2020.func
 {
     class Function
     {
         public Socket socket;
+        public ListBox ecam;
         public void yingyuan_sign()
         {
             while (true) 
@@ -128,7 +130,25 @@ namespace BiliHP2020.func
 
         private void send(string data)
         {
-            socket.Send(Encoding.UTF8.GetBytes(data));
+            try
+            {
+                socket.Send(Encoding.UTF8.GetBytes(data));
+
+            }
+            catch (Exception e)
+            {
+                ecam_action("FUNCTION:"+e.Message);
+            }
+        }
+
+        public void ecam_action(object str)
+        {
+            var date = DateTime.Now.ToLongTimeString().ToString();
+            StringBuilder sb = new StringBuilder();
+            sb.Append(date);
+            sb.Append(":");
+            sb.Append(str.ToString());
+            ecam.Items.Insert(0, sb.ToString());
         }
     }
 }
