@@ -85,7 +85,14 @@ namespace BiliHP2020.func
 
         private void send(string data)
         {
-            this.socket.Send(Encoding.UTF8.GetBytes(data));
+            try
+            {
+                this.socket.Send(Encoding.UTF8.GetBytes(data));
+            }
+            catch (Exception e)
+            {
+                ecam_action("PC-ROUTE"+e.Message);
+            }
         }
 
         private string send_obj(string type, string data, string echo, dynamic values = null)
