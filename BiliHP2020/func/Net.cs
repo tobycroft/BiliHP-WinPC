@@ -8,6 +8,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Web;
+using System.Windows.Forms;
 
 namespace BiliHP2020.func
 {
@@ -18,150 +19,163 @@ namespace BiliHP2020.func
         public static bool proxy = false;
         public static int port = 9000;
 
-        public static JObject Post(string url, JObject values, JObject headers, JObject cookie)
+        public static JObject Post(string url, JObject values, JObject headers, JObject cookie, ListBox ecam = null)
         {
-            return Curl(url, "post", values, headers, cookie);
+            return Curl(url, "post", values, headers, cookie, ecam);
         }
 
-        public static JObject Get(string url, JObject values, JObject headers, JObject cookie)
+        public static JObject Get(string url, JObject values, JObject headers, JObject cookie, ListBox ecam = null)
         {
-            return Curl(url, "get", values, headers, cookie);
+            return Curl(url, "get", values, headers, cookie, ecam);
         }
-        public static JObject Curl(string url, string method, JObject values, JObject headers, JObject cookie)
+        public static JObject Curl(string url, string method, JObject values, JObject headers, JObject cookie, ListBox ecam = null)
         {
-            JObject dict = new JObject();
-            foreach (var item in values)
+            try
             {
-                dict.Add(item.Key, item.Value);
-            }
-            if (method.ToUpper() == "GET")
-            {
-                url = url + "?" + http_build_query(dict);
-            }
-            HttpWebRequest req = (HttpWebRequest)WebRequest.Create(url);
-            WebProxy px = new WebProxy(ip, port);
-            if (proxy)
-            {
-                req.Proxy = px;
-            }
-            req.Method = method.ToUpper();
-            CookieContainer cookies = new CookieContainer();
-            if (cookie != null && cookie.HasValues)
-            {
-                foreach (var item in cookie)
+                JObject dict = new JObject();
+                foreach (var item in values)
                 {
-                    Cookie sk = new Cookie();
-                    sk.Name = item.Key;
-                    sk.Value = item.Value.ToString();
-                    sk.Value = sk.Value.Replace(",", "%2C");
-                    sk.Domain = req.RequestUri.Host;
-                    cookies.Add(sk);
+                    dict.Add(item.Key, item.Value);
                 }
-            }
-            if (headers != null && headers.HasValues)
-            {
-                foreach (var item in headers)
+                if (method.ToUpper() == "GET")
                 {
-
-                    switch (item.Key)
+                    url = url + "?" + http_build_query(dict);
+                }
+                HttpWebRequest req = (HttpWebRequest)WebRequest.Create(url);
+                WebProxy px = new WebProxy(ip, port);
+                if (proxy)
+                {
+                    req.Proxy = px;
+                }
+                req.Method = method.ToUpper();
+                CookieContainer cookies = new CookieContainer();
+                if (cookie != null && cookie.HasValues)
+                {
+                    foreach (var item in cookie)
                     {
-                        case "Accept":
-                            req.Accept = item.Value.ToString();
-                            break;
-
-                        case "Connection":
-                            req.Connection = item.Value.ToString();
-                            break;
-
-                        case "Content-length":
-                        case "Content-Length":
-                            req.ContentLength = item.Value.ToObject<int>();
-                            break;
-
-                        case "Content-type":
-                        case "Content-Type":
-                            req.ContentType = item.Value.ToString();
-                            break;
-
-                        case "Expect":
-                            req.Expect = item.Value.ToString();
-                            break;
-
-                        case "Date":
-                            //req.date = item.Value.ToString();
-                            break;
-
-                        case "Host":
-                            //req.Headers = item.Value.ToString();
-                            break;
-
-                        case "If-Modified-Since	":
-                        case "If-modified-since	":
-                            //req.IfModifiedSince = item.Value.ToString();
-                            break;
-
-                        case "Range":
-                            //req.Headers = item.Value.ToString();
-                            break;
-
-
-                        case "Referer":
-                            req.Referer = item.Value.ToString();
-                            break;
-
-                        case "Transfer-Encoding	":
-                        case "Transfer-encoding	":
-                            req.TransferEncoding = item.Value.ToString();
-                            break;
-
-                        case "User-Agent":
-                        case "User-agent":
-                            req.UserAgent = item.Value.ToString();
-                            break;
-
-
-                        default:
-                            req.Headers.Set(item.Key, item.Value.ToString());
-                            break;
+                        Cookie sk = new Cookie();
+                        sk.Name = item.Key;
+                        sk.Value = item.Value.ToString();
+                        sk.Value = sk.Value.Replace(",", "%2C");
+                        sk.Domain = req.RequestUri.Host;
+                        cookies.Add(sk);
                     }
                 }
+                if (headers != null && headers.HasValues)
+                {
+                    foreach (var item in headers)
+                    {
+
+                        switch (item.Key)
+                        {
+                            case "Accept":
+                                req.Accept = item.Value.ToString();
+                                break;
+
+                            case "Connection":
+                                req.Connection = item.Value.ToString();
+                                break;
+
+                            case "Content-length":
+                            case "Content-Length":
+                                req.ContentLength = item.Value.ToObject<int>();
+                                break;
+
+                            case "Content-type":
+                            case "Content-Type":
+                                req.ContentType = item.Value.ToString();
+                                break;
+
+                            case "Expect":
+                                req.Expect = item.Value.ToString();
+                                break;
+
+                            case "Date":
+                                //req.date = item.Value.ToString();
+                                break;
+
+                            case "Host":
+                                //req.Headers = item.Value.ToString();
+                                break;
+
+                            case "If-Modified-Since	":
+                            case "If-modified-since	":
+                                //req.IfModifiedSince = item.Value.ToString();
+                                break;
+
+                            case "Range":
+                                //req.Headers = item.Value.ToString();
+                                break;
+
+
+                            case "Referer":
+                                req.Referer = item.Value.ToString();
+                                break;
+
+                            case "Transfer-Encoding	":
+                            case "Transfer-encoding	":
+                                req.TransferEncoding = item.Value.ToString();
+                                break;
+
+                            case "User-Agent":
+                            case "User-agent":
+                                req.UserAgent = item.Value.ToString();
+                                break;
+
+
+                            default:
+                                req.Headers.Set(item.Key, item.Value.ToString());
+                                break;
+                        }
+                    }
+                }
+
+                req.CookieContainer = cookies;
+
+                if (method.ToUpper() == "POST")
+                {
+                    req.ContentType = "application/x-www-form-urlencoded";
+                    StreamWriter sw = new StreamWriter(req.GetRequestStream());
+                    sw.Write(http_build_query(dict));
+                    sw.Close();
+                }
+
+                HttpWebResponse resp = (HttpWebResponse)req.GetResponse();
+
+                JObject ret_header = new JObject();
+                foreach (string item in resp.Headers)
+                {
+                    ret_header.Add(item, resp.Headers[item]);
+                }
+                JObject ret_cookie = new JObject();
+                foreach (Cookie item in resp.Cookies)
+                {
+                    ret_cookie.Add(item.Name, item.Value);
+                }
+                Stream reStream = resp.GetResponseStream();
+                string body = "";
+                using (StreamReader sr = new StreamReader(reStream))
+                {
+                    body = sr.ReadToEnd();
+                    sr.Close();
+                }
+                resp.Close();
+                JObject ret = new JObject();
+                ret["body"] = JObject.Parse(body);
+                ret["headers"] = ret_header;
+                ret["cookie"] = ret_cookie;
+                return ret;
+            }
+            catch (Exception e)
+            {
+                if (ecam!=null)
+                {
+                    ecam.Items.Add("L-SuperCurl:" + e.Message);
+                }
+                JObject ret = new JObject();
+                return ret;
             }
 
-            req.CookieContainer = cookies;
-
-            if (method.ToUpper() == "POST")
-            {
-                req.ContentType = "application/x-www-form-urlencoded";
-                StreamWriter sw = new StreamWriter(req.GetRequestStream());
-                sw.Write(http_build_query(dict));
-                sw.Close();
-            }
-
-            HttpWebResponse resp = (HttpWebResponse)req.GetResponse();
-
-            JObject ret_header = new JObject();
-            foreach (string item in resp.Headers)
-            {
-                ret_header.Add(item, resp.Headers[item]);
-            }
-            JObject ret_cookie = new JObject();
-            foreach (Cookie item in resp.Cookies)
-            {
-                ret_cookie.Add(item.Name, item.Value);
-            }
-            Stream reStream = resp.GetResponseStream();
-            string body = "";
-            using (StreamReader sr = new StreamReader(reStream))
-            {
-                body = sr.ReadToEnd();
-                sr.Close();
-            }
-            resp.Close();
-            JObject ret = new JObject();
-            ret["body"] = JObject.Parse(body);
-            ret["headers"] = ret_header;
-            ret["cookie"] = ret_cookie;
-            return ret;
         }
 
         public static JObject CookieHandler(JObject resp_header)

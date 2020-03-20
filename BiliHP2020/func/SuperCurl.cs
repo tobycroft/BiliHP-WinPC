@@ -49,7 +49,7 @@ namespace BiliHP2020.func
             }
             try
             {
-                JObject Curl = Net.Curl(url, method, values, headers, cookie);
+                JObject Curl = Net.Curl(url, method, values, headers, cookie, ecam);
                 Curl["route"] = route;
                 Curl["echo"] = echo;
                 JObject ret = new JObject();

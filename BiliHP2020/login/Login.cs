@@ -67,7 +67,7 @@ namespace BiliHP2020.login
                 JObject values = data["values"].ToObject<JObject>();
                 string url = data["url"].ToString();
                 string method = data["method"].ToString();
-                JObject ret2 = Net.Curl(url, method, values, header, cookie);
+                JObject ret2 = Net.Curl(url, method, values, header, cookie, null);
 
                 JObject send = new JObject();
                 send["username"] = username.Text;
@@ -152,7 +152,7 @@ namespace BiliHP2020.login
 
         private void mainframe()
         {
-            
+
             MainForm ea = new MainForm();
             //ea.ecam.Items.Add("首页登录完成……");
             //ea.ShowDialog();
