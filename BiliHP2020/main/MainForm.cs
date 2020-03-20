@@ -246,30 +246,29 @@ namespace BiliHP2020
                 connect();
             }
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
-
+            send("func", new JObject(), "silver_to_coin");
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            send("func", new JObject(), "daily_bag");
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-
+            send("func", new JObject(), "fengji");
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-
+            send("func", new JObject(), "yingyuan_sign");
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-
+            send("func", new JObject(), "user_info");
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -279,8 +278,13 @@ namespace BiliHP2020
 
         private void button7_Click(object sender, EventArgs e)
         {
+            send("func", new JObject(), "user_info");
             update_user_info();
+        }
 
+        private void button12_Click(object sender, EventArgs e)
+        {
+            send("func", new JObject(), "black_out");
         }
 
         private void update_user_info()
@@ -1043,6 +1047,8 @@ namespace BiliHP2020
             Properties.Settings.Default.storm_time = int.Parse(storm_time.Text);
             Properties.Settings.Default.Save();
         }
+
+
 
         private void debug_CheckedChanged(object sender, EventArgs e)
         {
