@@ -11,7 +11,7 @@ namespace BiliHP2020.func
 {
     class Function
     {
-        public Socket socket;
+        //public Socket socket;
         public ListBox ecam;
         public void yingyuan_sign()
         {
@@ -132,8 +132,8 @@ namespace BiliHP2020.func
         {
             try
             {
-                socket.Send(Encoding.UTF8.GetBytes(data));
-
+                MainForm.socket.Send(Encoding.UTF8.GetBytes(data));
+                //socket.Send(Encoding.UTF8.GetBytes(data));
             }
             catch (Exception e)
             {

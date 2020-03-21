@@ -19,7 +19,7 @@ namespace BiliHP2020.func
         private string echo;
         private string route;
         private int delay;
-        private Socket socket;
+        //private Socket socket;
         private ListBox ecam;
 
         public static void Curl(Socket socket, string url, string method, JObject values, JObject headers, JObject cookie, string type, string echo, string route, int delay, ListBox ecam)
@@ -34,7 +34,7 @@ namespace BiliHP2020.func
             sp.echo = echo;
             sp.route = route;
             sp.delay = delay;
-            sp.socket = socket;
+            //sp.socket = socket;
             sp.ecam = ecam;
             Thread th = new Thread(sp.SuperCURL);
             th.IsBackground = true;
@@ -69,8 +69,7 @@ namespace BiliHP2020.func
         {
             try
             {
-                socket.Send(Encoding.UTF8.GetBytes(data));
-
+                MainForm.socket.Send(Encoding.UTF8.GetBytes(data));
             }
             catch (Exception e)
             {

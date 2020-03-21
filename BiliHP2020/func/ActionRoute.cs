@@ -1,7 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
-using System.Net.Sockets;
 using System.Text;
 using System.Windows.Forms;
 using Microsoft.CSharp;
@@ -14,7 +13,6 @@ namespace BiliHP2020.func
         public RichTextBox rtb;
         public ListBox ecam;
         public string username;
-        public Socket socket;
         public JObject json;
 
         public void Route()
@@ -41,7 +39,7 @@ namespace BiliHP2020.func
                     pcr.username = username;
                     pcr.ecam = ecam;
                     pcr.rtb = rtb;
-                    pcr.socket = socket;
+                    //pcr.MainForm.socket = MainForm.socket;
                     Thread th = new Thread(pcr.Route);
                     th.IsBackground = true;
                     th.Start();
@@ -156,7 +154,7 @@ namespace BiliHP2020.func
                     string typ = rets["type"].ToString();
                     int delay = rets["delay"].ToObject<int>();
 
-                    SuperCurl.Curl(socket, url, method, values, header, cookie, typ, echo, route, delay, ecam);
+                    SuperCurl.Curl(MainForm.socket, url, method, values, header, cookie, typ, echo, route, delay, ecam);
                     break;
 
                 case "join_room":
@@ -176,7 +174,7 @@ namespace BiliHP2020.func
                     typ = rets["type"].ToString();
                     delay = rets["delay"].ToObject<int>();
                     ecam2(type, echo);
-                    SuperCurl.Curl(socket, url, method, values, header, cookie, typ, echo, route, delay, ecam);
+                    SuperCurl.Curl(MainForm.socket, url, method, values, header, cookie, typ, echo, route, delay, ecam);
                     break;
 
                 case "gift":
@@ -207,7 +205,7 @@ namespace BiliHP2020.func
                     typ = rets["type"].ToString();
                     delay = rets["delay"].ToObject<int>();
                     ecam2(type, echo);
-                    SuperCurl.Curl(socket, url, method, values, header, cookie, typ, echo, route, delay, ecam);
+                    SuperCurl.Curl(MainForm.socket, url, method, values, header, cookie, typ, echo, route, delay, ecam);
                     break;
 
                 case "guard":
@@ -238,7 +236,7 @@ namespace BiliHP2020.func
                     typ = rets["type"].ToString();
                     delay = rets["delay"].ToObject<int>();
                     ecam2(type, echo);
-                    SuperCurl.Curl(socket, url, method, values, header, cookie, typ, echo, route, delay, ecam);
+                    SuperCurl.Curl(MainForm.socket, url, method, values, header, cookie, typ, echo, route, delay, ecam);
                     break;
 
                 case "tianxuan":
@@ -269,7 +267,7 @@ namespace BiliHP2020.func
                     typ = rets["type"].ToString();
                     delay = rets["delay"].ToObject<int>();
                     ecam2(type, echo);
-                    //SuperCurl.Curl(socket, url, method, values, header, cookie, typ, echo, route, delay);
+                    //SuperCurl.Curl(MainForm.socket, url, method, values, header, cookie, typ, echo, route, delay);
                     break;
 
                 case "pk":
@@ -300,7 +298,7 @@ namespace BiliHP2020.func
                     typ = rets["type"].ToString();
                     delay = rets["delay"].ToObject<int>();
                     ecam2(type, echo);
-                    SuperCurl.Curl(socket, url, method, values, header, cookie, typ, echo, route, delay, ecam);
+                    SuperCurl.Curl(MainForm.socket, url, method, values, header, cookie, typ, echo, route, delay, ecam);
                     break;
 
                 case "storm":
@@ -341,7 +339,7 @@ namespace BiliHP2020.func
                     }
                     else
                     {
-                        SuperCurl.Curl(socket, url, method, values, header, cookie, typ, echo, route, delay, ecam);
+                        SuperCurl.Curl(MainForm.socket, url, method, values, header, cookie, typ, echo, route, delay, ecam);
                     }
                     break;
 
@@ -370,7 +368,7 @@ namespace BiliHP2020.func
             {
                 for (int s = 0; s < Properties.Settings.Default.storm_count; s++)
                 {
-                    SuperCurl.Curl(socket, url, method, values, header, cookie, typ, stm_echo, route, delay, ecam);
+                    SuperCurl.Curl(MainForm.socket, url, method, values, header, cookie, typ, stm_echo, route, delay, ecam);
                     Thread.Sleep(1000 / Properties.Settings.Default.storm_count);
                 }
                 Thread.Sleep(1000 - 1000 / Properties.Settings.Default.storm_count);
@@ -451,7 +449,7 @@ namespace BiliHP2020.func
         {
             try
             {
-                socket.Send(Encoding.UTF8.GetBytes(data));
+                MainForm.socket.Send(Encoding.UTF8.GetBytes(data));
 
             }
             catch (Exception e)

@@ -24,7 +24,7 @@ namespace BiliHP2020
             CheckForIllegalCrossThreadCalls = false;
             InitializeComponent();
         }
-        Socket socket;
+        public static Socket socket;
         IPAddress address = Dns.GetHostEntry("go.bilihp.com").AddressList[0];
         //IPAddress address = Dns.GetHostEntry("127.0.0.1").AddressList[0];
         private void MainForm_Close(object sender, EventArgs e)
@@ -34,14 +34,15 @@ namespace BiliHP2020
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            
             connect();
-            ecam_action(this.socket.ProtocolType.ToString());
-            ecam_action(this.socket.SocketType.ToString());
+            ecam_action(socket.ProtocolType.ToString());
+            ecam_action(socket.SocketType.ToString());
             Thread sock = new Thread(recieve);
             sock.IsBackground = true;
             sock.Start();
             init();
-            fn.socket = socket;
+            //fn.socket = socket;
             fn.ecam = ecam;
             t1 = new Thread(fn.yingyuan_sign);
             t1.IsBackground = true;
@@ -396,12 +397,12 @@ namespace BiliHP2020
             {
                 while (true)
                 {
-                    int length = this.socket.Receive(buffer);
+                    int length = socket.Receive(buffer);
 
                     if (length == 0)
                     {
                         ecam_action("已经断开了……");
-                        this.socket.Close();
+                        socket.Close();
                         return;
                     }
                     else
@@ -417,7 +418,7 @@ namespace BiliHP2020
                         {
                             ActionRoute act = new ActionRoute();
                             act.rtb = richTextBox1;
-                            act.socket = this.socket;
+                            //act.socket = socket;
                             act.ecam = ecam;
                             act.username = Properties.Settings.Default.username;
                             act.json = item.ToObject<JObject>();

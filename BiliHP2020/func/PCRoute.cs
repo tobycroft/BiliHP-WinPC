@@ -13,7 +13,7 @@ namespace BiliHP2020.func
         public RichTextBox rtb;
         public ListBox ecam;
         public string username;
-        public Socket socket;
+        //public Socket socket;
         public JObject json;
         public void Route()
         {
@@ -87,7 +87,7 @@ namespace BiliHP2020.func
         {
             try
             {
-                this.socket.Send(Encoding.UTF8.GetBytes(data));
+               MainForm.socket.Send(Encoding.UTF8.GetBytes(data));
             }
             catch (Exception e)
             {
