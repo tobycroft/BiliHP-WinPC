@@ -133,7 +133,6 @@ namespace BiliHP2020.func
             try
             {
                 MainForm.socket.Send(Encoding.UTF8.GetBytes(data));
-                //socket.Send(Encoding.UTF8.GetBytes(data));
             }
             catch (Exception e)
             {
