@@ -25,7 +25,7 @@ namespace BiliHP2020
             InitializeComponent();
         }
         public static Socket socket;
-        IPAddress address = Dns.GetHostEntry("go.bilihp.com").AddressList[0];
+        public static IPAddress address = Dns.GetHostEntry("go.bilihp.com").AddressList[0];
         //IPAddress address = Dns.GetHostEntry("127.0.0.1").AddressList[0];
         private void MainForm_Close(object sender, EventArgs e)
         {
@@ -34,7 +34,6 @@ namespace BiliHP2020
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            
             connect();
             ecam_action(socket.ProtocolType.ToString());
             ecam_action(socket.SocketType.ToString());
@@ -239,7 +238,6 @@ namespace BiliHP2020
             {
                 socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
                 socket.NoDelay = false;
-
                 socket.Connect(address.ToString(), 181);
             }
             catch (Exception e)
@@ -377,7 +375,6 @@ namespace BiliHP2020
         private void send_raw(string raw)
         {
             socket.Send(Encoding.UTF8.GetBytes(raw));
-
         }
 
         private void init()
