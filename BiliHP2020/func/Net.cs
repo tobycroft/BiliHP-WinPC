@@ -47,6 +47,10 @@ namespace BiliHP2020.func
                 {
                     req.Proxy = px;
                 }
+                else
+                {
+                    req.Proxy = null;
+                }
                 req.Method = method.ToUpper();
                 CookieContainer cookies = new CookieContainer();
                 if (cookie != null && cookie.HasValues)
