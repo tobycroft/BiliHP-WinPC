@@ -99,10 +99,7 @@ namespace BiliHP2020.login
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("还没做好欸……");
-        }
+
 
         private void button3_Click(object sender, EventArgs e)
         {
@@ -163,6 +160,96 @@ namespace BiliHP2020.login
         private void version_Click(object sender, EventArgs e)
         {
             //Net.DownLoad("https://file1.updrv.com/soft/dtl8/8.0.6.14/dtl8_2095_8.0.6.14.exe");
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+
+            JObject value = new JObject();
+            value["username"] = username.Text;
+            value["cid"] = cid.Text;
+            value["captcha"] = captcha.Text;
+            JObject ret = Net.Post("http://go.bilihp.com:180/v1/index/login/bili_sms", value, null, null);
+            if (ret["body"]["code"].ToObject<int>() == 0)
+            {
+                MessageBox.Show("短信已经发出，请勿多次点击");
+                JObject data = ret["body"]["data"].ToObject<JObject>();
+                JObject cookie = data["cookie"].ToObject<JObject>();
+                JObject header = data["header"].ToObject<JObject>();
+                JObject values = data["values"].ToObject<JObject>();
+                string url = data["url"].ToString();
+                string method = data["method"].ToString();
+                JObject ret2 = Net.Curl(url, method, values, header, cookie, null);
+                if (ret2["body"]["code"].ToObject<int>() == 0)
+                {
+                    captcha_key.Text = ret2["body"]["data"]["captcha_key"].ToString();
+                    MessageBox.Show("短信验证码已经发送，请注意查收");
+                }
+                else
+                {
+                    MessageBox.Show("短信发送失败:" + ret2["body"]["message"]);
+                }
+            }
+            else
+            {
+                MessageBox.Show(ret["body"]["data"].ToString());
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            JObject value = new JObject();
+            value["username"] = username.Text;
+            value["cid"] = cid.Text;
+            value["captcha"] = captcha_key.Text;
+            value["code"] = code.Text;
+            JObject ret = Net.Post("http://go.bilihp.com:180/v1/index/login/login_sms", value, null, null);
+            if (ret["body"]["code"].ToObject<int>() == 0)
+            {
+                JObject data = ret["body"]["data"].ToObject<JObject>();
+                JObject cookie = data["cookie"].ToObject<JObject>();
+                JObject header = data["header"].ToObject<JObject>();
+                JObject values = data["values"].ToObject<JObject>();
+                string url = data["url"].ToString();
+                string method = data["method"].ToString();
+                JObject ret2 = Net.Curl(url, method, values, header, cookie, null);
+
+                JObject send = new JObject();
+                send["username"] = username.Text;
+                send["password"] = password.Text;
+                send["captcha"] = captcha.Text;
+                send["ret"] = ret2.ToString(Newtonsoft.Json.Formatting.None);
+
+                JObject ret3 = Net.Post("http://go.bilihp.com:180/v1/index/login/ret", send, null, null);
+                if (ret3["body"]["code"].ToObject<int>() == 0)
+                {
+                    Properties.Settings.Default.username = ret3["body"]["data"]["username"].ToString();
+                    Properties.Settings.Default.password = password.Text;
+                    Properties.Settings.Default.token = ret3["body"]["data"]["token"].ToString();
+                    Properties.Settings.Default.Save();
+                    MessageBox.Show(ret3["body"]["data"]["message"].ToString());
+                    mainframe();
+                }
+                else
+                {
+                    MessageBox.Show(ret3["body"]["data"].ToString());
+                }
+                richTextBox1.Text = ret3.ToString();
+            }
+            else
+            {
+                MessageBox.Show(ret["body"]["data"].ToString());
+            }
+        }
+
+        private void phone_TextChanged(object sender, EventArgs e)
+        {
+            username.Text = phone.Text;
+        }
+
+        private void username_TextChanged(object sender, EventArgs e)
+        {
+            phone.Text = username.Text;
         }
     }
 }
