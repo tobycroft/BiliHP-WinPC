@@ -51,15 +51,16 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.phone = new System.Windows.Forms.TextBox();
-            this.code = new System.Windows.Forms.TextBox();
-            this.button6 = new System.Windows.Forms.Button();
-            this.label8 = new System.Windows.Forms.Label();
-            this.cid = new System.Windows.Forms.TextBox();
             this.captcha_key = new System.Windows.Forms.TextBox();
+            this.cid = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.button6 = new System.Windows.Forms.Button();
+            this.code = new System.Windows.Forms.TextBox();
+            this.phone = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.button7 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -97,9 +98,9 @@
             // 
             this.button2.Location = new System.Drawing.Point(9, 166);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(272, 23);
+            this.button2.Size = new System.Drawing.Size(195, 23);
             this.button2.TabIndex = 12;
-            this.button2.Text = "手机短信登录";
+            this.button2.Text = "4.手机短信登录";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -284,6 +285,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.button7);
             this.tabPage2.Controls.Add(this.captcha_key);
             this.tabPage2.Controls.Add(this.cid);
             this.tabPage2.Controls.Add(this.label8);
@@ -301,57 +303,23 @@
             this.tabPage2.Text = "手机短信登录";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // tabPage3
+            // captcha_key
             // 
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(287, 195);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "共享Cookie登录";
-            this.tabPage3.UseVisualStyleBackColor = true;
+            this.captcha_key.Enabled = false;
+            this.captcha_key.Location = new System.Drawing.Point(7, 80);
+            this.captcha_key.Name = "captcha_key";
+            this.captcha_key.Size = new System.Drawing.Size(274, 21);
+            this.captcha_key.TabIndex = 22;
+            this.captcha_key.Text = "短信请求后这里会出现对应key";
             // 
-            // label6
+            // cid
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(5, 8);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(65, 12);
-            this.label6.TabIndex = 13;
-            this.label6.Text = "1.手机号：";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(5, 58);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(65, 12);
-            this.label7.TabIndex = 14;
-            this.label7.Text = "3.验证码：";
-            // 
-            // phone
-            // 
-            this.phone.Location = new System.Drawing.Point(44, 23);
-            this.phone.Name = "phone";
-            this.phone.Size = new System.Drawing.Size(152, 21);
-            this.phone.TabIndex = 15;
-            this.phone.TextChanged += new System.EventHandler(this.phone_TextChanged);
-            // 
-            // code
-            // 
-            this.code.Location = new System.Drawing.Point(76, 53);
-            this.code.Name = "code";
-            this.code.Size = new System.Drawing.Size(120, 21);
-            this.code.TabIndex = 16;
-            // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(202, 21);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(79, 53);
-            this.button6.TabIndex = 17;
-            this.button6.Text = "2.发送短信";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.cid.Location = new System.Drawing.Point(7, 23);
+            this.cid.Name = "cid";
+            this.cid.Size = new System.Drawing.Size(31, 21);
+            this.cid.TabIndex = 21;
+            this.cid.Text = "86";
+            this.cid.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label8
             // 
@@ -363,23 +331,67 @@
             this.label8.Text = "在点击“发送短信”后请不要快速多次点击\r\n否则将会跳出v3验证，我没接v3的，所以\r\n一旦出现验证码，短信登陆就废了，自重\r\n本登陆为本地登陆，所以都是你的IP在" +
     "访问";
             // 
-            // cid
+            // button6
             // 
-            this.cid.Location = new System.Drawing.Point(7, 23);
-            this.cid.Name = "cid";
-            this.cid.Size = new System.Drawing.Size(31, 21);
-            this.cid.TabIndex = 21;
-            this.cid.Text = "86";
-            this.cid.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.button6.Location = new System.Drawing.Point(202, 21);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(79, 53);
+            this.button6.TabIndex = 17;
+            this.button6.Text = "2.发送短信";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
-            // captcha_key
+            // code
             // 
-            this.captcha_key.Enabled = false;
-            this.captcha_key.Location = new System.Drawing.Point(7, 80);
-            this.captcha_key.Name = "captcha_key";
-            this.captcha_key.Size = new System.Drawing.Size(274, 21);
-            this.captcha_key.TabIndex = 22;
-            this.captcha_key.Text = "短信请求后这里会出现对应key";
+            this.code.Location = new System.Drawing.Point(76, 53);
+            this.code.Name = "code";
+            this.code.Size = new System.Drawing.Size(120, 21);
+            this.code.TabIndex = 16;
+            // 
+            // phone
+            // 
+            this.phone.Location = new System.Drawing.Point(44, 23);
+            this.phone.Name = "phone";
+            this.phone.Size = new System.Drawing.Size(152, 21);
+            this.phone.TabIndex = 15;
+            this.phone.TextChanged += new System.EventHandler(this.phone_TextChanged);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(5, 58);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(65, 12);
+            this.label7.TabIndex = 14;
+            this.label7.Text = "3.验证码：";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(5, 8);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(65, 12);
+            this.label6.TabIndex = 13;
+            this.label6.Text = "1.手机号：";
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(287, 195);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "共享Cookie登录";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(210, 166);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(74, 23);
+            this.button7.TabIndex = 23;
+            this.button7.Text = "退出";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // Login
             // 
@@ -440,5 +452,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox cid;
         private System.Windows.Forms.TextBox captcha_key;
+        private System.Windows.Forms.Button button7;
     }
 }

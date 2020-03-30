@@ -251,5 +251,11 @@ namespace BiliHP2020.login
         {
             phone.Text = username.Text;
         }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            Environment.Exit(0);
+
+        }
     }
 }
