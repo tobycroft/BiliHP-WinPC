@@ -13,7 +13,7 @@ namespace BiliHP2020.tuuz
             JArray arr = new JArray();
             JObject ret = new JObject();
 
-            if (json.Length > 65535)
+            if (json.Length > 655350)
             {
                 ret["json"] = "";
                 ret["arr"] = arr;
