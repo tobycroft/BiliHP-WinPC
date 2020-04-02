@@ -256,6 +256,18 @@ namespace BiliHP2020.func
                         ecam2("[BiliHP-Net]", "自动跳过本礼物，如需增加领取率，请提高概率设定");
                         break;
                     }
+                    JObject obj = json["object"].ToObject<JObject>();
+
+                    string bw = Properties.Settings.Default.ban_words;
+                    string[] bws = bw.Split(',');
+                    foreach (var item in bws)
+                    {
+                        if (item == obj["award_name"].ToString())
+                        {
+                            ecam2("[BiliHP-Net]", "本礼物在屏蔽词里，自动跳过");
+                            return;
+                        }
+                    }
                     rets = ret;
                     header = rets["header"].ToObject<JObject>();
                     values = rets["values"].ToObject<JObject>();
