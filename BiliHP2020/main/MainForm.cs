@@ -117,6 +117,7 @@ namespace BiliHP2020
                     storm_catch.Checked = Properties.Settings.Default.strom_catch;
                     storm_count.Text = Properties.Settings.Default.storm_count.ToString();
                     storm_time.Text = Properties.Settings.Default.storm_time.ToString();
+                    ban_words.Text = Properties.Settings.Default.ban_words.ToString();
 
                     foreach (var item in ActionRoute.get_time())
                     {
@@ -1053,6 +1054,20 @@ namespace BiliHP2020
         {
             //MessageBox.Show(Properties.Settings.Default.percent.ToString());
 
+        }
+
+        private void richTextBox3_TextChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.ban_words = ban_words.Text;
+
+            Properties.Settings.Default.Save();
+            if (!Properties.Settings.Default.setting_lock)
+            {
+                JObject setting = new JObject();
+                setting["key"] = "ban_words";
+                setting["value"] = ban_words.Text;
+                send_setting("pc_set_setting", setting, "pc_set_setting");
+            }
         }
 
         private void debug_CheckedChanged(object sender, EventArgs e)

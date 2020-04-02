@@ -87,6 +87,9 @@
             this.daily_bag = new System.Windows.Forms.CheckBox();
             this.pc_heart = new System.Windows.Forms.CheckBox();
             this.app_heart = new System.Windows.Forms.CheckBox();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.label3 = new System.Windows.Forms.Label();
+            this.ban_words = new System.Windows.Forms.RichTextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.button12 = new System.Windows.Forms.Button();
@@ -140,6 +143,7 @@
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            this.tabPage5.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -155,6 +159,7 @@
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage4);
@@ -815,6 +820,35 @@
             this.app_heart.UseVisualStyleBackColor = true;
             this.app_heart.CheckedChanged += new System.EventHandler(this.app_heart_CheckedChanged);
             // 
+            // tabPage5
+            // 
+            this.tabPage5.Controls.Add(this.label3);
+            this.tabPage5.Controls.Add(this.ban_words);
+            this.tabPage5.Location = new System.Drawing.Point(4, 22);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Size = new System.Drawing.Size(467, 396);
+            this.tabPage5.TabIndex = 4;
+            this.tabPage5.Text = "天选控制";
+            this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(11, 18);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(77, 12);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "天选屏蔽词：";
+            // 
+            // ban_words
+            // 
+            this.ban_words.Location = new System.Drawing.Point(13, 33);
+            this.ban_words.Name = "ban_words";
+            this.ban_words.Size = new System.Drawing.Size(439, 329);
+            this.ban_words.TabIndex = 0;
+            this.ban_words.Text = "";
+            this.ban_words.TextChanged += new System.EventHandler(this.richTextBox3_TextChanged);
+            // 
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.SystemColors.InactiveBorder;
@@ -1314,6 +1348,8 @@
             this.groupBox2.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            this.tabPage5.ResumeLayout(false);
+            this.tabPage5.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.groupBox7.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
@@ -1438,6 +1474,9 @@
         private System.Windows.Forms.TextBox storm_count;
         private System.Windows.Forms.Button button12;
         private System.Windows.Forms.Button button13;
+        private System.Windows.Forms.TabPage tabPage5;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.RichTextBox ban_words;
     }
 }
 
