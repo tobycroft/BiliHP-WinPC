@@ -237,6 +237,7 @@ namespace BiliHP2020
         {
             try
             {
+                socket.Disconnect(true);
                 socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
                 socket.NoDelay = false;
                 socket.Connect(address.ToString(), 181);
@@ -400,7 +401,9 @@ namespace BiliHP2020
                     if (length == 0)
                     {
                         ecam_action("已经断开了……");
-                        socket.Close();
+                        
+                        Thread.Sleep(1000);
+                        connect();
                         return;
                     }
                     else
