@@ -22,10 +22,12 @@ namespace BiliHP2020
         public MainForm()
         {
             CheckForIllegalCrossThreadCalls = false;
+            address = Dns.GetHostEntry("go.bilihp.com").AddressList[0];
+            socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             InitializeComponent();
         }
         public static Socket socket;
-        public static IPAddress address = Dns.GetHostEntry("go.bilihp.com").AddressList[0];
+        public static IPAddress address;
         //IPAddress address = Dns.GetHostEntry("127.0.0.1").AddressList[0];
         private void MainForm_Close(object sender, EventArgs e)
         {
@@ -237,7 +239,11 @@ namespace BiliHP2020
         {
             try
             {
-                socket.Disconnect(true);
+                if (socket.Connected)
+                {
+                    socket.Disconnect(true);
+                }
+                address = Dns.GetHostEntry("go.bilihp.com").AddressList[0];
                 socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
                 socket.NoDelay = false;
                 socket.Connect(address.ToString(), 181);
@@ -401,7 +407,7 @@ namespace BiliHP2020
                     if (length == 0)
                     {
                         ecam_action("已经断开了……");
-                        
+
                         Thread.Sleep(1000);
                         connect();
                         return;
