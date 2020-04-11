@@ -74,6 +74,12 @@
   <PropertyGroup>
     <ApplicationIcon>20200310110321935_easyicon_net_128.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup>
+    <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>BiliHP2020.Program</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
