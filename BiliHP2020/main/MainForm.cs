@@ -239,10 +239,6 @@ namespace BiliHP2020
         {
             try
             {
-                if (socket.Connected)
-                {
-                    socket.Disconnect(true);
-                }
                 address = Dns.GetHostEntry("go.bilihp.com").AddressList[0];
                 socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
                 socket.NoDelay = false;
