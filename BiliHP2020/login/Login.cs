@@ -114,6 +114,9 @@ namespace BiliHP2020.login
 
         private void Login_Load(object sender, EventArgs e)
         {
+            JObject job = new JObject();
+            job.Add("aa", 123);
+            job.ToString();
             version.Text = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
             username.Text = Properties.Settings.Default.username;
             password.Text = Properties.Settings.Default.password;
