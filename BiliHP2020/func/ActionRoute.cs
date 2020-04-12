@@ -262,10 +262,13 @@ namespace BiliHP2020.func
                     string[] bws = bw.Split(',');
                     foreach (var item in bws)
                     {
-                        if (obj["award_name"].ToString().Contains(item))
+                        if (item.Length>0)
                         {
-                            ecam2("[BiliHP-Net]", obj["award_name"].ToString() + "本礼物在屏蔽词" + item + "里，自动跳过");
-                            return;
+                            if (obj["award_name"].ToString().Contains(item))
+                            {
+                                ecam2("[BiliHP-Net]", obj["award_name"].ToString() + "本礼物在屏蔽词(" + item + ")里，自动跳过");
+                                return;
+                            }
                         }
                     }
                     rets = ret;
