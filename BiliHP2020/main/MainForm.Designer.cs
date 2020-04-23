@@ -138,6 +138,7 @@
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.退出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label13 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -326,7 +327,7 @@
             // time23
             // 
             this.time23.AutoSize = true;
-            this.time23.Location = new System.Drawing.Point(396, 253);
+            this.time23.Location = new System.Drawing.Point(396, 267);
             this.time23.Name = "time23";
             this.time23.Size = new System.Drawing.Size(54, 16);
             this.time23.TabIndex = 35;
@@ -337,7 +338,7 @@
             // time22
             // 
             this.time22.AutoSize = true;
-            this.time22.Location = new System.Drawing.Point(333, 253);
+            this.time22.Location = new System.Drawing.Point(333, 267);
             this.time22.Name = "time22";
             this.time22.Size = new System.Drawing.Size(54, 16);
             this.time22.TabIndex = 34;
@@ -348,7 +349,7 @@
             // time21
             // 
             this.time21.AutoSize = true;
-            this.time21.Location = new System.Drawing.Point(274, 253);
+            this.time21.Location = new System.Drawing.Point(274, 267);
             this.time21.Name = "time21";
             this.time21.Size = new System.Drawing.Size(54, 16);
             this.time21.TabIndex = 33;
@@ -359,7 +360,7 @@
             // time20
             // 
             this.time20.AutoSize = true;
-            this.time20.Location = new System.Drawing.Point(215, 253);
+            this.time20.Location = new System.Drawing.Point(215, 267);
             this.time20.Name = "time20";
             this.time20.Size = new System.Drawing.Size(54, 16);
             this.time20.TabIndex = 32;
@@ -370,7 +371,7 @@
             // time19
             // 
             this.time19.AutoSize = true;
-            this.time19.Location = new System.Drawing.Point(396, 224);
+            this.time19.Location = new System.Drawing.Point(396, 238);
             this.time19.Name = "time19";
             this.time19.Size = new System.Drawing.Size(54, 16);
             this.time19.TabIndex = 31;
@@ -381,7 +382,7 @@
             // time18
             // 
             this.time18.AutoSize = true;
-            this.time18.Location = new System.Drawing.Point(334, 224);
+            this.time18.Location = new System.Drawing.Point(334, 238);
             this.time18.Name = "time18";
             this.time18.Size = new System.Drawing.Size(54, 16);
             this.time18.TabIndex = 30;
@@ -392,7 +393,7 @@
             // time17
             // 
             this.time17.AutoSize = true;
-            this.time17.Location = new System.Drawing.Point(274, 224);
+            this.time17.Location = new System.Drawing.Point(274, 238);
             this.time17.Name = "time17";
             this.time17.Size = new System.Drawing.Size(54, 16);
             this.time17.TabIndex = 29;
@@ -403,7 +404,7 @@
             // time16
             // 
             this.time16.AutoSize = true;
-            this.time16.Location = new System.Drawing.Point(215, 224);
+            this.time16.Location = new System.Drawing.Point(215, 238);
             this.time16.Name = "time16";
             this.time16.Size = new System.Drawing.Size(54, 16);
             this.time16.TabIndex = 28;
@@ -414,7 +415,7 @@
             // time15
             // 
             this.time15.AutoSize = true;
-            this.time15.Location = new System.Drawing.Point(396, 195);
+            this.time15.Location = new System.Drawing.Point(396, 209);
             this.time15.Name = "time15";
             this.time15.Size = new System.Drawing.Size(54, 16);
             this.time15.TabIndex = 27;
@@ -425,7 +426,7 @@
             // time14
             // 
             this.time14.AutoSize = true;
-            this.time14.Location = new System.Drawing.Point(334, 195);
+            this.time14.Location = new System.Drawing.Point(334, 209);
             this.time14.Name = "time14";
             this.time14.Size = new System.Drawing.Size(54, 16);
             this.time14.TabIndex = 26;
@@ -436,7 +437,7 @@
             // time13
             // 
             this.time13.AutoSize = true;
-            this.time13.Location = new System.Drawing.Point(274, 195);
+            this.time13.Location = new System.Drawing.Point(274, 209);
             this.time13.Name = "time13";
             this.time13.Size = new System.Drawing.Size(54, 16);
             this.time13.TabIndex = 25;
@@ -447,7 +448,7 @@
             // time12
             // 
             this.time12.AutoSize = true;
-            this.time12.Location = new System.Drawing.Point(215, 195);
+            this.time12.Location = new System.Drawing.Point(215, 209);
             this.time12.Name = "time12";
             this.time12.Size = new System.Drawing.Size(54, 16);
             this.time12.TabIndex = 24;
@@ -458,7 +459,7 @@
             // time11
             // 
             this.time11.AutoSize = true;
-            this.time11.Location = new System.Drawing.Point(396, 167);
+            this.time11.Location = new System.Drawing.Point(396, 181);
             this.time11.Name = "time11";
             this.time11.Size = new System.Drawing.Size(54, 16);
             this.time11.TabIndex = 23;
@@ -469,7 +470,7 @@
             // time10
             // 
             this.time10.AutoSize = true;
-            this.time10.Location = new System.Drawing.Point(334, 167);
+            this.time10.Location = new System.Drawing.Point(334, 181);
             this.time10.Name = "time10";
             this.time10.Size = new System.Drawing.Size(54, 16);
             this.time10.TabIndex = 22;
@@ -480,7 +481,7 @@
             // time9
             // 
             this.time9.AutoSize = true;
-            this.time9.Location = new System.Drawing.Point(274, 167);
+            this.time9.Location = new System.Drawing.Point(274, 181);
             this.time9.Name = "time9";
             this.time9.Size = new System.Drawing.Size(48, 16);
             this.time9.TabIndex = 21;
@@ -491,7 +492,7 @@
             // time8
             // 
             this.time8.AutoSize = true;
-            this.time8.Location = new System.Drawing.Point(215, 167);
+            this.time8.Location = new System.Drawing.Point(215, 181);
             this.time8.Name = "time8";
             this.time8.Size = new System.Drawing.Size(42, 16);
             this.time8.TabIndex = 20;
@@ -502,7 +503,7 @@
             // time7
             // 
             this.time7.AutoSize = true;
-            this.time7.Location = new System.Drawing.Point(396, 139);
+            this.time7.Location = new System.Drawing.Point(396, 153);
             this.time7.Name = "time7";
             this.time7.Size = new System.Drawing.Size(42, 16);
             this.time7.TabIndex = 19;
@@ -513,7 +514,7 @@
             // time6
             // 
             this.time6.AutoSize = true;
-            this.time6.Location = new System.Drawing.Point(334, 139);
+            this.time6.Location = new System.Drawing.Point(334, 153);
             this.time6.Name = "time6";
             this.time6.Size = new System.Drawing.Size(42, 16);
             this.time6.TabIndex = 18;
@@ -524,7 +525,7 @@
             // time5
             // 
             this.time5.AutoSize = true;
-            this.time5.Location = new System.Drawing.Point(274, 139);
+            this.time5.Location = new System.Drawing.Point(274, 153);
             this.time5.Name = "time5";
             this.time5.Size = new System.Drawing.Size(42, 16);
             this.time5.TabIndex = 17;
@@ -535,7 +536,7 @@
             // time4
             // 
             this.time4.AutoSize = true;
-            this.time4.Location = new System.Drawing.Point(215, 139);
+            this.time4.Location = new System.Drawing.Point(215, 153);
             this.time4.Name = "time4";
             this.time4.Size = new System.Drawing.Size(42, 16);
             this.time4.TabIndex = 16;
@@ -546,7 +547,7 @@
             // time3
             // 
             this.time3.AutoSize = true;
-            this.time3.Location = new System.Drawing.Point(396, 110);
+            this.time3.Location = new System.Drawing.Point(396, 124);
             this.time3.Name = "time3";
             this.time3.Size = new System.Drawing.Size(42, 16);
             this.time3.TabIndex = 15;
@@ -557,7 +558,7 @@
             // time2
             // 
             this.time2.AutoSize = true;
-            this.time2.Location = new System.Drawing.Point(334, 110);
+            this.time2.Location = new System.Drawing.Point(334, 124);
             this.time2.Name = "time2";
             this.time2.Size = new System.Drawing.Size(42, 16);
             this.time2.TabIndex = 14;
@@ -568,7 +569,7 @@
             // time1
             // 
             this.time1.AutoSize = true;
-            this.time1.Location = new System.Drawing.Point(274, 110);
+            this.time1.Location = new System.Drawing.Point(274, 124);
             this.time1.Name = "time1";
             this.time1.Size = new System.Drawing.Size(42, 16);
             this.time1.TabIndex = 13;
@@ -579,7 +580,7 @@
             // time0
             // 
             this.time0.AutoSize = true;
-            this.time0.Location = new System.Drawing.Point(215, 110);
+            this.time0.Location = new System.Drawing.Point(215, 124);
             this.time0.Name = "time0";
             this.time0.Size = new System.Drawing.Size(42, 16);
             this.time0.TabIndex = 12;
@@ -601,6 +602,7 @@
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.label11);
+            this.groupBox4.Controls.Add(this.label13);
             this.groupBox4.Controls.Add(this.lab1);
             this.groupBox4.Controls.Add(this.storm_time);
             this.groupBox4.Controls.Add(this.storm_count);
@@ -1327,6 +1329,15 @@
             this.退出ToolStripMenuItem.Text = "退出";
             this.退出ToolStripMenuItem.Click += new System.EventHandler(this.退出ToolStripMenuItem_Click);
             // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(209, 17);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(149, 12);
+            this.label13.TabIndex = 5;
+            this.label13.Text = "抽奖时间（几点到几点）：";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1477,6 +1488,7 @@
         private System.Windows.Forms.TabPage tabPage5;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.RichTextBox ban_words;
+        private System.Windows.Forms.Label label13;
     }
 }
 
