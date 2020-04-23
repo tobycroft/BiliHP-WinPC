@@ -253,12 +253,77 @@ namespace BiliHP2020.login
         private void username_TextChanged(object sender, EventArgs e)
         {
             phone.Text = username.Text;
+            user.Text = username.Text;
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
             Environment.Exit(0);
 
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            if (!eula.Checked)
+            {
+                MessageBox.Show("如果不信任我们，就不要用了吧？");
+                return;
+            }
+            if (!string.IsNullOrWhiteSpace(Properties.Settings.Default.username) && !string.IsNullOrWhiteSpace(Properties.Settings.Default.token))
+            {
+                mainframe();
+                return;
+            }
+
+            if (user.Text.Length < 6)
+            {
+                MessageBox.Show("用户名太短啦");
+                return;
+            }
+            if (pass.Text.Length < 6)
+            {
+                MessageBox.Show("密码不能小于6位");
+                return;
+            }
+            if (!eula.Checked)
+            {
+                MessageBox.Show("呵呵");
+                return;
+            }
+            JObject value = new JObject();
+            value["username"] = user.Text;
+            value["password"] = pass.Text;
+
+            JObject ret3 = Net.Post("http://go.bilihp.com:180/v1/index/login/self_login", value, null, null);
+            if (ret3["body"]["code"].ToObject<int>() == 0)
+            {
+                Properties.Settings.Default.username = ret3["body"]["data"]["username"].ToString();
+                Properties.Settings.Default.password = pass.Text;
+                Properties.Settings.Default.token = ret3["body"]["data"]["token"].ToString();
+                Properties.Settings.Default.Save();
+                MessageBox.Show(ret3["body"]["data"]["message"].ToString());
+                mainframe();
+            }
+            else
+            {
+                MessageBox.Show(ret3["body"]["data"]["message"].ToString());
+            }
+            richTextBox1.Text = ret3.ToString();
+        }
+
+        private void user_TextChanged(object sender, EventArgs e)
+        {
+            username.Text = user.Text;
+        }
+
+        private void pass_TextChanged(object sender, EventArgs e)
+        {
+            password.Text = pass.Text;
+        }
+
+        private void password_TextChanged(object sender, EventArgs e)
+        {
+            pass.Text = password.Text;
         }
     }
 }

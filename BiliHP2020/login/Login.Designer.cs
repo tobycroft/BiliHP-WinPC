@@ -51,6 +51,7 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.button7 = new System.Windows.Forms.Button();
             this.captcha_key = new System.Windows.Forms.TextBox();
             this.cid = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -60,12 +61,18 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.button7 = new System.Windows.Forms.Button();
+            this.user = new System.Windows.Forms.TextBox();
+            this.pass = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.button8 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
             // username
@@ -83,6 +90,7 @@
             this.password.PasswordChar = '*';
             this.password.Size = new System.Drawing.Size(276, 21);
             this.password.TabIndex = 2;
+            this.password.TextChanged += new System.EventHandler(this.password_TextChanged);
             // 
             // button1
             // 
@@ -303,6 +311,16 @@
             this.tabPage2.Text = "手机短信登录";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(210, 166);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(74, 23);
+            this.button7.TabIndex = 23;
+            this.button7.Text = "退出";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
             // captcha_key
             // 
             this.captcha_key.Enabled = false;
@@ -376,6 +394,12 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.button8);
+            this.tabPage3.Controls.Add(this.label11);
+            this.tabPage3.Controls.Add(this.label10);
+            this.tabPage3.Controls.Add(this.label9);
+            this.tabPage3.Controls.Add(this.pass);
+            this.tabPage3.Controls.Add(this.user);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Size = new System.Drawing.Size(287, 195);
@@ -383,15 +407,62 @@
             this.tabPage3.Text = "共享Cookie登录";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // button7
+            // user
             // 
-            this.button7.Location = new System.Drawing.Point(210, 166);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(74, 23);
-            this.button7.TabIndex = 23;
-            this.button7.Text = "退出";
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
+            this.user.Location = new System.Drawing.Point(17, 31);
+            this.user.Name = "user";
+            this.user.Size = new System.Drawing.Size(191, 21);
+            this.user.TabIndex = 0;
+            this.user.TextChanged += new System.EventHandler(this.user_TextChanged);
+            // 
+            // pass
+            // 
+            this.pass.Location = new System.Drawing.Point(17, 70);
+            this.pass.Name = "pass";
+            this.pass.PasswordChar = '*';
+            this.pass.Size = new System.Drawing.Size(191, 21);
+            this.pass.TabIndex = 1;
+            this.pass.TextChanged += new System.EventHandler(this.pass_TextChanged);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(15, 16);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(53, 12);
+            this.label9.TabIndex = 2;
+            this.label9.Text = "用户名：";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(15, 55);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(41, 12);
+            this.label10.TabIndex = 3;
+            this.label10.Text = "密码：";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label11.Location = new System.Drawing.Point(18, 101);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(245, 84);
+            this.label11.TabIndex = 4;
+            this.label11.Text = "如果你普通登录出现服务器繁忙等问题\r\n可以在APP上使用手机验证码登录\r\n然后再在PC端上使用“共享登录”\r\n如果你之前没有登录过本系统\r\n本登录功能将无法正常使" +
+    "用，请注意\r\n仅限之前登录过的用户使用！！！";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(215, 31);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(57, 60);
+            this.button8.TabIndex = 5;
+            this.button8.Text = "登录";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // Login
             // 
@@ -415,6 +486,8 @@
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -453,5 +526,11 @@
         private System.Windows.Forms.TextBox cid;
         private System.Windows.Forms.TextBox captcha_key;
         private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox pass;
+        private System.Windows.Forms.TextBox user;
+        private System.Windows.Forms.Button button8;
     }
 }
