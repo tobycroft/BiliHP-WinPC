@@ -33,10 +33,14 @@ namespace BiliHP2020.func
             try
             {
                 JObject dict = new JObject();
-                foreach (var item in values)
+                if (values!=null)
                 {
-                    dict.Add(item.Key, item.Value);
+                    foreach (var item in values)
+                    {
+                        dict.Add(item.Key, item.Value);
+                    }
                 }
+
                 if (method.ToUpper() == "GET")
                 {
                     url = url + "?" + http_build_query(dict);
@@ -321,6 +325,7 @@ namespace BiliHP2020.func
 
             WebClient mywebclient = new WebClient();
             string direcotry = url.Substring(url.LastIndexOf('/') + 1, url.Length - url.LastIndexOf(".exe"));
+            MessageBox.Show(url);
             if (!System.IO.Directory.Exists(direcotry))
                 System.IO.Directory.CreateDirectory(direcotry);
 
@@ -331,6 +336,7 @@ namespace BiliHP2020.func
             Stream responseStream = response.GetResponseStream();
 
             //创建本地文件写入流
+            
             Stream stream = new FileStream(System.Environment.CurrentDirectory + "\\" + direcotry + ".exe", FileMode.Create);
 
             byte[] bArr = new byte[1024];
@@ -342,7 +348,7 @@ namespace BiliHP2020.func
             }
             stream.Close();
             responseStream.Close();
-
+            MessageBox.Show("新版下载完毕");
         }
 
     }

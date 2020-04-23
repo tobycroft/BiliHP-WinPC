@@ -65,6 +65,7 @@ namespace BiliHP2020.func
                 case "update":
                     ecam2(echo, ret);
                     Net.DownLoad(ret);
+                    MessageBox.Show("有新版本!");
                     break;
 
                 case "c2c":
