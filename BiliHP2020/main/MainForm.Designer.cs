@@ -1247,9 +1247,9 @@
             // 
             this.button13.Location = new System.Drawing.Point(18, 36);
             this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(75, 23);
+            this.button13.Size = new System.Drawing.Size(434, 43);
             this.button13.TabIndex = 1;
-            this.button13.Text = "button13";
+            this.button13.Text = "这个按钮我也不知道放着干什么但是删了我也觉得可惜";
             this.button13.UseVisualStyleBackColor = true;
             this.button13.Click += new System.EventHandler(this.button13_Click);
             // 
@@ -1342,7 +1342,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(838, 536);
+            this.ClientSize = new System.Drawing.Size(836, 536);
             this.Controls.Add(this.face);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.groupBox1);
