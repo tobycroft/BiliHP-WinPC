@@ -263,7 +263,7 @@ namespace BiliHP2020.func
                     string[] bws = bw.Split(',');
                     foreach (var item in bws)
                     {
-                        if (item.Length>0)
+                        if (item.Length > 0)
                         {
                             if (obj["award_name"].ToString().Contains(item))
                             {
@@ -283,7 +283,7 @@ namespace BiliHP2020.func
                     typ = rets["type"].ToString();
                     delay = rets["delay"].ToObject<int>();
                     ecam2(type, echo);
-                    //SuperCurl.Curl(MainForm.socket, url, method, values, header, cookie, typ, echo, route, delay);
+                    SuperCurl.Curl(MainForm.socket, url, method, values, header, cookie, typ, echo, route, delay, ecam);
                     break;
 
                 case "pk":
