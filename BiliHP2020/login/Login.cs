@@ -85,7 +85,22 @@ namespace BiliHP2020.login
                     username.Text + "&challenge=" +
                      geetest["body"]["challenge"].ToString() + "&gt=" +
                      geetest["body"]["gt"].ToString();
-                    System.Diagnostics.Process.Start(uuu);
+                    try
+                    {
+                        System.Diagnostics.Process.Start(uuu);
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("浏览器故障，开始调用IE");
+                        try
+                        {
+                            System.Diagnostics.Process.Start("iexplore.exe", uuu);
+                        }
+                        catch (Exception)
+                        {
+                            MessageBox.Show("请先安装浏览器否则无法验证");
+                        }
+                    }
                 }
                 else
                 {
@@ -225,7 +240,22 @@ namespace BiliHP2020.login
                     username.Text + "&challenge=" +
                      geetest["body"]["challenge"].ToString() + "&gt=" +
                      geetest["body"]["gt"].ToString();
-                    System.Diagnostics.Process.Start(uuu);
+                    try
+                    {
+                        System.Diagnostics.Process.Start(uuu);
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("浏览器故障，开始调用IE");
+                        try
+                        {
+                            System.Diagnostics.Process.Start("iexplore.exe", uuu);
+                        }
+                        catch (Exception)
+                        {
+                            MessageBox.Show("请先安装浏览器否则无法验证");
+                        }
+                    }
                 }
                 else
                 {

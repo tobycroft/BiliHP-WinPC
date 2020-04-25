@@ -40,6 +40,7 @@
             this.webBrowser1.Name = "webBrowser1";
             this.webBrowser1.Size = new System.Drawing.Size(1071, 750);
             this.webBrowser1.TabIndex = 0;
+            this.webBrowser1.Url = new System.Uri("https://github.com/tobycroft/BiliHP-APP/blob/master/privacy.md", System.UriKind.Absolute);
             // 
             // eula
             // 
