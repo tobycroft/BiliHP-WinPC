@@ -44,11 +44,6 @@ namespace BiliHP2020.login
                 MessageBox.Show("密码不能小于6位");
                 return;
             }
-            if (string.IsNullOrEmpty(captcha.Text))
-            {
-                MessageBox.Show("记得要输入验证码哦~");
-                return;
-            }
             if (!eula.Checked)
             {
                 MessageBox.Show("呵呵");
@@ -57,8 +52,7 @@ namespace BiliHP2020.login
             JObject value = new JObject();
             value["username"] = username.Text;
             value["password"] = password.Text;
-            value["captcha"] = captcha.Text;
-            JObject ret = Net.Post("http://go.bilihp.com:180/v1/index/login/2", value, null, null);
+            JObject ret = Net.Post("http://go.bilihp.com:180/v1/index/login/3", value, null, null);
             if (ret["body"]["code"].ToObject<int>() == 0)
             {
                 JObject data = ret["body"]["data"].ToObject<JObject>();
@@ -72,7 +66,6 @@ namespace BiliHP2020.login
                 JObject send = new JObject();
                 send["username"] = username.Text;
                 send["password"] = password.Text;
-                send["captcha"] = captcha.Text;
                 send["ret"] = ret2.ToString(Newtonsoft.Json.Formatting.None);
 
                 JObject ret3 = Net.Post("http://go.bilihp.com:180/v1/index/login/ret", send, null, null);
@@ -85,18 +78,26 @@ namespace BiliHP2020.login
                     MessageBox.Show(ret3["body"]["data"]["message"].ToString());
                     mainframe();
                 }
+                else if (ret3["body"]["code"].ToObject<int>() == -105)
+                {
+                    JObject geetest = Net.Get("http://go.bilihp.com:180/v1/index/captcha/gee_captcha?" + ret3["body"]["data"].ToString().Split('?')[1], new JObject(), null, null, null);
+                    string uuu = "http://app.bilihp.com:81/geetest.html?username=" +
+                    username.Text + "&challenge=" +
+                     geetest["body"]["challenge"].ToString() + "&gt=" +
+                     geetest["body"]["gt"].ToString();
+                    System.Diagnostics.Process.Start(uuu);
+                }
                 else
                 {
                     MessageBox.Show(ret3["body"]["data"].ToString());
                 }
                 richTextBox1.Text = ret3.ToString();
             }
+
             else
             {
                 MessageBox.Show(ret["body"]["data"].ToString());
             }
-
-
         }
 
 
@@ -120,11 +121,6 @@ namespace BiliHP2020.login
             version.Text = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
             username.Text = Properties.Settings.Default.username;
             password.Text = Properties.Settings.Default.password;
-            if (!string.IsNullOrWhiteSpace(Properties.Settings.Default.token))
-            {
-                captcha.Enabled = false;
-                button4.Enabled = false;
-            }
         }
 
         private void textBox3_TextChanged(object sender, EventArgs e)
@@ -132,21 +128,12 @@ namespace BiliHP2020.login
 
         }
 
-        private void button4_Click(object sender, EventArgs e)
-        {
-            //WebClient wb = new WebClient();
-            //string ret = wb.DownloadString("http://go.bilihp.com:180/v1/index/login/bili_captcha?username=" + textBox1.Text);
-            pictureBox2.ImageLocation = "http://go.bilihp.com:180/v1/index/login/bili_captcha?username=" + username.Text;
-
-        }
 
         private void button5_Click(object sender, EventArgs e)
         {
             Properties.Settings.Default.username = "";
             Properties.Settings.Default.password = "";
             Properties.Settings.Default.token = "";
-            captcha.Enabled = true;
-            button4.Enabled = true;
             Properties.Settings.Default.Save();
         }
 
@@ -171,7 +158,6 @@ namespace BiliHP2020.login
             JObject value = new JObject();
             value["username"] = username.Text;
             value["cid"] = cid.Text;
-            value["captcha"] = captcha.Text;
             JObject ret = Net.Post("http://go.bilihp.com:180/v1/index/login/bili_sms", value, null, null);
             if (ret["body"]["code"].ToObject<int>() == 0)
             {
@@ -220,7 +206,6 @@ namespace BiliHP2020.login
                 JObject send = new JObject();
                 send["username"] = username.Text;
                 send["password"] = password.Text;
-                send["captcha"] = captcha.Text;
                 send["ret"] = ret2.ToString(Newtonsoft.Json.Formatting.None);
 
                 JObject ret3 = Net.Post("http://go.bilihp.com:180/v1/index/login/ret", send, null, null);
@@ -232,6 +217,15 @@ namespace BiliHP2020.login
                     Properties.Settings.Default.Save();
                     MessageBox.Show(ret3["body"]["data"]["message"].ToString());
                     mainframe();
+                }
+                else if (ret3["body"]["code"].ToObject<int>() == -105)
+                {
+                    JObject geetest = Net.Get("http://go.bilihp.com:180/v1/index/captcha/gee_captcha?" + ret3["body"]["data"].ToString().Split('?')[1], new JObject(), null, null, null);
+                    string uuu = "http://app.bilihp.com:81/geetest.html?username=" +
+                    username.Text + "&challenge=" +
+                     geetest["body"]["challenge"].ToString() + "&gt=" +
+                     geetest["body"]["gt"].ToString();
+                    System.Diagnostics.Process.Start(uuu);
                 }
                 else
                 {
