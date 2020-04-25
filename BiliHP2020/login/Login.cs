@@ -88,23 +88,23 @@ namespace BiliHP2020.login
                      geetest["body"]["gt"].ToString();
 
                     SetRegistery();
-                    webBrowser1.Navigate(uuu);
-                    //try
-                    //{
-                    //    System.Diagnostics.Process.Start(uuu);
-                    //}
-                    //catch (Exception)
-                    //{
-                    //    MessageBox.Show("浏览器故障，开始调用IE");
-                    //    try
-                    //    {
-                    //        System.Diagnostics.Process.Start("iexplore.exe", uuu);
-                    //    }
-                    //    catch (Exception)
-                    //    {
-                    //        MessageBox.Show("请先安装浏览器否则无法验证");
-                    //    }
-                    //}
+                    //webBrowser1.Navigate(uuu);
+                    try
+                    {
+                        System.Diagnostics.Process.Start(uuu);
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("浏览器故障，开始调用IE");
+                        try
+                        {
+                            System.Diagnostics.Process.Start("iexplore.exe", uuu);
+                        }
+                        catch (Exception)
+                        {
+                            MessageBox.Show("请先安装浏览器否则无法验证");
+                        }
+                    }
                 }
                 else
                 {
