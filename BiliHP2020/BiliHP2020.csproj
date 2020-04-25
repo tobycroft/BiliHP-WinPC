@@ -107,6 +107,12 @@
     <Compile Include="login\eula.Designer.cs">
       <DependentUpon>eula.cs</DependentUpon>
     </Compile>
+    <Compile Include="login\GTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="login\GTest.Designer.cs">
+      <DependentUpon>GTest.cs</DependentUpon>
+    </Compile>
     <Compile Include="login\Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -124,6 +130,9 @@
     <Compile Include="tuuz\TCPObject.cs" />
     <EmbeddedResource Include="login\eula.resx">
       <DependentUpon>eula.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="login\GTest.resx">
+      <DependentUpon>GTest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="login\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>

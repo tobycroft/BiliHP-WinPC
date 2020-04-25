@@ -46,6 +46,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label3 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.button7 = new System.Windows.Forms.Button();
             this.captcha_key = new System.Windows.Forms.TextBox();
@@ -63,7 +64,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.pass = new System.Windows.Forms.TextBox();
             this.user = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -161,9 +162,9 @@
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(320, 12);
+            this.richTextBox1.Location = new System.Drawing.Point(320, 469);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(351, 530);
+            this.richTextBox1.Size = new System.Drawing.Size(351, 73);
             this.richTextBox1.TabIndex = 13;
             this.richTextBox1.Text = "";
             // 
@@ -246,6 +247,16 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "普通登录v3";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label3.Location = new System.Drawing.Point(6, 104);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(273, 56);
+            this.label3.TabIndex = 16;
+            this.label3.Text = "如果已经登录过BiliHP了，\r\n可以直接使用共享Cookie登录哦~\r\n在验证码场景中，将会调用本地浏览器打开\r\n如果无法显示验证码，请换Chrome等浏览器";
             // 
             // tabPage2
             // 
@@ -420,21 +431,20 @@
             this.user.TabIndex = 0;
             this.user.TextChanged += new System.EventHandler(this.user_TextChanged);
             // 
-            // label3
+            // webBrowser1
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label3.Location = new System.Drawing.Point(6, 104);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(273, 56);
-            this.label3.TabIndex = 16;
-            this.label3.Text = "如果已经登录过BiliHP了，\r\n可以直接使用共享Cookie登录哦~\r\n在验证码场景中，将会调用本地浏览器打开\r\n如果无法显示验证码，请换Chrome等浏览器";
+            this.webBrowser1.Location = new System.Drawing.Point(309, 13);
+            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowser1.Name = "webBrowser1";
+            this.webBrowser1.Size = new System.Drawing.Size(362, 450);
+            this.webBrowser1.TabIndex = 20;
             // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(318, 551);
+            this.ClientSize = new System.Drawing.Size(685, 551);
+            this.Controls.Add(this.webBrowser1);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.version);
@@ -494,5 +504,6 @@
         private System.Windows.Forms.TextBox user;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.WebBrowser webBrowser1;
     }
 }
