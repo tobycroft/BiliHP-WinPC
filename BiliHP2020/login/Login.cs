@@ -158,7 +158,7 @@ namespace BiliHP2020.login
 
         private void mainframe()
         {
-
+            
             MainForm ea = new MainForm();
             //ea.ecam.Items.Add("首页登录完成……");
             //ea.ShowDialog();
@@ -371,6 +371,14 @@ namespace BiliHP2020.login
         private void pass_TextChanged(object sender, EventArgs e)
         {
             password.Text = pass.Text;
+        }
+
+        private void pass_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)   //  if (e.KeyValue == 13) 判断是回车键
+            {
+                button8_Click(sender,e);
+            }
         }
 
         private void password_TextChanged(object sender, EventArgs e)

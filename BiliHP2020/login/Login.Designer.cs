@@ -1,4 +1,6 @@
-﻿namespace BiliHP2020.login
+﻿using System.Windows.Forms;
+
+namespace BiliHP2020.login
 {
     partial class Login
     {
@@ -422,6 +424,7 @@
             this.pass.Size = new System.Drawing.Size(191, 21);
             this.pass.TabIndex = 1;
             this.pass.TextChanged += new System.EventHandler(this.pass_TextChanged);
+            this.pass.KeyDown+=new System.Windows.Forms.KeyEventHandler(this.pass_KeyDown);
             // 
             // user
             // 
