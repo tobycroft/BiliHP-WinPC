@@ -16,7 +16,7 @@ namespace BiliHP2020.func
     {
 
         public static string ip = "127.0.0.1";
-        public static bool proxy = true;
+        public static bool proxy = false;
         public static int port = 8888;
 
         public static JObject Post(string url, JObject values, JObject headers, JObject cookie, ListBox ecam = null)
