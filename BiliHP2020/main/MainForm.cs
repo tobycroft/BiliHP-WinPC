@@ -1059,7 +1059,7 @@ namespace BiliHP2020
         private void button13_Click(object sender, EventArgs e)
         {
             //MessageBox.Show(Properties.Settings.Default.percent.ToString());
-
+            ecam.Items.Clear();
         }
 
         private void richTextBox3_TextChanged(object sender, EventArgs e)
@@ -1087,6 +1087,21 @@ namespace BiliHP2020
                 setting["value"] = box.Checked;
                 send_setting("pc_set_setting", setting, "pc_set_setting");
             }
+        }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+            send("func", new JObject(), "tianxuan_award");
+        }
+
+        private void button15_Click(object sender, EventArgs e)
+        {
+            send("func", new JObject(), "follow_check");
+        }
+
+        private void button16_Click(object sender, EventArgs e)
+        {
+            send("func", new JObject(), "follow_lock");
         }
 
         private void debug_CheckedChanged(object sender, EventArgs e)

@@ -16,8 +16,8 @@ namespace BiliHP2020.func
     {
 
         public static string ip = "127.0.0.1";
-        public static bool proxy = false;
-        public static int port = 9000;
+        public static bool proxy = true;
+        public static int port = 8888;
 
         public static JObject Post(string url, JObject values, JObject headers, JObject cookie, ListBox ecam = null)
         {
@@ -33,7 +33,7 @@ namespace BiliHP2020.func
             try
             {
                 JObject dict = new JObject();
-                if (values!=null)
+                if (values != null)
                 {
                     foreach (var item in values)
                     {
@@ -43,7 +43,15 @@ namespace BiliHP2020.func
 
                 if (method.ToUpper() == "GET")
                 {
-                    url = url + "?" + http_build_query(dict);
+                    string qu = http_build_query(dict);
+                    if (qu != "")
+                    {
+                        url = url + "?" + http_build_query(dict);
+                    }
+                    else
+                    {
+                        url = url + http_build_query(dict);
+                    }
                 }
                 HttpWebRequest req = (HttpWebRequest)WebRequest.Create(url);
                 WebProxy px = new WebProxy(ip, port);
@@ -162,13 +170,16 @@ namespace BiliHP2020.func
                 }
                 Stream reStream = resp.GetResponseStream();
                 string body = "";
-                using (StreamReader sr = new StreamReader(reStream))
+                Encoding encoding1 = Encoding.Default;
+                using (StreamReader reader1 = new StreamReader(reStream, true))
                 {
-                    body = sr.ReadToEnd();
-                    sr.Close();
+                    body = reader1.ReadToEnd();
+                    reader1.Close();
                 }
+
                 resp.Close();
                 JObject ret = new JObject();
+                //MessageBox.Show(body.ToString());
                 ret["body"] = JObject.Parse(body);
                 ret["headers"] = ret_header;
                 ret["cookie"] = ret_cookie;
@@ -176,15 +187,17 @@ namespace BiliHP2020.func
             }
             catch (Exception e)
             {
-                if (ecam!=null)
+
+                if (ecam != null)
                 {
-                    ecam.Items.Add("L-SuperCurl:" + e.Message);
+                    ecam.Items.Add("Curl-Error:" + e.Message);
                 }
                 JObject ret = new JObject();
                 return ret;
             }
 
         }
+
 
         public static JObject CookieHandler(JObject resp_header)
         {
@@ -336,7 +349,7 @@ namespace BiliHP2020.func
             Stream responseStream = response.GetResponseStream();
 
             //创建本地文件写入流
-            
+
             Stream stream = new FileStream(System.Environment.CurrentDirectory + "\\" + direcotry + ".exe", FileMode.Create);
 
             byte[] bArr = new byte[1024];

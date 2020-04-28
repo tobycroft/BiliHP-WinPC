@@ -33,6 +33,9 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.button16 = new System.Windows.Forms.Button();
+            this.button15 = new System.Windows.Forms.Button();
+            this.button14 = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
@@ -66,8 +69,8 @@
             this.time2 = new System.Windows.Forms.CheckBox();
             this.time1 = new System.Windows.Forms.CheckBox();
             this.time0 = new System.Windows.Forms.CheckBox();
-            this.raffle = new System.Windows.Forms.CheckBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.box = new System.Windows.Forms.CheckBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.lab1 = new System.Windows.Forms.Label();
@@ -81,6 +84,7 @@
             this.tianxuan = new System.Windows.Forms.CheckBox();
             this.pk = new System.Windows.Forms.CheckBox();
             this.storm = new System.Windows.Forms.CheckBox();
+            this.raffle = new System.Windows.Forms.CheckBox();
             this.yingyuan_sign = new System.Windows.Forms.CheckBox();
             this.silver_to_coin = new System.Windows.Forms.CheckBox();
             this.silver_task = new System.Windows.Forms.CheckBox();
@@ -139,7 +143,6 @@
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.退出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.box = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -185,6 +188,9 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.button16);
+            this.groupBox3.Controls.Add(this.button15);
+            this.groupBox3.Controls.Add(this.button14);
             this.groupBox3.Controls.Add(this.button11);
             this.groupBox3.Controls.Add(this.button6);
             this.groupBox3.Controls.Add(this.button5);
@@ -199,11 +205,41 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "手动MCP";
             // 
+            // button16
+            // 
+            this.button16.Location = new System.Drawing.Point(184, 49);
+            this.button16.Name = "button16";
+            this.button16.Size = new System.Drawing.Size(92, 23);
+            this.button16.TabIndex = 103;
+            this.button16.Text = "锁定关注列表";
+            this.button16.UseVisualStyleBackColor = true;
+            this.button16.Click += new System.EventHandler(this.button16_Click);
+            // 
+            // button15
+            // 
+            this.button15.Location = new System.Drawing.Point(276, 49);
+            this.button15.Name = "button15";
+            this.button15.Size = new System.Drawing.Size(66, 23);
+            this.button15.TabIndex = 102;
+            this.button15.Text = "一键取关";
+            this.button15.UseVisualStyleBackColor = true;
+            this.button15.Click += new System.EventHandler(this.button15_Click);
+            // 
+            // button14
+            // 
+            this.button14.Location = new System.Drawing.Point(94, 49);
+            this.button14.Name = "button14";
+            this.button14.Size = new System.Drawing.Size(90, 23);
+            this.button14.TabIndex = 101;
+            this.button14.Text = "刷新天选获奖";
+            this.button14.UseVisualStyleBackColor = true;
+            this.button14.Click += new System.EventHandler(this.button14_Click);
+            // 
             // button11
             // 
             this.button11.BackColor = System.Drawing.Color.DarkGreen;
             this.button11.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button11.Location = new System.Drawing.Point(333, 49);
+            this.button11.Location = new System.Drawing.Point(340, 49);
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(118, 23);
             this.button11.TabIndex = 100;
@@ -213,9 +249,9 @@
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(13, 49);
+            this.button6.Location = new System.Drawing.Point(360, 20);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(114, 23);
+            this.button6.Size = new System.Drawing.Size(90, 23);
             this.button6.TabIndex = 5;
             this.button6.Text = "刷新登录信息";
             this.button6.UseVisualStyleBackColor = true;
@@ -223,9 +259,9 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(142, 49);
+            this.button5.Location = new System.Drawing.Point(4, 49);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(107, 23);
+            this.button5.Size = new System.Drawing.Size(90, 23);
             this.button5.TabIndex = 4;
             this.button5.Text = "刷新个人信息";
             this.button5.UseVisualStyleBackColor = true;
@@ -233,9 +269,9 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(342, 20);
+            this.button4.Location = new System.Drawing.Point(256, 20);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(109, 23);
+            this.button4.Size = new System.Drawing.Size(102, 23);
             this.button4.TabIndex = 3;
             this.button4.Text = "应援团手动签到";
             this.button4.UseVisualStyleBackColor = true;
@@ -243,9 +279,9 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(230, 20);
+            this.button3.Location = new System.Drawing.Point(159, 20);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(101, 23);
+            this.button3.Size = new System.Drawing.Size(96, 23);
             this.button3.TabIndex = 2;
             this.button3.Text = "风纪一键投票";
             this.button3.UseVisualStyleBackColor = true;
@@ -253,9 +289,9 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(142, 20);
+            this.button2.Location = new System.Drawing.Point(96, 20);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.Size = new System.Drawing.Size(62, 23);
             this.button2.TabIndex = 1;
             this.button2.Text = "每日签到";
             this.button2.UseVisualStyleBackColor = true;
@@ -263,9 +299,9 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(13, 20);
+            this.button1.Location = new System.Drawing.Point(4, 20);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(114, 23);
+            this.button1.Size = new System.Drawing.Size(90, 23);
             this.button1.TabIndex = 0;
             this.button1.Text = "瓜子兑换硬币";
             this.button1.UseVisualStyleBackColor = true;
@@ -588,17 +624,6 @@
             this.time0.UseVisualStyleBackColor = true;
             this.time0.CheckedChanged += new System.EventHandler(this.time0_CheckedChanged);
             // 
-            // raffle
-            // 
-            this.raffle.AutoSize = true;
-            this.raffle.Location = new System.Drawing.Point(9, 23);
-            this.raffle.Name = "raffle";
-            this.raffle.Size = new System.Drawing.Size(168, 16);
-            this.raffle.TabIndex = 7;
-            this.raffle.Text = "小电视/摩天大楼/心动时刻";
-            this.raffle.UseVisualStyleBackColor = true;
-            this.raffle.CheckedChanged += new System.EventHandler(this.raffle_CheckedChanged);
-            // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.box);
@@ -622,6 +647,17 @@
             this.groupBox4.TabIndex = 38;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "礼物/风险控制";
+            // 
+            // box
+            // 
+            this.box.AutoSize = true;
+            this.box.Location = new System.Drawing.Point(105, 67);
+            this.box.Name = "box";
+            this.box.Size = new System.Drawing.Size(72, 16);
+            this.box.TabIndex = 44;
+            this.box.Text = "活动抽奖";
+            this.box.UseVisualStyleBackColor = true;
+            this.box.CheckedChanged += new System.EventHandler(this.box_CheckedChanged);
             // 
             // label11
             // 
@@ -755,6 +791,17 @@
             this.storm.Text = "节奏风暴";
             this.storm.UseVisualStyleBackColor = true;
             this.storm.CheckedChanged += new System.EventHandler(this.storm_CheckedChanged);
+            // 
+            // raffle
+            // 
+            this.raffle.AutoSize = true;
+            this.raffle.Location = new System.Drawing.Point(9, 23);
+            this.raffle.Name = "raffle";
+            this.raffle.Size = new System.Drawing.Size(168, 16);
+            this.raffle.TabIndex = 7;
+            this.raffle.Text = "小电视/摩天大楼/心动时刻";
+            this.raffle.UseVisualStyleBackColor = true;
+            this.raffle.CheckedChanged += new System.EventHandler(this.raffle_CheckedChanged);
             // 
             // yingyuan_sign
             // 
@@ -1260,7 +1307,7 @@
             this.button13.Name = "button13";
             this.button13.Size = new System.Drawing.Size(434, 43);
             this.button13.TabIndex = 1;
-            this.button13.Text = "这个按钮我也不知道放着干什么但是删了我也觉得可惜";
+            this.button13.Text = "清屏";
             this.button13.UseVisualStyleBackColor = true;
             this.button13.Click += new System.EventHandler(this.button13_Click);
             // 
@@ -1339,17 +1386,6 @@
             this.退出ToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
             this.退出ToolStripMenuItem.Text = "退出";
             this.退出ToolStripMenuItem.Click += new System.EventHandler(this.退出ToolStripMenuItem_Click);
-            // 
-            // box
-            // 
-            this.box.AutoSize = true;
-            this.box.Location = new System.Drawing.Point(105, 67);
-            this.box.Name = "box";
-            this.box.Size = new System.Drawing.Size(72, 16);
-            this.box.TabIndex = 44;
-            this.box.Text = "活动抽奖";
-            this.box.UseVisualStyleBackColor = true;
-            this.box.CheckedChanged += new System.EventHandler(this.box_CheckedChanged);
             // 
             // MainForm
             // 
@@ -1503,6 +1539,9 @@
         private System.Windows.Forms.RichTextBox ban_words;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.CheckBox box;
+        private System.Windows.Forms.Button button15;
+        private System.Windows.Forms.Button button14;
+        private System.Windows.Forms.Button button16;
     }
 }
 
