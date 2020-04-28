@@ -358,5 +358,17 @@ namespace BiliHP2020.Properties {
                 this["ban_words"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool box {
+            get {
+                return ((bool)(this["box"]));
+            }
+            set {
+                this["box"] = value;
+            }
+        }
     }
 }

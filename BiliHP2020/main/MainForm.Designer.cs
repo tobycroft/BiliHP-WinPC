@@ -69,6 +69,7 @@
             this.raffle = new System.Windows.Forms.CheckBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label11 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
             this.lab1 = new System.Windows.Forms.Label();
             this.storm_time = new System.Windows.Forms.TextBox();
             this.storm_count = new System.Windows.Forms.TextBox();
@@ -138,7 +139,7 @@
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.退出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.label13 = new System.Windows.Forms.Label();
+            this.box = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -297,7 +298,6 @@
             this.groupBox2.Controls.Add(this.time2);
             this.groupBox2.Controls.Add(this.time1);
             this.groupBox2.Controls.Add(this.time0);
-            this.groupBox2.Controls.Add(this.raffle);
             this.groupBox2.Controls.Add(this.groupBox4);
             this.groupBox2.Controls.Add(this.yingyuan_sign);
             this.groupBox2.Controls.Add(this.silver_to_coin);
@@ -591,7 +591,7 @@
             // raffle
             // 
             this.raffle.AutoSize = true;
-            this.raffle.Location = new System.Drawing.Point(13, 110);
+            this.raffle.Location = new System.Drawing.Point(9, 23);
             this.raffle.Name = "raffle";
             this.raffle.Size = new System.Drawing.Size(168, 16);
             this.raffle.TabIndex = 7;
@@ -601,6 +601,7 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.box);
             this.groupBox4.Controls.Add(this.label11);
             this.groupBox4.Controls.Add(this.label13);
             this.groupBox4.Controls.Add(this.lab1);
@@ -614,6 +615,7 @@
             this.groupBox4.Controls.Add(this.tianxuan);
             this.groupBox4.Controls.Add(this.pk);
             this.groupBox4.Controls.Add(this.storm);
+            this.groupBox4.Controls.Add(this.raffle);
             this.groupBox4.Location = new System.Drawing.Point(4, 86);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(451, 203);
@@ -629,6 +631,15 @@
             this.label11.Size = new System.Drawing.Size(41, 12);
             this.label11.TabIndex = 43;
             this.label11.Text = "抢几秒";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(209, 17);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(149, 12);
+            this.label13.TabIndex = 5;
+            this.label13.Text = "抽奖时间（几点到几点）：";
             // 
             // lab1
             // 
@@ -715,11 +726,11 @@
             // tianxuan
             // 
             this.tianxuan.AutoSize = true;
-            this.tianxuan.Location = new System.Drawing.Point(9, 65);
+            this.tianxuan.Location = new System.Drawing.Point(9, 67);
             this.tianxuan.Name = "tianxuan";
-            this.tianxuan.Size = new System.Drawing.Size(126, 16);
+            this.tianxuan.Size = new System.Drawing.Size(72, 16);
             this.tianxuan.TabIndex = 9;
-            this.tianxuan.Text = "活动抽奖/天选时刻";
+            this.tianxuan.Text = "天选时刻";
             this.tianxuan.UseVisualStyleBackColor = true;
             this.tianxuan.CheckedChanged += new System.EventHandler(this.tianxuan_CheckedChanged);
             // 
@@ -1329,14 +1340,16 @@
             this.退出ToolStripMenuItem.Text = "退出";
             this.退出ToolStripMenuItem.Click += new System.EventHandler(this.退出ToolStripMenuItem_Click);
             // 
-            // label13
+            // box
             // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(209, 17);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(149, 12);
-            this.label13.TabIndex = 5;
-            this.label13.Text = "抽奖时间（几点到几点）：";
+            this.box.AutoSize = true;
+            this.box.Location = new System.Drawing.Point(105, 67);
+            this.box.Name = "box";
+            this.box.Size = new System.Drawing.Size(72, 16);
+            this.box.TabIndex = 44;
+            this.box.Text = "活动抽奖";
+            this.box.UseVisualStyleBackColor = true;
+            this.box.CheckedChanged += new System.EventHandler(this.box_CheckedChanged);
             // 
             // MainForm
             // 
@@ -1489,6 +1502,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.RichTextBox ban_words;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.CheckBox box;
     }
 }
 

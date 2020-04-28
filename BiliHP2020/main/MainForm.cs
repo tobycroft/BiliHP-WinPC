@@ -113,6 +113,7 @@ namespace BiliHP2020
                     raffle.Checked = Properties.Settings.Default.raffle;
                     guard.Checked = Properties.Settings.Default.guard;
                     tianxuan.Checked = Properties.Settings.Default.tianxuan;
+                    box.Checked = Properties.Settings.Default.box;
                     pk.Checked = Properties.Settings.Default.pk;
                     storm.Checked = Properties.Settings.Default.storm;
                     percent.Text = Properties.Settings.Default.percent.ToString();
@@ -1071,6 +1072,19 @@ namespace BiliHP2020
                 JObject setting = new JObject();
                 setting["key"] = "ban_words";
                 setting["value"] = ban_words.Text;
+                send_setting("pc_set_setting", setting, "pc_set_setting");
+            }
+        }
+
+        private void box_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.box = box.Checked;
+            Properties.Settings.Default.Save();
+            if (!Properties.Settings.Default.setting_lock)
+            {
+                JObject setting = new JObject();
+                setting["key"] = "box";
+                setting["value"] = box.Checked;
                 send_setting("pc_set_setting", setting, "pc_set_setting");
             }
         }

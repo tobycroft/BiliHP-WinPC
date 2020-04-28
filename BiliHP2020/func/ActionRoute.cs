@@ -286,6 +286,52 @@ namespace BiliHP2020.func
                     SuperCurl.Curl(MainForm.socket, url, method, values, header, cookie, typ, echo, route, delay, ecam);
                     break;
 
+                case "box":
+                    //ecam_action(echo);
+                    if (!Properties.Settings.Default.box)
+                    {
+                        ecam2("[BiliHP-Net]", "实物类型的领奖被关闭，请在面板中开启");
+                        break;
+                    }
+                    if (!Time_check())
+                    {
+                        ecam2("[BiliHP-Net]", "不在领取时间段中");
+                        break;
+                    }
+                    if (!Gift_ratio())
+                    {
+                        ecam2("[BiliHP-Net]", "自动跳过本礼物，如需增加领取率，请提高概率设定");
+                        break;
+                    }
+                    obj = json["object"].ToObject<JObject>();
+
+                    bw = Properties.Settings.Default.ban_words;
+                    bws = bw.Split(',');
+                    foreach (var item in bws)
+                    {
+                        if (item.Length > 0)
+                        {
+                            if (obj["award_name"].ToString().Contains(item))
+                            {
+                                ecam2("[BiliHP-Net]", obj["title"].ToString() + "本礼物在屏蔽词(" + item + ")里，自动跳过");
+                                return;
+                            }
+                        }
+                    }
+                    rets = ret;
+                    header = rets["header"].ToObject<JObject>();
+                    values = rets["values"].ToObject<JObject>();
+                    cookie = rets["cookie"].ToObject<JObject>();
+
+                    url = rets["url"].ToString();
+                    method = rets["method"].ToString();
+                    route = rets["route"].ToString();
+                    typ = rets["type"].ToString();
+                    delay = rets["delay"].ToObject<int>();
+                    ecam2(type, echo);
+                    SuperCurl.Curl(MainForm.socket, url, method, values, header, cookie, typ, echo, route, delay, ecam);
+                    break;
+
                 case "pk":
                     //ecam_action(echo);
                     if (!Properties.Settings.Default.pk)

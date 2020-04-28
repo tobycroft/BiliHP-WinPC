@@ -38,6 +38,7 @@ namespace BiliHP2020.func
                         Properties.Settings.Default.raffle = data["raffle"].ToObject<bool>();
                         Properties.Settings.Default.guard = data["guard"].ToObject<bool>();
                         Properties.Settings.Default.tianxuan = data["tianxuan"].ToObject<bool>();
+                        Properties.Settings.Default.box = data["box"].ToObject<bool>();
                         Properties.Settings.Default.pk = data["pk"].ToObject<bool>();
                         Properties.Settings.Default.storm = data["storm"].ToObject<bool>();
                         Properties.Settings.Default.time = data["time"].ToString();
