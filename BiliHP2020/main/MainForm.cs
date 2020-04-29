@@ -1104,6 +1104,21 @@ namespace BiliHP2020
             send("func", new JObject(), "follow_lock");
         }
 
+        private void button17_Click(object sender, EventArgs e)
+        {
+            send("func", new JObject(), "manga_sign");
+        }
+
+        private void button18_Click(object sender, EventArgs e)
+        {
+            send("func", new JObject(), "manga_share");
+        }
+
+        private void button19_Click(object sender, EventArgs e)
+        {
+            send("func", new JObject(), "check_sixin");
+        }
+
         private void debug_CheckedChanged(object sender, EventArgs e)
         {
             Properties.Settings.Default.debug = debug.Checked;
