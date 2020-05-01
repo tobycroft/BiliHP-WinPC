@@ -1119,6 +1119,16 @@ namespace BiliHP2020
             send("func", new JObject(), "check_sixin");
         }
 
+        private void button20_Click(object sender, EventArgs e)
+        {
+            send("func", new JObject(), "lock_black");
+        }
+
+        private void button21_Click(object sender, EventArgs e)
+        {
+            send("func", new JObject(), "unlock_black");
+        }
+
         private void debug_CheckedChanged(object sender, EventArgs e)
         {
             Properties.Settings.Default.debug = debug.Checked;

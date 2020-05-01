@@ -33,12 +33,13 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.button19 = new System.Windows.Forms.Button();
+            this.button18 = new System.Windows.Forms.Button();
+            this.button17 = new System.Windows.Forms.Button();
             this.button16 = new System.Windows.Forms.Button();
             this.button15 = new System.Windows.Forms.Button();
             this.button14 = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -100,6 +101,8 @@
             this.button12 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.pk_today = new System.Windows.Forms.Label();
             this.guard_today = new System.Windows.Forms.Label();
@@ -143,9 +146,8 @@
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.退出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.button17 = new System.Windows.Forms.Button();
-            this.button18 = new System.Windows.Forms.Button();
-            this.button19 = new System.Windows.Forms.Button();
+            this.button20 = new System.Windows.Forms.Button();
+            this.button21 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -209,6 +211,36 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "手动MCP";
             // 
+            // button19
+            // 
+            this.button19.Location = new System.Drawing.Point(160, 49);
+            this.button19.Name = "button19";
+            this.button19.Size = new System.Drawing.Size(113, 23);
+            this.button19.TabIndex = 106;
+            this.button19.Text = "一键删除关注留言";
+            this.button19.UseVisualStyleBackColor = true;
+            this.button19.Click += new System.EventHandler(this.button19_Click);
+            // 
+            // button18
+            // 
+            this.button18.Location = new System.Drawing.Point(4, 49);
+            this.button18.Name = "button18";
+            this.button18.Size = new System.Drawing.Size(61, 23);
+            this.button18.TabIndex = 105;
+            this.button18.Text = "漫画分享";
+            this.button18.UseVisualStyleBackColor = true;
+            this.button18.Click += new System.EventHandler(this.button18_Click);
+            // 
+            // button17
+            // 
+            this.button17.Location = new System.Drawing.Point(288, 20);
+            this.button17.Name = "button17";
+            this.button17.Size = new System.Drawing.Size(77, 23);
+            this.button17.TabIndex = 104;
+            this.button17.Text = "漫画签到";
+            this.button17.UseVisualStyleBackColor = true;
+            this.button17.Click += new System.EventHandler(this.button17_Click);
+            // 
             // button16
             // 
             this.button16.Location = new System.Drawing.Point(66, 49);
@@ -250,26 +282,6 @@
             this.button11.Text = "缩小到任务栏执行";
             this.button11.UseVisualStyleBackColor = false;
             this.button11.Click += new System.EventHandler(this.button11_Click);
-            // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(197, 71);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(191, 44);
-            this.button6.TabIndex = 5;
-            this.button6.Text = "刷新登录信息\r\nRefreshToken";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(197, 21);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(191, 45);
-            this.button5.TabIndex = 4;
-            this.button5.Text = "刷新个人信息";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button4
             // 
@@ -928,6 +940,8 @@
             // 
             // groupBox7
             // 
+            this.groupBox7.Controls.Add(this.button21);
+            this.groupBox7.Controls.Add(this.button20);
             this.groupBox7.Controls.Add(this.button12);
             this.groupBox7.Controls.Add(this.button8);
             this.groupBox7.Controls.Add(this.button7);
@@ -944,7 +958,7 @@
             // 
             this.button12.Location = new System.Drawing.Point(7, 71);
             this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(188, 44);
+            this.button12.Size = new System.Drawing.Size(135, 44);
             this.button12.TabIndex = 2;
             this.button12.Text = "强制解除黑屋保护";
             this.button12.UseVisualStyleBackColor = true;
@@ -952,9 +966,9 @@
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(392, 22);
+            this.button8.Location = new System.Drawing.Point(308, 20);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(42, 93);
+            this.button8.Size = new System.Drawing.Size(126, 44);
             this.button8.TabIndex = 1;
             this.button8.Text = "退出登陆";
             this.button8.UseVisualStyleBackColor = true;
@@ -964,11 +978,31 @@
             // 
             this.button7.Location = new System.Drawing.Point(7, 21);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(188, 44);
+            this.button7.Size = new System.Drawing.Size(102, 44);
             this.button7.TabIndex = 0;
             this.button7.Text = "刷新本页数据";
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(211, 20);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(91, 44);
+            this.button6.TabIndex = 5;
+            this.button6.Text = "刷新登录信息\r\nRefreshToken";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(114, 20);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(91, 45);
+            this.button5.TabIndex = 4;
+            this.button5.Text = "刷新个人信息";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // groupBox6
             // 
@@ -1393,35 +1427,25 @@
             this.退出ToolStripMenuItem.Text = "退出";
             this.退出ToolStripMenuItem.Click += new System.EventHandler(this.退出ToolStripMenuItem_Click);
             // 
-            // button17
+            // button20
             // 
-            this.button17.Location = new System.Drawing.Point(288, 20);
-            this.button17.Name = "button17";
-            this.button17.Size = new System.Drawing.Size(77, 23);
-            this.button17.TabIndex = 104;
-            this.button17.Text = "漫画签到";
-            this.button17.UseVisualStyleBackColor = true;
-            this.button17.Click += new System.EventHandler(this.button17_Click);
+            this.button20.Location = new System.Drawing.Point(148, 71);
+            this.button20.Name = "button20";
+            this.button20.Size = new System.Drawing.Size(154, 44);
+            this.button20.TabIndex = 6;
+            this.button20.Text = "暂停黑屋保护(7天)";
+            this.button20.UseVisualStyleBackColor = true;
+            this.button20.Click += new System.EventHandler(this.button20_Click);
             // 
-            // button18
+            // button21
             // 
-            this.button18.Location = new System.Drawing.Point(4, 49);
-            this.button18.Name = "button18";
-            this.button18.Size = new System.Drawing.Size(61, 23);
-            this.button18.TabIndex = 105;
-            this.button18.Text = "漫画分享";
-            this.button18.UseVisualStyleBackColor = true;
-            this.button18.Click += new System.EventHandler(this.button18_Click);
-            // 
-            // button19
-            // 
-            this.button19.Location = new System.Drawing.Point(160, 49);
-            this.button19.Name = "button19";
-            this.button19.Size = new System.Drawing.Size(113, 23);
-            this.button19.TabIndex = 106;
-            this.button19.Text = "一键删除关注留言";
-            this.button19.UseVisualStyleBackColor = true;
-            this.button19.Click += new System.EventHandler(this.button19_Click);
+            this.button21.Location = new System.Drawing.Point(308, 70);
+            this.button21.Name = "button21";
+            this.button21.Size = new System.Drawing.Size(126, 44);
+            this.button21.TabIndex = 7;
+            this.button21.Text = "恢复黑屋保护";
+            this.button21.UseVisualStyleBackColor = true;
+            this.button21.Click += new System.EventHandler(this.button21_Click);
             // 
             // MainForm
             // 
@@ -1581,6 +1605,8 @@
         private System.Windows.Forms.Button button19;
         private System.Windows.Forms.Button button18;
         private System.Windows.Forms.Button button17;
+        private System.Windows.Forms.Button button21;
+        private System.Windows.Forms.Button button20;
     }
 }
 
