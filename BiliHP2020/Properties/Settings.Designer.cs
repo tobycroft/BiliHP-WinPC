@@ -370,5 +370,41 @@ namespace BiliHP2020.Properties {
                 this["box"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool do_sign {
+            get {
+                return ((bool)(this["do_sign"]));
+            }
+            set {
+                this["do_sign"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool manga_sign {
+            get {
+                return ((bool)(this["manga_sign"]));
+            }
+            set {
+                this["manga_sign"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool manga_share {
+            get {
+                return ((bool)(this["manga_share"]));
+            }
+            set {
+                this["manga_share"] = value;
+            }
+        }
     }
 }

@@ -98,6 +98,8 @@
             this.ban_words = new System.Windows.Forms.RichTextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.button21 = new System.Windows.Forms.Button();
+            this.button20 = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
@@ -146,8 +148,9 @@
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.退出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.button20 = new System.Windows.Forms.Button();
-            this.button21 = new System.Windows.Forms.Button();
+            this.do_sign = new System.Windows.Forms.CheckBox();
+            this.manga_sign = new System.Windows.Forms.CheckBox();
+            this.manga_share = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -325,6 +328,9 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.manga_share);
+            this.groupBox2.Controls.Add(this.manga_sign);
+            this.groupBox2.Controls.Add(this.do_sign);
             this.groupBox2.Controls.Add(this.daily_task);
             this.groupBox2.Controls.Add(this.time23);
             this.groupBox2.Controls.Add(this.time22);
@@ -954,6 +960,26 @@
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "占位盒子";
             // 
+            // button21
+            // 
+            this.button21.Location = new System.Drawing.Point(308, 70);
+            this.button21.Name = "button21";
+            this.button21.Size = new System.Drawing.Size(126, 44);
+            this.button21.TabIndex = 7;
+            this.button21.Text = "恢复黑屋保护";
+            this.button21.UseVisualStyleBackColor = true;
+            this.button21.Click += new System.EventHandler(this.button21_Click);
+            // 
+            // button20
+            // 
+            this.button20.Location = new System.Drawing.Point(148, 71);
+            this.button20.Name = "button20";
+            this.button20.Size = new System.Drawing.Size(154, 44);
+            this.button20.TabIndex = 6;
+            this.button20.Text = "暂停黑屋保护(7天)";
+            this.button20.UseVisualStyleBackColor = true;
+            this.button20.Click += new System.EventHandler(this.button20_Click);
+            // 
             // button12
             // 
             this.button12.Location = new System.Drawing.Point(7, 71);
@@ -1427,25 +1453,38 @@
             this.退出ToolStripMenuItem.Text = "退出";
             this.退出ToolStripMenuItem.Click += new System.EventHandler(this.退出ToolStripMenuItem_Click);
             // 
-            // button20
+            // do_sign
             // 
-            this.button20.Location = new System.Drawing.Point(148, 71);
-            this.button20.Name = "button20";
-            this.button20.Size = new System.Drawing.Size(154, 44);
-            this.button20.TabIndex = 6;
-            this.button20.Text = "暂停黑屋保护(7天)";
-            this.button20.UseVisualStyleBackColor = true;
-            this.button20.Click += new System.EventHandler(this.button20_Click);
+            this.do_sign.AutoSize = true;
+            this.do_sign.Location = new System.Drawing.Point(91, 64);
+            this.do_sign.Name = "do_sign";
+            this.do_sign.Size = new System.Drawing.Size(72, 16);
+            this.do_sign.TabIndex = 40;
+            this.do_sign.Text = "每日签到";
+            this.do_sign.UseVisualStyleBackColor = true;
+            this.do_sign.CheckedChanged += new System.EventHandler(this.do_sign_CheckedChanged);
             // 
-            // button21
+            // manga_sign
             // 
-            this.button21.Location = new System.Drawing.Point(308, 70);
-            this.button21.Name = "button21";
-            this.button21.Size = new System.Drawing.Size(126, 44);
-            this.button21.TabIndex = 7;
-            this.button21.Text = "恢复黑屋保护";
-            this.button21.UseVisualStyleBackColor = true;
-            this.button21.Click += new System.EventHandler(this.button21_Click);
+            this.manga_sign.AutoSize = true;
+            this.manga_sign.Location = new System.Drawing.Point(173, 64);
+            this.manga_sign.Name = "manga_sign";
+            this.manga_sign.Size = new System.Drawing.Size(72, 16);
+            this.manga_sign.TabIndex = 41;
+            this.manga_sign.Text = "漫画签到";
+            this.manga_sign.UseVisualStyleBackColor = true;
+            this.manga_sign.CheckedChanged += new System.EventHandler(this.manga_sign_CheckedChanged);
+            // 
+            // manga_share
+            // 
+            this.manga_share.AutoSize = true;
+            this.manga_share.Location = new System.Drawing.Point(255, 64);
+            this.manga_share.Name = "manga_share";
+            this.manga_share.Size = new System.Drawing.Size(72, 16);
+            this.manga_share.TabIndex = 42;
+            this.manga_share.Text = "漫画分享";
+            this.manga_share.UseVisualStyleBackColor = true;
+            this.manga_share.CheckedChanged += new System.EventHandler(this.manga_share_CheckedChanged);
             // 
             // MainForm
             // 
@@ -1607,6 +1646,9 @@
         private System.Windows.Forms.Button button17;
         private System.Windows.Forms.Button button21;
         private System.Windows.Forms.Button button20;
+        private System.Windows.Forms.CheckBox manga_share;
+        private System.Windows.Forms.CheckBox manga_sign;
+        private System.Windows.Forms.CheckBox do_sign;
     }
 }
 

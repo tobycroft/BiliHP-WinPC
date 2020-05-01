@@ -15,7 +15,7 @@ namespace BiliHP2020.func
         public ListBox ecam;
         public void yingyuan_sign()
         {
-            while (true) 
+            while (true)
             {
                 if (Properties.Settings.Default.yingyuan_sign)
                 {
@@ -139,7 +139,7 @@ namespace BiliHP2020.func
                 MainForm.socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
                 MainForm.socket.NoDelay = false;
                 MainForm.socket.Connect(MainForm.address.ToString(), 181);
-                ecam_action("FUNCTION:"+e.Message);
+                ecam_action("FUNCTION:" + e.Message);
             }
         }
 
@@ -152,5 +152,45 @@ namespace BiliHP2020.func
             sb.Append(str.ToString());
             ecam.Items.Insert(0, sb.ToString());
         }
+
+        public void do_sign()
+        {
+            while (true)
+            {
+                if (Properties.Settings.Default.do_sign)
+                {
+                    string obj = send_obj("func", new JObject(), "do_sign");
+                    send(obj);
+                }
+                Thread.Sleep(86400 * 1000);
+            }
+        }
+
+        public void manga_sign()
+        {
+            while (true)
+            {
+                if (Properties.Settings.Default.manga_sign)
+                {
+                    string obj = send_obj("func", new JObject(), "manga_sign");
+                    send(obj);
+                }
+                Thread.Sleep(86400 * 1000);
+            }
+        }
+
+        public void manga_share()
+        {
+            while (true)
+            {
+                if (Properties.Settings.Default.manga_share)
+                {
+                    string obj = send_obj("func", new JObject(), "manga_share");
+                    send(obj);
+                }
+                Thread.Sleep(86400 * 1000);
+            }
+        }
+
     }
 }

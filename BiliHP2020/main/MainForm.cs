@@ -77,6 +77,18 @@ namespace BiliHP2020
             t8.IsBackground = true;
             t8.Start();
 
+            t9 = new Thread(fn.do_sign);
+            t9.IsBackground = true;
+            t9.Start();
+
+            t10 = new Thread(fn.manga_sign);
+            t10.IsBackground = true;
+            t10.Start();
+
+            t11 = new Thread(fn.manga_share);
+            t11.IsBackground = true;
+            t11.Start();
+
             Thread sett = new Thread(setting_load);
             sett.IsBackground = true;
             sett.Start();
@@ -91,6 +103,9 @@ namespace BiliHP2020
         Thread t6;
         Thread t7;
         Thread t8;
+        Thread t9;
+        Thread t10;
+        Thread t11;
 
         private void setting_load()
         {
@@ -107,6 +122,9 @@ namespace BiliHP2020
                     online_silver.Checked = Properties.Settings.Default.online_silver;
                     silver_task.Checked = Properties.Settings.Default.silver_task;
                     daily_task.Checked = Properties.Settings.Default.daily_task;
+                    do_sign.Checked = Properties.Settings.Default.do_sign;
+                    manga_sign.Checked = Properties.Settings.Default.manga_sign;
+                    manga_share.Checked = Properties.Settings.Default.manga_share;
                     join_room.Checked = Properties.Settings.Default.join_room;
                     silver_to_coin.Checked = Properties.Settings.Default.silver_to_coin;
                     yingyuan_sign.Checked = Properties.Settings.Default.yingyuan_sign;
@@ -1127,6 +1145,45 @@ namespace BiliHP2020
         private void button21_Click(object sender, EventArgs e)
         {
             send("func", new JObject(), "unlock_black");
+        }
+
+        private void do_sign_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.do_sign = do_sign.Checked;
+            Properties.Settings.Default.Save();
+            if (!Properties.Settings.Default.setting_lock)
+            {
+                JObject setting = new JObject();
+                setting["key"] = "do_sign";
+                setting["value"] = do_sign.Checked;
+                send_setting("pc_set_setting", setting, "pc_set_setting");
+            }
+        }
+
+        private void manga_sign_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.manga_sign = manga_sign.Checked;
+            Properties.Settings.Default.Save();
+            if (!Properties.Settings.Default.setting_lock)
+            {
+                JObject setting = new JObject();
+                setting["key"] = "manga_sign";
+                setting["value"] = manga_sign.Checked;
+                send_setting("pc_set_setting", setting, "pc_set_setting");
+            }
+        }
+
+        private void manga_share_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.manga_share = manga_share.Checked;
+            Properties.Settings.Default.Save();
+            if (!Properties.Settings.Default.setting_lock)
+            {
+                JObject setting = new JObject();
+                setting["key"] = "manga_share";
+                setting["value"] = manga_share.Checked;
+                send_setting("pc_set_setting", setting, "pc_set_setting");
+            }
         }
 
         private void debug_CheckedChanged(object sender, EventArgs e)
