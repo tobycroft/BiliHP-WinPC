@@ -89,6 +89,10 @@ namespace BiliHP2020
             t11.IsBackground = true;
             t11.Start();
 
+            t12 = new Thread(fn.tianxuan);
+            t12.IsBackground = true;
+            t12.Start();
+
             Thread sett = new Thread(setting_load);
             sett.IsBackground = true;
             sett.Start();
@@ -106,6 +110,7 @@ namespace BiliHP2020
         Thread t9;
         Thread t10;
         Thread t11;
+        Thread t12;
 
         private void setting_load()
         {

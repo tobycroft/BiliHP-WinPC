@@ -121,6 +121,7 @@ namespace BiliHP2020.func
                     send(RET.ws_succ2("app", "get_config", new JObject(), "get_config"));
                     send(RET.ws_succ2("func", "", new JObject(), "user_info"));
                     send(RET.ws_succ2("func", "", new JObject(), "refresh_token"));
+                    send(RET.ws_succ2("func", "", new JObject(), "tianxuan_award"));
                     ecam2("[BiliHP-Loged]:", ret);
                     break;
 

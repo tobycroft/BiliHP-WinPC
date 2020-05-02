@@ -192,5 +192,15 @@ namespace BiliHP2020.func
             }
         }
 
+        public void tianxuan()
+        {
+            while (true)
+            {
+                Thread.Sleep(60 * 1000);
+                string obj = send_obj("func", new JObject(), "tianxuan_award");
+                send(obj);
+            }
+        }
+
     }
 }
