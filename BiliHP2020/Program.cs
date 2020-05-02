@@ -26,7 +26,7 @@ namespace BiliHP2020
             string resourceName = "BiliHP2020." + new AssemblyName(args.Name).Name + ".dll";
             using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName))
             {
-                if (stream==null)
+                if (stream == null)
                 {
                     return Assembly.Load("");
                 }

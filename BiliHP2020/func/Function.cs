@@ -136,9 +136,9 @@ namespace BiliHP2020.func
             }
             catch (Exception e)
             {
-                MainForm.socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-                MainForm.socket.NoDelay = false;
-                MainForm.socket.Connect(MainForm.address.ToString(), 181);
+                //MainForm.socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                //MainForm.socket.NoDelay = false;
+                //MainForm.socket.Connect(MainForm.address.ToString(), 181);
                 ecam_action("FUNCTION:" + e.Message);
             }
         }
