@@ -262,6 +262,8 @@ namespace BiliHP2020.func
 
                     string bw = Properties.Settings.Default.ban_words;
                     string[] bws = bw.Split(',');
+                    string bdm = Properties.Settings.Default.ban_danmu;
+                    string[] bdms = bw.Split(',');
                     foreach (var item in bws)
                     {
                         if (item.Length > 0)
@@ -269,6 +271,17 @@ namespace BiliHP2020.func
                             if (obj["award_name"].ToString().Contains(item))
                             {
                                 ecam2("[BiliHP-Net]", obj["award_name"].ToString() + "本礼物在屏蔽词(" + item + ")里，自动跳过");
+                                return;
+                            }
+                        }
+                    }
+                    foreach (var item in bdms)
+                    {
+                        if (item.Length > 0)
+                        {
+                            if (obj["danmu"].ToString().Contains(item))
+                            {
+                                ecam2("[BiliHP-Net]", obj["danmu"].ToString() + "本弹幕在屏蔽词(" + item + ")里，不发送并跳过本天选抽奖");
                                 return;
                             }
                         }

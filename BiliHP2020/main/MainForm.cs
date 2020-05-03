@@ -1200,6 +1200,20 @@ namespace BiliHP2020
             }
         }
 
+        private void ban_danmu_TextChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.ban_danmu = ban_danmu.Text;
+
+            Properties.Settings.Default.Save();
+            if (!Properties.Settings.Default.setting_lock)
+            {
+                JObject setting = new JObject();
+                setting["key"] = "ban_danmu";
+                setting["value"] = ban_danmu.Text;
+                send_setting("pc_set_setting", setting, "pc_set_setting");
+            }
+        }
+
         private void debug_CheckedChanged(object sender, EventArgs e)
         {
             Properties.Settings.Default.debug = debug.Checked;

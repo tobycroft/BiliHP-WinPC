@@ -45,6 +45,9 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.manga_share = new System.Windows.Forms.CheckBox();
+            this.manga_sign = new System.Windows.Forms.CheckBox();
+            this.do_sign = new System.Windows.Forms.CheckBox();
             this.daily_task = new System.Windows.Forms.CheckBox();
             this.time23 = new System.Windows.Forms.CheckBox();
             this.time22 = new System.Windows.Forms.CheckBox();
@@ -148,9 +151,8 @@
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.退出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.do_sign = new System.Windows.Forms.CheckBox();
-            this.manga_sign = new System.Windows.Forms.CheckBox();
-            this.manga_share = new System.Windows.Forms.CheckBox();
+            this.ban_danmu = new System.Windows.Forms.RichTextBox();
+            this.label15 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -370,6 +372,39 @@
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "自动控制面板（实时同步）";
+            // 
+            // manga_share
+            // 
+            this.manga_share.AutoSize = true;
+            this.manga_share.Location = new System.Drawing.Point(255, 64);
+            this.manga_share.Name = "manga_share";
+            this.manga_share.Size = new System.Drawing.Size(72, 16);
+            this.manga_share.TabIndex = 42;
+            this.manga_share.Text = "漫画分享";
+            this.manga_share.UseVisualStyleBackColor = true;
+            this.manga_share.CheckedChanged += new System.EventHandler(this.manga_share_CheckedChanged);
+            // 
+            // manga_sign
+            // 
+            this.manga_sign.AutoSize = true;
+            this.manga_sign.Location = new System.Drawing.Point(173, 64);
+            this.manga_sign.Name = "manga_sign";
+            this.manga_sign.Size = new System.Drawing.Size(72, 16);
+            this.manga_sign.TabIndex = 41;
+            this.manga_sign.Text = "漫画签到";
+            this.manga_sign.UseVisualStyleBackColor = true;
+            this.manga_sign.CheckedChanged += new System.EventHandler(this.manga_sign_CheckedChanged);
+            // 
+            // do_sign
+            // 
+            this.do_sign.AutoSize = true;
+            this.do_sign.Location = new System.Drawing.Point(91, 64);
+            this.do_sign.Name = "do_sign";
+            this.do_sign.Size = new System.Drawing.Size(72, 16);
+            this.do_sign.TabIndex = 40;
+            this.do_sign.Text = "每日签到";
+            this.do_sign.UseVisualStyleBackColor = true;
+            this.do_sign.CheckedChanged += new System.EventHandler(this.do_sign_CheckedChanged);
             // 
             // daily_task
             // 
@@ -904,6 +939,8 @@
             // 
             // tabPage5
             // 
+            this.tabPage5.Controls.Add(this.label15);
+            this.tabPage5.Controls.Add(this.ban_danmu);
             this.tabPage5.Controls.Add(this.label3);
             this.tabPage5.Controls.Add(this.ban_words);
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
@@ -926,7 +963,7 @@
             // 
             this.ban_words.Location = new System.Drawing.Point(13, 33);
             this.ban_words.Name = "ban_words";
-            this.ban_words.Size = new System.Drawing.Size(439, 329);
+            this.ban_words.Size = new System.Drawing.Size(439, 147);
             this.ban_words.TabIndex = 0;
             this.ban_words.Text = "";
             this.ban_words.TextChanged += new System.EventHandler(this.richTextBox3_TextChanged);
@@ -1453,38 +1490,23 @@
             this.退出ToolStripMenuItem.Text = "退出";
             this.退出ToolStripMenuItem.Click += new System.EventHandler(this.退出ToolStripMenuItem_Click);
             // 
-            // do_sign
+            // ban_danmu
             // 
-            this.do_sign.AutoSize = true;
-            this.do_sign.Location = new System.Drawing.Point(91, 64);
-            this.do_sign.Name = "do_sign";
-            this.do_sign.Size = new System.Drawing.Size(72, 16);
-            this.do_sign.TabIndex = 40;
-            this.do_sign.Text = "每日签到";
-            this.do_sign.UseVisualStyleBackColor = true;
-            this.do_sign.CheckedChanged += new System.EventHandler(this.do_sign_CheckedChanged);
+            this.ban_danmu.Location = new System.Drawing.Point(13, 226);
+            this.ban_danmu.Name = "ban_danmu";
+            this.ban_danmu.Size = new System.Drawing.Size(439, 147);
+            this.ban_danmu.TabIndex = 2;
+            this.ban_danmu.Text = "";
+            this.ban_danmu.TextChanged += new System.EventHandler(this.ban_danmu_TextChanged);
             // 
-            // manga_sign
+            // label15
             // 
-            this.manga_sign.AutoSize = true;
-            this.manga_sign.Location = new System.Drawing.Point(173, 64);
-            this.manga_sign.Name = "manga_sign";
-            this.manga_sign.Size = new System.Drawing.Size(72, 16);
-            this.manga_sign.TabIndex = 41;
-            this.manga_sign.Text = "漫画签到";
-            this.manga_sign.UseVisualStyleBackColor = true;
-            this.manga_sign.CheckedChanged += new System.EventHandler(this.manga_sign_CheckedChanged);
-            // 
-            // manga_share
-            // 
-            this.manga_share.AutoSize = true;
-            this.manga_share.Location = new System.Drawing.Point(255, 64);
-            this.manga_share.Name = "manga_share";
-            this.manga_share.Size = new System.Drawing.Size(72, 16);
-            this.manga_share.TabIndex = 42;
-            this.manga_share.Text = "漫画分享";
-            this.manga_share.UseVisualStyleBackColor = true;
-            this.manga_share.CheckedChanged += new System.EventHandler(this.manga_share_CheckedChanged);
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(11, 211);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(89, 12);
+            this.label15.TabIndex = 3;
+            this.label15.Text = "天选屏蔽弹幕：";
             // 
             // MainForm
             // 
@@ -1649,6 +1671,8 @@
         private System.Windows.Forms.CheckBox manga_share;
         private System.Windows.Forms.CheckBox manga_sign;
         private System.Windows.Forms.CheckBox do_sign;
+        private System.Windows.Forms.RichTextBox ban_danmu;
+        private System.Windows.Forms.Label label15;
     }
 }
 

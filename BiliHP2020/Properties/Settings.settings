@@ -98,5 +98,8 @@
     <Setting Name="manga_share" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="ban_danmu" Type="System.String" Scope="User">
+      <Value Profile="(Default)">禁言礼包,封号礼包,禁言,测试,封禁,口球</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

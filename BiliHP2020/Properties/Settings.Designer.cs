@@ -406,5 +406,17 @@ namespace BiliHP2020.Properties {
                 this["manga_share"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("禁言礼包,封号礼包,禁言,测试,封禁,口球")]
+        public string ban_danmu {
+            get {
+                return ((string)(this["ban_danmu"]));
+            }
+            set {
+                this["ban_danmu"] = value;
+            }
+        }
     }
 }
