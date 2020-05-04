@@ -144,7 +144,7 @@ namespace BiliHP2020
                     storm_count.Text = Properties.Settings.Default.storm_count.ToString();
                     storm_time.Text = Properties.Settings.Default.storm_time.ToString();
                     ban_words.Text = Properties.Settings.Default.ban_words.ToString();
-
+                    ban_danmu.Text= Properties.Settings.Default.ban_danmu.ToString();
                     foreach (var item in ActionRoute.get_time())
                     {
                         switch (item.Key)
