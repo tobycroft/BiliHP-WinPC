@@ -93,6 +93,18 @@ namespace BiliHP2020
             t12.IsBackground = true;
             t12.Start();
 
+            t13 = new Thread(fn.match_sign);
+            t13.IsBackground = true;
+            t13.Start();
+
+            t14 = new Thread(fn.match_share);
+            t14.IsBackground = true;
+            t14.Start();
+
+            t15 = new Thread(fn.match_pick);
+            t15.IsBackground = true;
+            t15.Start();
+
             Thread sett = new Thread(setting_load);
             sett.IsBackground = true;
             sett.Start();
@@ -111,6 +123,9 @@ namespace BiliHP2020
         Thread t10;
         Thread t11;
         Thread t12;
+        Thread t13;
+        Thread t14;
+        Thread t15;
 
         private void setting_load()
         {
@@ -145,6 +160,11 @@ namespace BiliHP2020
                     storm_time.Text = Properties.Settings.Default.storm_time.ToString();
                     ban_words.Text = Properties.Settings.Default.ban_words.ToString();
                     ban_danmu.Text= Properties.Settings.Default.ban_danmu.ToString();
+
+                    match_sign.Checked = Properties.Settings.Default.match_sign;
+                    match_share.Checked = Properties.Settings.Default.match_share;
+                    match_pick.Checked = Properties.Settings.Default.match_pick;
+
                     foreach (var item in ActionRoute.get_time())
                     {
                         switch (item.Key)
@@ -1210,6 +1230,45 @@ namespace BiliHP2020
                 JObject setting = new JObject();
                 setting["key"] = "ban_danmu";
                 setting["value"] = ban_danmu.Text;
+                send_setting("pc_set_setting", setting, "pc_set_setting");
+            }
+        }
+
+        private void match_sign_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.match_sign = match_sign.Checked;
+            Properties.Settings.Default.Save();
+            if (!Properties.Settings.Default.setting_lock)
+            {
+                JObject setting = new JObject();
+                setting["key"] = "match_sign";
+                setting["value"] = match_sign.Checked;
+                send_setting("pc_set_setting", setting, "pc_set_setting");
+            }
+        }
+
+        private void match_share_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.match_share = match_share.Checked;
+            Properties.Settings.Default.Save();
+            if (!Properties.Settings.Default.setting_lock)
+            {
+                JObject setting = new JObject();
+                setting["key"] = "match_share";
+                setting["value"] = match_share.Checked;
+                send_setting("pc_set_setting", setting, "pc_set_setting");
+            }
+        }
+
+        private void match_pick_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.match_pick = match_pick.Checked;
+            Properties.Settings.Default.Save();
+            if (!Properties.Settings.Default.setting_lock)
+            {
+                JObject setting = new JObject();
+                setting["key"] = "match_pick";
+                setting["value"] = match_pick.Checked;
                 send_setting("pc_set_setting", setting, "pc_set_setting");
             }
         }

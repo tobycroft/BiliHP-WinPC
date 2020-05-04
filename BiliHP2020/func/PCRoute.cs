@@ -45,6 +45,14 @@ namespace BiliHP2020.func
                         Properties.Settings.Default.percent = data["percent"].ToObject<int>();
                         Properties.Settings.Default.update_time = data["pk"].ToObject<string>();
                         Properties.Settings.Default.date = data["date"].ToObject<string>();
+
+                        Properties.Settings.Default.manga_sign = data["manga_sign"].ToObject<bool>();
+                        Properties.Settings.Default.manga_share = data["manga_share"].ToObject<bool>();
+                        Properties.Settings.Default.match_sign = data["match_sign"].ToObject<bool>();
+                        Properties.Settings.Default.match_share = data["match_share"].ToObject<bool>();
+                        Properties.Settings.Default.match_pick = data["match_pick"].ToObject<bool>();
+                        Properties.Settings.Default.ban_danmu = data["ban_danmu"].ToObject<string>();
+
                         Properties.Settings.Default.setting_read = true;
                         Properties.Settings.Default.Save();
                     }

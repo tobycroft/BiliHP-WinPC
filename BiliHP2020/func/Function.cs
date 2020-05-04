@@ -202,5 +202,44 @@ namespace BiliHP2020.func
             }
         }
 
+        public void match_sign()
+        {
+            while (true)
+            {
+                if (Properties.Settings.Default.manga_sign)
+                {
+                    string obj = send_obj("func", new JObject(), "match_sign");
+                    send(obj);
+                }
+                Thread.Sleep(86400 * 1000);
+            }
+        }
+
+        public void match_share()
+        {
+            while (true)
+            {
+                if (Properties.Settings.Default.manga_share)
+                {
+                    string obj = send_obj("func", new JObject(), "match_share");
+                    send(obj);
+                }
+                Thread.Sleep(86400 * 1000);
+            }
+        }
+
+        public void match_pick()
+        {
+            while (true)
+            {
+                if (Properties.Settings.Default.manga_share)
+                {
+                    string obj = send_obj("func", new JObject(), "match_pick");
+                    send(obj);
+                }
+                Thread.Sleep(86400 * 1000);
+            }
+        }
+
     }
 }

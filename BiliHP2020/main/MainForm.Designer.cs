@@ -45,6 +45,9 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.match_pick = new System.Windows.Forms.CheckBox();
+            this.match_share = new System.Windows.Forms.CheckBox();
+            this.match_sign = new System.Windows.Forms.CheckBox();
             this.manga_share = new System.Windows.Forms.CheckBox();
             this.manga_sign = new System.Windows.Forms.CheckBox();
             this.do_sign = new System.Windows.Forms.CheckBox();
@@ -97,6 +100,8 @@
             this.pc_heart = new System.Windows.Forms.CheckBox();
             this.app_heart = new System.Windows.Forms.CheckBox();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.label15 = new System.Windows.Forms.Label();
+            this.ban_danmu = new System.Windows.Forms.RichTextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.ban_words = new System.Windows.Forms.RichTextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -151,8 +156,6 @@
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.退出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ban_danmu = new System.Windows.Forms.RichTextBox();
-            this.label15 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -330,6 +333,9 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.match_pick);
+            this.groupBox2.Controls.Add(this.match_share);
+            this.groupBox2.Controls.Add(this.match_sign);
             this.groupBox2.Controls.Add(this.manga_share);
             this.groupBox2.Controls.Add(this.manga_sign);
             this.groupBox2.Controls.Add(this.do_sign);
@@ -373,10 +379,43 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "自动控制面板（实时同步）";
             // 
+            // match_pick
+            // 
+            this.match_pick.AutoSize = true;
+            this.match_pick.Location = new System.Drawing.Point(366, 64);
+            this.match_pick.Name = "match_pick";
+            this.match_pick.Size = new System.Drawing.Size(72, 16);
+            this.match_pick.TabIndex = 45;
+            this.match_pick.Text = "赛事助威";
+            this.match_pick.UseVisualStyleBackColor = true;
+            this.match_pick.CheckedChanged += new System.EventHandler(this.match_pick_CheckedChanged);
+            // 
+            // match_share
+            // 
+            this.match_share.AutoSize = true;
+            this.match_share.Location = new System.Drawing.Point(280, 64);
+            this.match_share.Name = "match_share";
+            this.match_share.Size = new System.Drawing.Size(72, 16);
+            this.match_share.TabIndex = 44;
+            this.match_share.Text = "赛事分享";
+            this.match_share.UseVisualStyleBackColor = true;
+            this.match_share.CheckedChanged += new System.EventHandler(this.match_share_CheckedChanged);
+            // 
+            // match_sign
+            // 
+            this.match_sign.AutoSize = true;
+            this.match_sign.Location = new System.Drawing.Point(185, 64);
+            this.match_sign.Name = "match_sign";
+            this.match_sign.Size = new System.Drawing.Size(72, 16);
+            this.match_sign.TabIndex = 43;
+            this.match_sign.Text = "赛事签到";
+            this.match_sign.UseVisualStyleBackColor = true;
+            this.match_sign.CheckedChanged += new System.EventHandler(this.match_sign_CheckedChanged);
+            // 
             // manga_share
             // 
             this.manga_share.AutoSize = true;
-            this.manga_share.Location = new System.Drawing.Point(255, 64);
+            this.manga_share.Location = new System.Drawing.Point(91, 64);
             this.manga_share.Name = "manga_share";
             this.manga_share.Size = new System.Drawing.Size(72, 16);
             this.manga_share.TabIndex = 42;
@@ -387,7 +426,7 @@
             // manga_sign
             // 
             this.manga_sign.AutoSize = true;
-            this.manga_sign.Location = new System.Drawing.Point(173, 64);
+            this.manga_sign.Location = new System.Drawing.Point(13, 64);
             this.manga_sign.Name = "manga_sign";
             this.manga_sign.Size = new System.Drawing.Size(72, 16);
             this.manga_sign.TabIndex = 41;
@@ -398,7 +437,7 @@
             // do_sign
             // 
             this.do_sign.AutoSize = true;
-            this.do_sign.Location = new System.Drawing.Point(91, 64);
+            this.do_sign.Location = new System.Drawing.Point(13, 42);
             this.do_sign.Name = "do_sign";
             this.do_sign.Size = new System.Drawing.Size(72, 16);
             this.do_sign.TabIndex = 40;
@@ -409,7 +448,7 @@
             // daily_task
             // 
             this.daily_task.AutoSize = true;
-            this.daily_task.Location = new System.Drawing.Point(335, 64);
+            this.daily_task.Location = new System.Drawing.Point(185, 42);
             this.daily_task.Name = "daily_task";
             this.daily_task.Size = new System.Drawing.Size(72, 16);
             this.daily_task.TabIndex = 39;
@@ -863,7 +902,7 @@
             // yingyuan_sign
             // 
             this.yingyuan_sign.AutoSize = true;
-            this.yingyuan_sign.Location = new System.Drawing.Point(173, 42);
+            this.yingyuan_sign.Location = new System.Drawing.Point(91, 42);
             this.yingyuan_sign.Name = "yingyuan_sign";
             this.yingyuan_sign.Size = new System.Drawing.Size(84, 16);
             this.yingyuan_sign.TabIndex = 6;
@@ -874,7 +913,7 @@
             // silver_to_coin
             // 
             this.silver_to_coin.AutoSize = true;
-            this.silver_to_coin.Location = new System.Drawing.Point(335, 20);
+            this.silver_to_coin.Location = new System.Drawing.Point(280, 42);
             this.silver_to_coin.Name = "silver_to_coin";
             this.silver_to_coin.Size = new System.Drawing.Size(120, 16);
             this.silver_to_coin.TabIndex = 5;
@@ -885,7 +924,7 @@
             // silver_task
             // 
             this.silver_task.AutoSize = true;
-            this.silver_task.Location = new System.Drawing.Point(13, 64);
+            this.silver_task.Location = new System.Drawing.Point(280, 20);
             this.silver_task.Name = "silver_task";
             this.silver_task.Size = new System.Drawing.Size(72, 16);
             this.silver_task.TabIndex = 4;
@@ -896,7 +935,7 @@
             // online_silver
             // 
             this.online_silver.AutoSize = true;
-            this.online_silver.Location = new System.Drawing.Point(173, 20);
+            this.online_silver.Location = new System.Drawing.Point(160, 20);
             this.online_silver.Name = "online_silver";
             this.online_silver.Size = new System.Drawing.Size(108, 16);
             this.online_silver.TabIndex = 3;
@@ -907,7 +946,7 @@
             // daily_bag
             // 
             this.daily_bag.AutoSize = true;
-            this.daily_bag.Location = new System.Drawing.Point(335, 42);
+            this.daily_bag.Location = new System.Drawing.Point(366, 20);
             this.daily_bag.Name = "daily_bag";
             this.daily_bag.Size = new System.Drawing.Size(72, 16);
             this.daily_bag.TabIndex = 2;
@@ -918,7 +957,7 @@
             // pc_heart
             // 
             this.pc_heart.AutoSize = true;
-            this.pc_heart.Location = new System.Drawing.Point(13, 42);
+            this.pc_heart.Location = new System.Drawing.Point(91, 20);
             this.pc_heart.Name = "pc_heart";
             this.pc_heart.Size = new System.Drawing.Size(60, 16);
             this.pc_heart.TabIndex = 1;
@@ -949,6 +988,24 @@
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "天选控制";
             this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(11, 211);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(89, 12);
+            this.label15.TabIndex = 3;
+            this.label15.Text = "天选屏蔽弹幕：";
+            // 
+            // ban_danmu
+            // 
+            this.ban_danmu.Location = new System.Drawing.Point(13, 226);
+            this.ban_danmu.Name = "ban_danmu";
+            this.ban_danmu.Size = new System.Drawing.Size(439, 147);
+            this.ban_danmu.TabIndex = 2;
+            this.ban_danmu.Text = "";
+            this.ban_danmu.TextChanged += new System.EventHandler(this.ban_danmu_TextChanged);
             // 
             // label3
             // 
@@ -1490,24 +1547,6 @@
             this.退出ToolStripMenuItem.Text = "退出";
             this.退出ToolStripMenuItem.Click += new System.EventHandler(this.退出ToolStripMenuItem_Click);
             // 
-            // ban_danmu
-            // 
-            this.ban_danmu.Location = new System.Drawing.Point(13, 226);
-            this.ban_danmu.Name = "ban_danmu";
-            this.ban_danmu.Size = new System.Drawing.Size(439, 147);
-            this.ban_danmu.TabIndex = 2;
-            this.ban_danmu.Text = "";
-            this.ban_danmu.TextChanged += new System.EventHandler(this.ban_danmu_TextChanged);
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(11, 211);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(89, 12);
-            this.label15.TabIndex = 3;
-            this.label15.Text = "天选屏蔽弹幕：";
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1673,6 +1712,9 @@
         private System.Windows.Forms.CheckBox do_sign;
         private System.Windows.Forms.RichTextBox ban_danmu;
         private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.CheckBox match_pick;
+        private System.Windows.Forms.CheckBox match_share;
+        private System.Windows.Forms.CheckBox match_sign;
     }
 }
 

@@ -418,5 +418,41 @@ namespace BiliHP2020.Properties {
                 this["ban_danmu"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool match_sign {
+            get {
+                return ((bool)(this["match_sign"]));
+            }
+            set {
+                this["match_sign"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool match_share {
+            get {
+                return ((bool)(this["match_share"]));
+            }
+            set {
+                this["match_share"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool match_pick {
+            get {
+                return ((bool)(this["match_pick"]));
+            }
+            set {
+                this["match_pick"] = value;
+            }
+        }
     }
 }
