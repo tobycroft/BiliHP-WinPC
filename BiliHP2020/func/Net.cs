@@ -82,59 +82,71 @@ namespace BiliHP2020.func
                     foreach (var item in headers)
                     {
 
-                        switch (item.Key)
+                        switch (item.Key.ToLower())
                         {
                             case "Accept":
+                            case "accept":
                                 req.Accept = item.Value.ToString();
                                 break;
 
                             case "Connection":
+                            case "connection":
                                 req.Connection = item.Value.ToString();
                                 break;
 
                             case "Content-length":
                             case "Content-Length":
+                            case "content-length":
                                 req.ContentLength = item.Value.ToObject<int>();
                                 break;
 
                             case "Content-type":
                             case "Content-Type":
+                            case "content-type":
                                 req.ContentType = item.Value.ToString();
                                 break;
 
                             case "Expect":
+                            case "expect":
                                 req.Expect = item.Value.ToString();
                                 break;
 
                             case "Date":
+                            case "date":
                                 //req.date = item.Value.ToString();
                                 break;
 
                             case "Host":
+                            case "host":
                                 //req.Headers = item.Value.ToString();
                                 break;
 
                             case "If-Modified-Since	":
                             case "If-modified-since	":
+                            case "if-modified-since	":
                                 //req.IfModifiedSince = item.Value.ToString();
                                 break;
 
                             case "Range":
+                            case "range":
                                 //req.Headers = item.Value.ToString();
                                 break;
 
 
                             case "Referer":
+                            case "referer":
                                 req.Referer = item.Value.ToString();
                                 break;
 
                             case "Transfer-Encoding	":
                             case "Transfer-encoding	":
+                            case "transfer-encoding	":
                                 req.TransferEncoding = item.Value.ToString();
                                 break;
 
                             case "User-Agent":
                             case "User-agent":
+                            case "user-agent":
                                 req.UserAgent = item.Value.ToString();
                                 break;
 
