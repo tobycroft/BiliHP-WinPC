@@ -36,6 +36,7 @@ namespace BiliHP2020
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            this.Text += System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
             connect();
             ecam_action(socket.ProtocolType.ToString());
             ecam_action(socket.SocketType.ToString());
@@ -159,7 +160,7 @@ namespace BiliHP2020
                     storm_count.Text = Properties.Settings.Default.storm_count.ToString();
                     storm_time.Text = Properties.Settings.Default.storm_time.ToString();
                     ban_words.Text = Properties.Settings.Default.ban_words.ToString();
-                    ban_danmu.Text= Properties.Settings.Default.ban_danmu.ToString();
+                    ban_danmu.Text = Properties.Settings.Default.ban_danmu.ToString();
 
                     match_sign.Checked = Properties.Settings.Default.match_sign;
                     match_share.Checked = Properties.Settings.Default.match_share;
