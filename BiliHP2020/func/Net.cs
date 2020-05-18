@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.IO;
+using System.IO.Compression;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
@@ -181,16 +182,11 @@ namespace BiliHP2020.func
                     ret_cookie.Add(item.Name, item.Value);
                 }
                 Stream reStream = resp.GetResponseStream();
-                string body = "";
-                Encoding encoding1 = Encoding.Default;
-                using (StreamReader reader1 = new StreamReader(reStream, true))
-                {
-                    body = reader1.ReadToEnd();
-                    reader1.Close();
-                }
+                string body = GetResponseBody(resp);
 
                 resp.Close();
                 JObject ret = new JObject();
+
                 //MessageBox.Show(body.ToString());
                 ret["body"] = JObject.Parse(body);
                 ret["headers"] = ret_header;
@@ -199,13 +195,14 @@ namespace BiliHP2020.func
             }
             catch (Exception e)
             {
-
                 if (ecam != null)
                 {
                     ecam.Items.Add("Curl-Error:" + e.Message);
                 }
                 JObject ret = new JObject();
+
                 return ret;
+                throw e;
             }
 
         }
@@ -225,7 +222,7 @@ namespace BiliHP2020.func
             }
             return cookie_arr;
         }
-        private static string cookie_tag = "sid,JSESSIONID,DedeUserID,DedeUserID__ckMd5,SESSDATA,bili_jct,sid";
+        private static string cookie_tag = "sid,JSESSIONID,DedeUserID,DedeUserID__ckMd5,SESSDATA,bili_jct,sid,bfe_id";
 
         private static bool CookieTagChecker(string cookie_key)
         {
@@ -345,7 +342,6 @@ namespace BiliHP2020.func
         }
 
         public static void DownLoad(string url)
-
         {
 
             WebClient mywebclient = new WebClient();
@@ -376,5 +372,42 @@ namespace BiliHP2020.func
             MessageBox.Show("新版下载完毕");
         }
 
+        private static string GetResponseBody(HttpWebResponse response)
+        {
+            string responseBody = string.Empty;
+            if (response.ContentEncoding.ToLower().Contains("gzip"))
+            {
+                using (GZipStream stream = new GZipStream(response.GetResponseStream(), CompressionMode.Decompress))
+                {
+                    using (StreamReader reader = new StreamReader(stream))
+                    {
+                        responseBody = reader.ReadToEnd();
+                    }
+                }
+            }
+            else if (response.ContentEncoding.ToLower().Contains("deflate"))
+            {
+                using (DeflateStream stream = new DeflateStream(
+                    response.GetResponseStream(), CompressionMode.Decompress))
+                {
+                    using (StreamReader reader =
+                        new StreamReader(stream, Encoding.UTF8))
+                    {
+                        responseBody = reader.ReadToEnd();
+                    }
+                }
+            }
+            else
+            {
+                using (Stream stream = response.GetResponseStream())
+                {
+                    using (StreamReader reader = new StreamReader(stream, Encoding.UTF8))
+                    {
+                        responseBody = reader.ReadToEnd();
+                    }
+                }
+            }
+            return responseBody;
+        }
     }
 }

@@ -15,7 +15,7 @@ namespace BiliHP2020
         static void Main()
         {
             AppDomain.CurrentDomain.AssemblyResolve += CurrentDomain_AssemblyResolve;
-
+            System.Net.ServicePointManager.DefaultConnectionLimit = 512;
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Login());
