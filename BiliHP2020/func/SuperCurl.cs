@@ -47,8 +47,8 @@ namespace BiliHP2020.func
             {
                 Thread.Sleep(1000 * delay);
             }
-            //try
-            //{
+            try
+            {
                 JObject Curl = Net.Curl(url, method, values, headers, cookie, ecam);
                 Curl["route"] = route;
                 Curl["echo"] = echo;
@@ -58,11 +58,11 @@ namespace BiliHP2020.func
                 ret["echo"] = echo;
                 ret["statusCode"] = 200;
                 send(ret.ToString(Newtonsoft.Json.Formatting.None));
-            //}
-            //catch (Exception e)
-            //{
-            //    ecam_action(e);
-            //}
+            }
+            catch (Exception e)
+            {
+                ecam_action(e);
+            }
 
         }
         private void send(string data)
