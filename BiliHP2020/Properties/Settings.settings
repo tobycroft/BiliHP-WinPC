@@ -110,5 +110,14 @@
     <Setting Name="match_pick" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="blacklist_first" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="use_white" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="white_words" Type="System.String" Scope="User">
+      <Value Profile="(Default)">10元</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

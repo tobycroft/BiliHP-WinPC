@@ -161,10 +161,14 @@ namespace BiliHP2020
                     storm_time.Text = Properties.Settings.Default.storm_time.ToString();
                     ban_words.Text = Properties.Settings.Default.ban_words.ToString();
                     ban_danmu.Text = Properties.Settings.Default.ban_danmu.ToString();
+                    white_words.Text=Properties.Settings.Default.white_words.ToString();
 
                     match_sign.Checked = Properties.Settings.Default.match_sign;
                     match_share.Checked = Properties.Settings.Default.match_share;
                     match_pick.Checked = Properties.Settings.Default.match_pick;
+
+                    use_white.Checked = Properties.Settings.Default.use_white;
+                    blacklist_first.Checked = Properties.Settings.Default.blacklist_first;
 
                     foreach (var item in ActionRoute.get_time())
                     {
@@ -1270,6 +1274,46 @@ namespace BiliHP2020
                 JObject setting = new JObject();
                 setting["key"] = "match_pick";
                 setting["value"] = match_pick.Checked;
+                send_setting("pc_set_setting", setting, "pc_set_setting");
+            }
+        }
+
+        private void white_words_TextChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.white_words = white_words.Text;
+
+            Properties.Settings.Default.Save();
+            if (!Properties.Settings.Default.setting_lock)
+            {
+                JObject setting = new JObject();
+                setting["key"] = "white_words";
+                setting["value"] = white_words.Text;
+                send_setting("pc_set_setting", setting, "pc_set_setting");
+            }
+        }
+
+        private void use_white_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.use_white = use_white.Checked;
+            Properties.Settings.Default.Save();
+            if (!Properties.Settings.Default.setting_lock)
+            {
+                JObject setting = new JObject();
+                setting["key"] = "use_white";
+                setting["value"] = use_white.Checked;
+                send_setting("pc_set_setting", setting, "pc_set_setting");
+            }
+        }
+
+        private void blacklist_first_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.blacklist_first = blacklist_first.Checked;
+            Properties.Settings.Default.Save();
+            if (!Properties.Settings.Default.setting_lock)
+            {
+                JObject setting = new JObject();
+                setting["key"] = "blacklist_first";
+                setting["value"] = blacklist_first.Checked;
                 send_setting("pc_set_setting", setting, "pc_set_setting");
             }
         }

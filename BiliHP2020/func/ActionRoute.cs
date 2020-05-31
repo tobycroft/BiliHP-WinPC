@@ -260,10 +260,14 @@ namespace BiliHP2020.func
                     }
                     JObject obj = json["object"].ToObject<JObject>();
 
+                    bool cont = true;
+
                     string bw = Properties.Settings.Default.ban_words;
                     string[] bws = bw.Split(',');
                     string bdm = Properties.Settings.Default.ban_danmu;
-                    string[] bdms = bw.Split(',');
+                    string[] bdms = bdm.Split(',');
+                    string wdm = Properties.Settings.Default.white_words;
+                    string[] wdms = wdm.Split(',');
                     foreach (var item in bws)
                     {
                         if (item.Length > 0)
@@ -271,7 +275,8 @@ namespace BiliHP2020.func
                             if (obj["award_name"].ToString().Contains(item))
                             {
                                 ecam2("[BiliHP-Net]", obj["award_name"].ToString() + "本礼物在屏蔽词(" + item + ")里，自动跳过");
-                                return;
+                                cont = false;
+                                break;
                             }
                         }
                     }
@@ -282,22 +287,49 @@ namespace BiliHP2020.func
                             if (obj["danmu"].ToString().Contains(item))
                             {
                                 ecam2("[BiliHP-Net]", obj["danmu"].ToString() + "本弹幕在屏蔽词(" + item + ")里，不发送并跳过本天选抽奖");
-                                return;
+                                cont = false;
+                                break;
                             }
                         }
                     }
-                    rets = ret;
-                    header = rets["header"].ToObject<JObject>();
-                    values = rets["values"].ToObject<JObject>();
-                    cookie = rets["cookie"].ToObject<JObject>();
+                    if (Properties.Settings.Default.blacklist_first)
+                    {
+                        if (!cont)
+                        {
+                            break;
+                        }
+                    }
+                    if (Properties.Settings.Default.use_white)
+                    {
+                        cont = false;
+                        foreach (var item in bdms)
+                        {
+                            if (item.Length > 0)
+                            {
+                                if (obj["danmu"].ToString().Contains(item))
+                                {
+                                    ecam2("[BiliHP-Net]", obj["danmu"].ToString() + "在白名单(" + item + ")里");
+                                    cont = true;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                    if (cont)
+                    {
+                        rets = ret;
+                        header = rets["header"].ToObject<JObject>();
+                        values = rets["values"].ToObject<JObject>();
+                        cookie = rets["cookie"].ToObject<JObject>();
 
-                    url = rets["url"].ToString();
-                    method = rets["method"].ToString();
-                    route = rets["route"].ToString();
-                    typ = rets["type"].ToString();
-                    delay = rets["delay"].ToObject<int>();
-                    ecam2(type, echo);
-                    SuperCurl.Curl(MainForm.socket, url, method, values, header, cookie, typ, echo, route, delay, ecam);
+                        url = rets["url"].ToString();
+                        method = rets["method"].ToString();
+                        route = rets["route"].ToString();
+                        typ = rets["type"].ToString();
+                        delay = rets["delay"].ToObject<int>();
+                        ecam2(type, echo);
+                        SuperCurl.Curl(MainForm.socket, url, method, values, header, cookie, typ, echo, route, delay, ecam);
+                    }
                     break;
 
                 case "box":

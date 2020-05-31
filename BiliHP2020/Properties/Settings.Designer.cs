@@ -454,5 +454,41 @@ namespace BiliHP2020.Properties {
                 this["match_pick"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool blacklist_first {
+            get {
+                return ((bool)(this["blacklist_first"]));
+            }
+            set {
+                this["blacklist_first"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool use_white {
+            get {
+                return ((bool)(this["use_white"]));
+            }
+            set {
+                this["use_white"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("10元")]
+        public string white_words {
+            get {
+                return ((string)(this["white_words"]));
+            }
+            set {
+                this["white_words"] = value;
+            }
+        }
     }
 }

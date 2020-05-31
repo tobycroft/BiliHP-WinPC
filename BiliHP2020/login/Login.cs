@@ -158,12 +158,19 @@ namespace BiliHP2020.login
 
         private void mainframe()
         {
-            
-            MainForm ea = new MainForm();
-            //ea.ecam.Items.Add("首页登录完成……");
-            //ea.ShowDialog();
-            ea.Show();
-            this.Visible = false;
+            try
+            {
+                MainForm ea = new MainForm();
+                //ea.ecam.Items.Add("首页登录完成……");
+                //ea.ShowDialog();
+                ea.Show();
+                this.Visible = false;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString());
+            }
+         
         }
 
         private void version_Click(object sender, EventArgs e)

@@ -100,6 +100,11 @@
             this.pc_heart = new System.Windows.Forms.CheckBox();
             this.app_heart = new System.Windows.Forms.CheckBox();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.blacklist_first = new System.Windows.Forms.CheckBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.use_white = new System.Windows.Forms.CheckBox();
+            this.white_words = new System.Windows.Forms.RichTextBox();
+            this.label19 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.ban_danmu = new System.Windows.Forms.RichTextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -978,6 +983,11 @@
             // 
             // tabPage5
             // 
+            this.tabPage5.Controls.Add(this.blacklist_first);
+            this.tabPage5.Controls.Add(this.label20);
+            this.tabPage5.Controls.Add(this.use_white);
+            this.tabPage5.Controls.Add(this.white_words);
+            this.tabPage5.Controls.Add(this.label19);
             this.tabPage5.Controls.Add(this.label15);
             this.tabPage5.Controls.Add(this.ban_danmu);
             this.tabPage5.Controls.Add(this.label3);
@@ -989,10 +999,60 @@
             this.tabPage5.Text = "天选控制";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
+            // blacklist_first
+            // 
+            this.blacklist_first.AutoSize = true;
+            this.blacklist_first.Location = new System.Drawing.Point(227, 366);
+            this.blacklist_first.Name = "blacklist_first";
+            this.blacklist_first.Size = new System.Drawing.Size(204, 16);
+            this.blacklist_first.TabIndex = 48;
+            this.blacklist_first.Text = "黑名单优先（黑名单优先级更高）";
+            this.blacklist_first.UseVisualStyleBackColor = true;
+            this.blacklist_first.CheckedChanged += new System.EventHandler(this.blacklist_first_CheckedChanged);
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label20.Location = new System.Drawing.Point(164, 341);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(106, 22);
+            this.label20.TabIndex = 47;
+            this.label20.Text = "天选细节功能";
+            // 
+            // use_white
+            // 
+            this.use_white.AutoSize = true;
+            this.use_white.Location = new System.Drawing.Point(42, 366);
+            this.use_white.Name = "use_white";
+            this.use_white.Size = new System.Drawing.Size(156, 16);
+            this.use_white.TabIndex = 46;
+            this.use_white.Text = "仅抽天选白名单中的礼物";
+            this.use_white.UseVisualStyleBackColor = true;
+            this.use_white.CheckedChanged += new System.EventHandler(this.use_white_CheckedChanged);
+            // 
+            // white_words
+            // 
+            this.white_words.Location = new System.Drawing.Point(13, 249);
+            this.white_words.Name = "white_words";
+            this.white_words.Size = new System.Drawing.Size(439, 85);
+            this.white_words.TabIndex = 5;
+            this.white_words.Text = "";
+            this.white_words.TextChanged += new System.EventHandler(this.white_words_TextChanged);
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(11, 234);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(77, 12);
+            this.label19.TabIndex = 4;
+            this.label19.Text = "天选白名单：";
+            // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(11, 211);
+            this.label15.Location = new System.Drawing.Point(11, 144);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(89, 12);
             this.label15.TabIndex = 3;
@@ -1000,9 +1060,9 @@
             // 
             // ban_danmu
             // 
-            this.ban_danmu.Location = new System.Drawing.Point(13, 226);
+            this.ban_danmu.Location = new System.Drawing.Point(13, 159);
             this.ban_danmu.Name = "ban_danmu";
-            this.ban_danmu.Size = new System.Drawing.Size(439, 147);
+            this.ban_danmu.Size = new System.Drawing.Size(439, 72);
             this.ban_danmu.TabIndex = 2;
             this.ban_danmu.Text = "";
             this.ban_danmu.TextChanged += new System.EventHandler(this.ban_danmu_TextChanged);
@@ -1020,7 +1080,7 @@
             // 
             this.ban_words.Location = new System.Drawing.Point(13, 33);
             this.ban_words.Name = "ban_words";
-            this.ban_words.Size = new System.Drawing.Size(439, 147);
+            this.ban_words.Size = new System.Drawing.Size(439, 108);
             this.ban_words.TabIndex = 0;
             this.ban_words.Text = "";
             this.ban_words.TextChanged += new System.EventHandler(this.richTextBox3_TextChanged);
@@ -1715,6 +1775,11 @@
         private System.Windows.Forms.CheckBox match_pick;
         private System.Windows.Forms.CheckBox match_share;
         private System.Windows.Forms.CheckBox match_sign;
+        private System.Windows.Forms.RichTextBox white_words;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.CheckBox blacklist_first;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.CheckBox use_white;
     }
 }
 
