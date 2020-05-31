@@ -162,6 +162,7 @@ namespace BiliHP2020
                     ban_words.Text = Properties.Settings.Default.ban_words.ToString();
                     ban_danmu.Text = Properties.Settings.Default.ban_danmu.ToString();
                     white_words.Text=Properties.Settings.Default.white_words.ToString();
+                    medal_room.Text=Properties.Settings.Default.medal_room.ToString();
 
                     match_sign.Checked = Properties.Settings.Default.match_sign;
                     match_share.Checked = Properties.Settings.Default.match_share;
@@ -1314,6 +1315,19 @@ namespace BiliHP2020
                 JObject setting = new JObject();
                 setting["key"] = "blacklist_first";
                 setting["value"] = blacklist_first.Checked;
+                send_setting("pc_set_setting", setting, "pc_set_setting");
+            }
+        }
+
+        private void medal_room_TextChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.medal_room = medal_room.Text;
+            Properties.Settings.Default.Save();
+            if (!Properties.Settings.Default.setting_lock)
+            {
+                JObject setting = new JObject();
+                setting["key"] = "medal_room";
+                setting["value"] = medal_room.Text;
                 send_setting("pc_set_setting", setting, "pc_set_setting");
             }
         }

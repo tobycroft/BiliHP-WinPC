@@ -161,6 +161,8 @@
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.退出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label21 = new System.Windows.Forms.Label();
+            this.medal_room = new System.Windows.Forms.RichTextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -983,6 +985,8 @@
             // 
             // tabPage5
             // 
+            this.tabPage5.Controls.Add(this.medal_room);
+            this.tabPage5.Controls.Add(this.label21);
             this.tabPage5.Controls.Add(this.blacklist_first);
             this.tabPage5.Controls.Add(this.label20);
             this.tabPage5.Controls.Add(this.use_white);
@@ -1002,7 +1006,7 @@
             // blacklist_first
             // 
             this.blacklist_first.AutoSize = true;
-            this.blacklist_first.Location = new System.Drawing.Point(227, 366);
+            this.blacklist_first.Location = new System.Drawing.Point(175, 366);
             this.blacklist_first.Name = "blacklist_first";
             this.blacklist_first.Size = new System.Drawing.Size(204, 16);
             this.blacklist_first.TabIndex = 48;
@@ -1023,7 +1027,7 @@
             // use_white
             // 
             this.use_white.AutoSize = true;
-            this.use_white.Location = new System.Drawing.Point(42, 366);
+            this.use_white.Location = new System.Drawing.Point(13, 366);
             this.use_white.Name = "use_white";
             this.use_white.Size = new System.Drawing.Size(156, 16);
             this.use_white.TabIndex = 46;
@@ -1035,7 +1039,7 @@
             // 
             this.white_words.Location = new System.Drawing.Point(13, 249);
             this.white_words.Name = "white_words";
-            this.white_words.Size = new System.Drawing.Size(439, 85);
+            this.white_words.Size = new System.Drawing.Size(227, 85);
             this.white_words.TabIndex = 5;
             this.white_words.Text = "";
             this.white_words.TextChanged += new System.EventHandler(this.white_words_TextChanged);
@@ -1045,9 +1049,9 @@
             this.label19.AutoSize = true;
             this.label19.Location = new System.Drawing.Point(11, 234);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(77, 12);
+            this.label19.Size = new System.Drawing.Size(89, 12);
             this.label19.TabIndex = 4;
-            this.label19.Text = "天选白名单：";
+            this.label19.Text = "天选白名单词：";
             // 
             // label15
             // 
@@ -1607,6 +1611,24 @@
             this.退出ToolStripMenuItem.Text = "退出";
             this.退出ToolStripMenuItem.Click += new System.EventHandler(this.退出ToolStripMenuItem_Click);
             // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(248, 234);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(101, 12);
+            this.label21.TabIndex = 49;
+            this.label21.Text = "我拥勋章的直播间";
+            // 
+            // medal_room
+            // 
+            this.medal_room.Location = new System.Drawing.Point(250, 249);
+            this.medal_room.Name = "medal_room";
+            this.medal_room.Size = new System.Drawing.Size(202, 85);
+            this.medal_room.TabIndex = 50;
+            this.medal_room.Text = "";
+            this.medal_room.TextChanged += new System.EventHandler(this.medal_room_TextChanged);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1780,6 +1802,8 @@
         private System.Windows.Forms.CheckBox blacklist_first;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.CheckBox use_white;
+        private System.Windows.Forms.RichTextBox medal_room;
+        private System.Windows.Forms.Label label21;
     }
 }
 

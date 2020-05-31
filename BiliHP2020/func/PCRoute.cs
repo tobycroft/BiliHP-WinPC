@@ -53,6 +53,7 @@ namespace BiliHP2020.func
                         Properties.Settings.Default.match_pick = data["match_pick"].ToObject<bool>();
                         Properties.Settings.Default.ban_danmu = data["ban_danmu"].ToObject<string>();
                         Properties.Settings.Default.white_words = data["white_words"].ToObject<string>();
+                        Properties.Settings.Default.medal_room = data["medal_room"].ToObject<string>();
 
                         Properties.Settings.Default.use_white = data["use_white"].ToObject<bool>();
                         Properties.Settings.Default.blacklist_first = data["blacklist_first"].ToObject<bool>();

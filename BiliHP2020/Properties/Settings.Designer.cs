@@ -490,5 +490,17 @@ namespace BiliHP2020.Properties {
                 this["white_words"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("000000")]
+        public string medal_room {
+            get {
+                return ((string)(this["medal_room"]));
+            }
+            set {
+                this["medal_room"] = value;
+            }
+        }
     }
 }

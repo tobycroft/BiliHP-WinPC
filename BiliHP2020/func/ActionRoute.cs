@@ -268,6 +268,8 @@ namespace BiliHP2020.func
                     string[] bdms = bdm.Split(',');
                     string wdm = Properties.Settings.Default.white_words;
                     string[] wdms = wdm.Split(',');
+                    string mr = Properties.Settings.Default.medal_room;
+                    string[] mrs = wdm.Split(',');
                     foreach (var item in bws)
                     {
                         if (item.Length > 0)
@@ -313,6 +315,24 @@ namespace BiliHP2020.func
                                     break;
                                 }
                             }
+                        }
+                    }
+                    if (cont && obj["need_medal"].ToString() == "1")
+                    {
+                        foreach (var item in mrs)
+                        {
+                            if (item.Length > 0)
+                            {
+                                if (obj["room_id"].ToString().Contains(item))
+                                {
+                                    cont = true;
+                                    break;
+                                }
+                            }
+                        }
+                        if (!cont)
+                        {
+                            ecam2("[BiliHP-Net]", "你没有该主播抽奖所需的需要2级勋章，自动跳过");
                         }
                     }
                     if (cont)
