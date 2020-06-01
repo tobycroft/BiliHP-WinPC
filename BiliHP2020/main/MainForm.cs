@@ -161,8 +161,8 @@ namespace BiliHP2020
                     storm_time.Text = Properties.Settings.Default.storm_time.ToString();
                     ban_words.Text = Properties.Settings.Default.ban_words.ToString();
                     ban_danmu.Text = Properties.Settings.Default.ban_danmu.ToString();
-                    white_words.Text=Properties.Settings.Default.white_words.ToString();
-                    medal_room.Text=Properties.Settings.Default.medal_room.ToString();
+                    white_words.Text = Properties.Settings.Default.white_words.ToString();
+                    medal_room.Text = Properties.Settings.Default.medal_room.ToString();
 
                     match_sign.Checked = Properties.Settings.Default.match_sign;
                     match_share.Checked = Properties.Settings.Default.match_share;
@@ -465,7 +465,7 @@ namespace BiliHP2020
 
                         Thread.Sleep(1000);
                         connect();
-                        return;
+                        break;
                     }
                     else
                     {
@@ -490,6 +490,8 @@ namespace BiliHP2020
                         }
                     }
                 }
+                connect();
+                recieve();
             }
             catch (Exception e)
             {
