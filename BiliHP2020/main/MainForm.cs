@@ -462,9 +462,7 @@ namespace BiliHP2020
                     if (length == 0)
                     {
                         ecam_action("已经断开了……");
-
                         Thread.Sleep(1000);
-                        connect();
                         break;
                     }
                     else
