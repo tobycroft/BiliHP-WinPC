@@ -502,5 +502,17 @@ namespace BiliHP2020.Properties {
                 this["medal_room"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("000000")]
+        public string ban_room {
+            get {
+                return ((string)(this["ban_room"]));
+            }
+            set {
+                this["ban_room"] = value;
+            }
+        }
     }
 }

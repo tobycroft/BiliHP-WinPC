@@ -122,5 +122,8 @@
     <Setting Name="medal_room" Type="System.String" Scope="User">
       <Value Profile="(Default)">000000</Value>
     </Setting>
+    <Setting Name="ban_room" Type="System.String" Scope="User">
+      <Value Profile="(Default)">000000</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

@@ -270,30 +270,53 @@ namespace BiliHP2020.func
                     string[] wdms = wdm.Split(',');
                     string mr = Properties.Settings.Default.medal_room;
                     string[] mrs = wdm.Split(',');
-                    foreach (var item in bws)
+                    string br = Properties.Settings.Default.ban_room;
+                    string[] brs = br.Split(',');
+
+                    foreach (var item in brs)
                     {
                         if (item.Length > 0)
                         {
-                            if (obj["award_name"].ToString().Contains(item))
+                            if (obj["room_id"].ToString().Contains(item))
                             {
-                                ecam2("[BiliHP-Net]", obj["award_name"].ToString() + "本礼物在屏蔽词(" + item + ")里，自动跳过");
+                                ecam2("[BiliHP-Tianxuan]", obj["room_id"].ToString() + "在屏蔽直播间(" + item + ")里，自动跳过");
                                 cont = false;
                                 break;
                             }
                         }
                     }
-                    foreach (var item in bdms)
+                    if (cont)
                     {
-                        if (item.Length > 0)
+                        foreach (var item in bws)
                         {
-                            if (obj["danmu"].ToString().Contains(item))
+                            if (item.Length > 0)
                             {
-                                ecam2("[BiliHP-Net]", obj["danmu"].ToString() + "本弹幕在屏蔽词(" + item + ")里，不发送并跳过本天选抽奖");
-                                cont = false;
-                                break;
+                                if (obj["award_name"].ToString().Contains(item))
+                                {
+                                    ecam2("[BiliHP-Tianxuan]", obj["award_name"].ToString() + "本礼物在屏蔽词(" + item + ")里，自动跳过");
+                                    cont = false;
+                                    break;
+                                }
                             }
                         }
                     }
+
+                    if (cont)
+                    {
+                        foreach (var item in bdms)
+                        {
+                            if (item.Length > 0)
+                            {
+                                if (obj["danmu"].ToString().Contains(item))
+                                {
+                                    ecam2("[BiliHP-Tianxuan]", obj["danmu"].ToString() + "本弹幕在屏蔽词(" + item + ")里，不发送并跳过本天选抽奖");
+                                    cont = false;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+
                     if (Properties.Settings.Default.blacklist_first)
                     {
                         if (!cont)
@@ -310,7 +333,7 @@ namespace BiliHP2020.func
                             {
                                 if (obj["danmu"].ToString().Contains(item))
                                 {
-                                    ecam2("[BiliHP-Net]", obj["danmu"].ToString() + "在白名单(" + item + ")里");
+                                    ecam2("[BiliHP-Tianxuan]", obj["danmu"].ToString() + "在白名单(" + item + ")里");
                                     cont = true;
                                     break;
                                 }
@@ -332,7 +355,7 @@ namespace BiliHP2020.func
                         }
                         if (!cont)
                         {
-                            ecam2("[BiliHP-Net]", "你没有该主播抽奖所需的需要2级勋章，自动跳过");
+                            ecam2("[BiliHP-Tianxuan]", "你没有该主播抽奖所需的需要2级勋章，自动跳过");
                         }
                     }
                     if (cont)

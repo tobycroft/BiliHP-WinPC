@@ -100,6 +100,8 @@
             this.pc_heart = new System.Windows.Forms.CheckBox();
             this.app_heart = new System.Windows.Forms.CheckBox();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.medal_room = new System.Windows.Forms.RichTextBox();
+            this.label21 = new System.Windows.Forms.Label();
             this.blacklist_first = new System.Windows.Forms.CheckBox();
             this.label20 = new System.Windows.Forms.Label();
             this.use_white = new System.Windows.Forms.CheckBox();
@@ -161,8 +163,8 @@
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.退出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.label21 = new System.Windows.Forms.Label();
-            this.medal_room = new System.Windows.Forms.RichTextBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.ban_room = new System.Windows.Forms.RichTextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -985,6 +987,8 @@
             // 
             // tabPage5
             // 
+            this.tabPage5.Controls.Add(this.ban_room);
+            this.tabPage5.Controls.Add(this.label22);
             this.tabPage5.Controls.Add(this.medal_room);
             this.tabPage5.Controls.Add(this.label21);
             this.tabPage5.Controls.Add(this.blacklist_first);
@@ -1003,10 +1007,28 @@
             this.tabPage5.Text = "天选控制";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
+            // medal_room
+            // 
+            this.medal_room.Location = new System.Drawing.Point(250, 249);
+            this.medal_room.Name = "medal_room";
+            this.medal_room.Size = new System.Drawing.Size(202, 85);
+            this.medal_room.TabIndex = 50;
+            this.medal_room.Text = "";
+            this.medal_room.TextChanged += new System.EventHandler(this.medal_room_TextChanged);
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(248, 234);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(113, 12);
+            this.label21.TabIndex = 49;
+            this.label21.Text = "我拥勋章的直播间：";
+            // 
             // blacklist_first
             // 
             this.blacklist_first.AutoSize = true;
-            this.blacklist_first.Location = new System.Drawing.Point(175, 366);
+            this.blacklist_first.Location = new System.Drawing.Point(248, 366);
             this.blacklist_first.Name = "blacklist_first";
             this.blacklist_first.Size = new System.Drawing.Size(204, 16);
             this.blacklist_first.TabIndex = 48;
@@ -1018,7 +1040,7 @@
             // 
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label20.Location = new System.Drawing.Point(164, 341);
+            this.label20.Location = new System.Drawing.Point(171, 337);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(106, 22);
             this.label20.TabIndex = 47;
@@ -1056,7 +1078,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(11, 144);
+            this.label15.Location = new System.Drawing.Point(11, 132);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(89, 12);
             this.label15.TabIndex = 3;
@@ -1064,9 +1086,9 @@
             // 
             // ban_danmu
             // 
-            this.ban_danmu.Location = new System.Drawing.Point(13, 159);
+            this.ban_danmu.Location = new System.Drawing.Point(13, 147);
             this.ban_danmu.Name = "ban_danmu";
-            this.ban_danmu.Size = new System.Drawing.Size(439, 72);
+            this.ban_danmu.Size = new System.Drawing.Size(156, 84);
             this.ban_danmu.TabIndex = 2;
             this.ban_danmu.Text = "";
             this.ban_danmu.TextChanged += new System.EventHandler(this.ban_danmu_TextChanged);
@@ -1084,7 +1106,7 @@
             // 
             this.ban_words.Location = new System.Drawing.Point(13, 33);
             this.ban_words.Name = "ban_words";
-            this.ban_words.Size = new System.Drawing.Size(439, 108);
+            this.ban_words.Size = new System.Drawing.Size(439, 96);
             this.ban_words.TabIndex = 0;
             this.ban_words.Text = "";
             this.ban_words.TextChanged += new System.EventHandler(this.richTextBox3_TextChanged);
@@ -1611,23 +1633,23 @@
             this.退出ToolStripMenuItem.Text = "退出";
             this.退出ToolStripMenuItem.Click += new System.EventHandler(this.退出ToolStripMenuItem_Click);
             // 
-            // label21
+            // label22
             // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(248, 234);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(101, 12);
-            this.label21.TabIndex = 49;
-            this.label21.Text = "我拥勋章的直播间";
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(173, 132);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(89, 12);
+            this.label22.TabIndex = 51;
+            this.label22.Text = "黑名单直播间：";
             // 
-            // medal_room
+            // ban_room
             // 
-            this.medal_room.Location = new System.Drawing.Point(250, 249);
-            this.medal_room.Name = "medal_room";
-            this.medal_room.Size = new System.Drawing.Size(202, 85);
-            this.medal_room.TabIndex = 50;
-            this.medal_room.Text = "";
-            this.medal_room.TextChanged += new System.EventHandler(this.medal_room_TextChanged);
+            this.ban_room.Location = new System.Drawing.Point(175, 147);
+            this.ban_room.Name = "ban_room";
+            this.ban_room.Size = new System.Drawing.Size(277, 84);
+            this.ban_room.TabIndex = 52;
+            this.ban_room.Text = "";
+            this.ban_room.TextChanged += new System.EventHandler(this.ban_room_TextChanged);
             // 
             // MainForm
             // 
@@ -1804,6 +1826,8 @@
         private System.Windows.Forms.CheckBox use_white;
         private System.Windows.Forms.RichTextBox medal_room;
         private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.RichTextBox ban_room;
+        private System.Windows.Forms.Label label22;
     }
 }
 
