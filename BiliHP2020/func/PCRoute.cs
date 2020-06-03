@@ -27,6 +27,7 @@ namespace BiliHP2020.func
                     try
                     {
                         JObject data = json["data"].ToObject<JObject>();
+                        Properties.Settings.Default.do_sign = data["do_sign"].ToObject<bool>();
                         Properties.Settings.Default.app_heart = data["app_heart"].ToObject<bool>();
                         Properties.Settings.Default.pc_heart = data["pc_heart"].ToObject<bool>();
                         Properties.Settings.Default.daily_bag = data["daily_bag"].ToObject<bool>();
