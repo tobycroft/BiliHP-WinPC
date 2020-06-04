@@ -342,6 +342,7 @@ namespace BiliHP2020.func
                     }
                     if (cont && obj["need_medal"].ToString() == "1")
                     {
+                        cont = false;
                         foreach (var item in mrs)
                         {
                             if (item.Length > 0)
