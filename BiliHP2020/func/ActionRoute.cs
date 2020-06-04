@@ -327,7 +327,7 @@ namespace BiliHP2020.func
                     if (Properties.Settings.Default.use_white)
                     {
                         cont = false;
-                        foreach (var item in bdms)
+                        foreach (var item in wdms)
                         {
                             if (item.Length > 0)
                             {
