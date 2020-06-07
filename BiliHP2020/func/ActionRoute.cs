@@ -291,7 +291,7 @@ namespace BiliHP2020.func
                         {
                             if (item.Length > 0)
                             {
-                                if (obj["award_name"].ToString().Contains(item))
+                                if (obj["award_name"].ToString().ToLower().Contains(item.ToLower()))
                                 {
                                     ecam2("[BiliHP-Tianxuan]", obj["award_name"].ToString() + "本礼物在屏蔽词(" + item + ")里，自动跳过");
                                     cont = false;
@@ -307,7 +307,7 @@ namespace BiliHP2020.func
                         {
                             if (item.Length > 0)
                             {
-                                if (obj["danmu"].ToString().Contains(item))
+                                if (obj["danmu"].ToString().ToLower().Contains(item.ToLower()))
                                 {
                                     ecam2("[BiliHP-Tianxuan]", obj["danmu"].ToString() + "本弹幕在屏蔽词(" + item + ")里，不发送并跳过本天选抽奖");
                                     cont = false;
@@ -331,9 +331,9 @@ namespace BiliHP2020.func
                         {
                             if (item.Length > 0)
                             {
-                                if (obj["danmu"].ToString().Contains(item))
+                                if (obj["award_name"].ToString().ToLower().Contains(item.ToLower()))
                                 {
-                                    ecam2("[BiliHP-Tianxuan]", obj["danmu"].ToString() + "在白名单(" + item + ")里");
+                                    ecam2("[BiliHP-Tianxuan]", obj["award_name"].ToString() + "在白名单(" + item + ")里");
                                     cont = true;
                                     break;
                                 }
@@ -347,7 +347,7 @@ namespace BiliHP2020.func
                         {
                             if (item.Length > 0)
                             {
-                                if (obj["room_id"].ToString().Contains(item))
+                                if (obj["room_id"].ToString() == item)
                                 {
                                     cont = true;
                                     break;
