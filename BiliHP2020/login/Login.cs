@@ -134,9 +134,24 @@ namespace BiliHP2020.login
 
         private void Login_Load(object sender, EventArgs e)
         {
-            JObject job = new JObject();
-            job.Add("aa", 123);
-            job.ToString();
+            try
+            {
+                JObject job = new JObject();
+                job.Add("aa", 123);
+                job.ToString();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("请注意你的电脑无法解析JSON！");
+            }
+            try
+            {
+                Net.Post("http://go.bilihp.com:180/v1/index", null, null, null);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("无法连接主网，请检查你的网络");
+            }
             version.Text = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
             username.Text = Properties.Settings.Default.username;
             password.Text = Properties.Settings.Default.password;

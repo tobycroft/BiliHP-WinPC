@@ -293,7 +293,7 @@ namespace BiliHP2020
                 address = Dns.GetHostEntry("go.bilihp.com").AddressList[0];
                 //address = Dns.GetHostEntry("127.0.0.1").AddressList[0];
                 socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-                socket.NoDelay = false;
+                socket.NoDelay = true;
                 socket.Connect(address.ToString(), 181);
             }
             catch (Exception e)
